@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=2016-05-08 Carte Moteur Fin Coupe GR - PR.X
+PROJECTNAME=Eurobot 2016
 
 # Active Configuration
 DEFAULTCONF=default

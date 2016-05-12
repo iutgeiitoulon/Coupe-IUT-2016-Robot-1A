@@ -17,7 +17,7 @@ void InitIO()
     //Configuration des sorties
 
     //LED
-    _TRISA7 = 0; //Led 1 sur RA7
+    _TRISA7 = 1; //Led 1 sur RA7
     _TRISA9 = 0; //Led 2 sur RA9
     _TRISA10 = 0; //LED 3 sur RA10
     _TRISB14 = 0; //MOTOR_DROIT_IN1 sur RB14
