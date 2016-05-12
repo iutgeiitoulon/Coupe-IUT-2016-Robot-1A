@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Coupe_IUT_2016_Robot_1A.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=Coupe_IUT_2016_Robot_1A.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=coupeiut2016robot1a/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Coupe-IUT-2016-Robot-1A.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=Coupe-IUT-2016-Robot-1A.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=coupe-iut-2016-robot-1a/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/coupeiut2016robot1a/bin
+makeDirectory ${TMPDIR}/coupe-iut-2016-robot-1a/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/coupeiut2016robot1a.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/coupe-iut-2016-robot-1a.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/coupeiut2016robot1a.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/coupe-iut-2016-robot-1a.tar *
 checkReturnCode
 
 # Cleanup
