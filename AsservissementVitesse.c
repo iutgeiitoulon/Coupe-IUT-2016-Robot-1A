@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "QEI.h"
 
-double Te = 1 / FREQ_ECH_QEI;
+double Te = 1.00 / FREQ_ECH_QEI;
 
 double ed0, ed1, ed2; //valeurs de l'entrée du correcteur droit à t, t-1, t-2
 double sd0, sd1, sd2; //valeurs de la sortie du correcteur droit à t, t-1, t-2
