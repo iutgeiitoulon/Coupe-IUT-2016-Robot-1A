@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/main.c</file>
+            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/Servo.c</file>
+            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/PWM.c</file>
+            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/RobotManagement.c</file>
+            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/Toolbox.c</file>
+            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/TaskVidageChateau.c</file>
+            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/TaskFermeturePortes.c</file>
+        </group>
     </open-files>
 </project-private>
