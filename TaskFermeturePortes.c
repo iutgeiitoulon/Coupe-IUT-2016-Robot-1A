@@ -13,7 +13,7 @@ volatile TASK_BITS taskFermeturePortes;
 
 void TaskFermeturePortesInit()
 {
-    taskFermeturePortes.startingPosX = 900; //800
+    taskFermeturePortes.startingPosX = 800; //800
     taskFermeturePortes.startingPosY = 470;
 }
 
