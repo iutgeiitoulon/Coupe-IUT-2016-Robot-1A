@@ -8,13 +8,18 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
-#define GROS_ROBOT
+//#define GROS_ROBOT
 //#define PETIT_ROBOT
-
+#define ROBOT_CACHAN
 #define VIOLET 0
 #define VERT 1
 
-#if defined(GROS_ROBOT) && defined(PETIT_ROBOT)
+#if (defined(GROS_ROBOT) || defined(PETIT_ROBOT))
+#define ROBOT_EUROBOT
+#else
+#endif
+
+#if (defined(GROS_ROBOT) && defined(PETIT_ROBOT)) || (defined(GROS_ROBOT) && defined(ROBOT_CACHAN))|| (defined(PETIT_ROBOT) && defined(ROBOT_CACHAN))
 #error "On doit selectionner gros robot OU petit robot"
 #endif
 
