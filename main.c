@@ -122,6 +122,21 @@ int main(void)
     SetUpPAsservissementAngulaire(0.008); // 0.012
     //SetUpPiAsservissementLineaire(0.1, 0.4);
     SetUpPAsservissementLineaire(0.010); // 0.016
+#elif defined(ROBOT_CACHAN)  
+
+    //A DEFINIR!!
+
+    //Valeurs mesurées robot :  Ku=? - Tu=?
+    SetUpPidAsservissementVitesseMoteur(3, 0.05);
+    //Valeurs mesurées oscillations asserv angulaire :  Ku=100 - Tu=0.6    
+    robotState.GainVitesseLineaire = 10; //10
+    robotState.VitesseLimiteLineaire = 2000; //1000
+    robotState.GainVitesseRotation = 16; //10
+    robotState.VitesseLimiteRotation = 1400; //600
+    //SetUpPiAsservissementAngulaire(0.1, 0.4); // réglage du gain   
+    SetUpPAsservissementAngulaire(0.008); // 0.012
+    //SetUpPiAsservissementLineaire(0.1, 0.4);
+    SetUpPAsservissementLineaire(0.010); // 0.016
 #endif
 
     LED_BLANCHE = 0;
@@ -158,18 +173,18 @@ int main(void)
         if (ENTREE_JACK == 0)
         {
             //Dès lors que le jack est mis on revient à l'étape d'attente initiale
+#if ROBOT_EUROBOT
             SetConsigneServoBras(0);
             SetConsigneServoBrasInactif(0);
             SetConsigneServoPince(0);
-            SetConsigneServoPinceInactif(0);            
+            SetConsigneServoPinceInactif(0);
             PWMSetSpeedConsigne(0, MOTEUR_ROULEAU);
             stateRobot = STATE_ATTENTE;
+#endif
+
         }
 
-        if (timestamp > DUREE_MATCH)
-        {
-            stateRobot = STATE_FIN_MATCH;
-        }
+        stateRobot = STATE_FIN_MATCH;
 
         if (sysEvents.QeiDataEvent)
         {
@@ -218,55 +233,42 @@ int main(void)
             SendUltrasonicMeasure();
         }
 
+        if (sysEvents.UltrasonicObjectDetectionEvent)
+        {
+            sysEvents.UltrasonicObjectDetectionEvent = 0;
+            if ((robotState.vitesseDroitConsigne > 0) || (robotState.vitesseGaucheConsigne > 0))
+                SetRobotVitesseAsservie(0, 0);
+            robotState.AligneAvantVersDirectionMouvement = 0;
+        }
 
-        //TODO à rétablir absolument !!!!
-        //                if (sysEvents.UltrasonicObjectDetectionEvent)
-        //                {
-        //                    sysEvents.UltrasonicObjectDetectionEvent = 0;
-        //                    if ((PWMSpeedConsigne[MOTEUR_GAUCHE] > 0) || (PWMSpeedConsigne[MOTEUR_DROIT] > 0))
-        //                        SetRobotVitesseAsservie(0, 0);
-        //                    robotState.AligneAvantVersDirectionMouvement = 0;
-        //                }
-        //
-        //        if (sysEvents.CollisionMoteurGaucheEvent != 0)
-        //        {
-        //            ResetCorrecteurVitesseGauche();
-        //            SetRobotVitesseLibre(0, 0);
-        //            robotState.AligneAvantVersDirectionMouvement = 0;
-        //            //            if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_AVANT)
-        //            //                SetRobotVitesseAsservie(0, 0);
-        //            //            else if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_ARRIERE)
-        //            //                SetRobotVitesseAsservie(0, 0);
-        //            sysEvents.CollisionMoteurGaucheEvent = 0b00;
-        //        }
-        //
-        //        if (sysEvents.CollisionMoteurDroitEvent != 0)
-        //        {
-        //            ResetCorrecteurVitesseDroit();
-        //            SetRobotVitesseLibre(0, 0);
-        //            robotState.AligneAvantVersDirectionMouvement = 0;
-        //            //            if (sysEvents.CollisionMoteurDroitEvent == COLLISION_AVANT)
-        //            //            {
-        //            //                SetRobotVitesseAsservie(0, 0);
-        //            //            }
-        //            //            else if (sysEvents.CollisionMoteurDroitEvent == COLLISION_ARRIERE)
-        //            //            {
-        //            //                SetRobotVitesseAsservie(0, 0);
-        //            //            }
-        //            sysEvents.CollisionMoteurDroitEvent = 0b00;
-        //        }
+        if (sysEvents.CollisionMoteurGaucheEvent != 0)
+        {
+            ResetCorrecteurVitesseGauche();
+            SetRobotVitesseLibre(0, 0);
+            robotState.AligneAvantVersDirectionMouvement = 0;
+            if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_AVANT)
+                SetRobotVitesseAsservie(0, 0);
+            else if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_ARRIERE)
+                SetRobotVitesseAsservie(0, 0);
+            sysEvents.CollisionMoteurGaucheEvent = 0b00;
+        }
 
-        //        if (flagLidarFrameReady) {
-        //            flagLidarFrameReady = 0;
-        //            UartEncodeAndSendMessage(LIDAR_PROTOCOL, ANGLE_MAX - ANGLE_MIN, DistanceTableToSend);
-        //            valeurTelemetreGauche = DistanceTableToSend[70];
-        //            valeurTelemetreCentre = DistanceTableToSend[100];
-        //            valeurTelemetreDroit = DistanceTableToSend[130];
-        //            valeursTelemetres[0] = (unsigned char) valeurTelemetreGauche;
-        //            valeursTelemetres[1] = (unsigned char) valeurTelemetreCentre;
-        //            valeursTelemetres[2] = (unsigned char) valeurTelemetreDroit;
-        //            UartEncodeAndSendMessage(TELEMETRE_PROTOCOL, 3, valeursTelemetres);
-        //        }
+        if (sysEvents.CollisionMoteurDroitEvent != 0)
+        {
+            ResetCorrecteurVitesseDroit();
+            SetRobotVitesseLibre(0, 0);
+            robotState.AligneAvantVersDirectionMouvement = 0;
+            if (sysEvents.CollisionMoteurDroitEvent == COLLISION_AVANT)
+            {
+                SetRobotVitesseAsservie(0, 0);
+            }
+            else if (sysEvents.CollisionMoteurDroitEvent == COLLISION_ARRIERE)
+            {
+                SetRobotVitesseAsservie(0, 0);
+            }
+            sysEvents.CollisionMoteurDroitEvent = 0b00;
+        }
+
 
         while (CB_RX1_IsDataAvailable())
             Uart1DecodeMessage(CB_RX1_Get());
@@ -274,13 +276,13 @@ int main(void)
         while (CB_RX2_IsDataAvailable())
             Uart2DecodeMessage(CB_RX2_Get());
     }
-
 }
 
 volatile int counterAvalage = 0;
 
 
 #ifdef GROS_ROBOT
+
 void SystemStateMachine(void)
 {
     switch (stateRobot)
@@ -327,8 +329,8 @@ void SystemStateMachine(void)
                 case MATCH_INIT_EN_COURS:
                     robotState.matchState = MATCH_FERMETURE_PORTES;
                     break;
-                    
-                    
+
+
                 case MATCH_FERMETURE_PORTES:
                     TaskFermeturePortesStart();
                     robotState.matchState = MATCH_FERMETURE_PORTES_EN_COURS;
@@ -347,7 +349,7 @@ void SystemStateMachine(void)
                     else if (counterAvalage % 5 == 1)
                         AxeY = 1300;
                     else if (counterAvalage % 5 == 2)
-                        AxeY = 1580;                    
+                        AxeY = 1580;
                     else if (counterAvalage % 5 == 3)
                         AxeY = 1500;
 
@@ -412,6 +414,7 @@ void SystemStateMachine(void)
 #endif
 
 #ifdef PETIT_ROBOT
+
 void SystemStateMachine(void)
 {
     switch (stateRobot)
@@ -503,21 +506,95 @@ void SystemStateMachine(void)
 
 #endif
 
+#if defined(ROBOT_CACHAN)
+
+void SystemStateMachine(void)
+{
+    switch (stateRobot)
+    {
+        case STATE_ATTENTE:
+            timestamp = 0;
+            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+            stateRobot = STATE_ATTENTE_EN_COURS;
+        case STATE_ATTENTE_EN_COURS:
+            if (timestamp > 1000)
+                stateRobot = STATE_AVANCE;
+            break;
+        case STATE_AVANCE:
+            PWMSetSpeedConsigne(robotState.vitesseDroitConsigne, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(robotState.vitesseGaucheConsigne, MOTEUR_GAUCHE);
+            stateRobot = STATE_AVANCE_EN_COURS;
+            break;
+        case STATE_AVANCE_EN_COURS:
+            SetNextRobotStateInAutomaticMode();
+            break;
+        case STATE_TOURNE_GAUCHE:
+            PWMSetSpeedConsigne(robotState.vitesseDroitConsigne, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+            stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
+            break;
+        case STATE_TOURNE_GAUCHE_EN_COURS:
+            SetNextRobotStateInAutomaticMode();
+            break;
+        case STATE_TOURNE_DROITE:
+            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(robotState.vitesseGaucheConsigne, MOTEUR_GAUCHE);
+            stateRobot = STATE_TOURNE_DROITE_EN_COURS;
+            break;
+        case STATE_TOURNE_DROITE_EN_COURS:
+            SetNextRobotStateInAutomaticMode();
+            break;
+        case STATE_TOURNE_SUR_PLACE_GAUCHE:
+            PWMSetSpeedConsigne(30, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(-30, MOTEUR_GAUCHE);
+            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
+            break;
+
+        case STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS:
+            if (robotAutoControlActivated)
+            {
+                SetNextRobotStateInAutomaticMode();
+            }
+            break;
+        default:
+            stateRobot = STATE_ATTENTE;
+            break;
+    }
+}
+
 void SetNextRobotStateInAutomaticMode()
 {
     unsigned char positionObstacle = PAS_D_OBSTACLE;
 
-    if (valeurTelemetreDroit < 30 && valeurTelemetreCentre > 30 && valeurTelemetreGauche > 30)
+    if (robotState.distanceTelemetreDroit < 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche > 30)
         positionObstacle = OBSTACLE_A_DROITE;
 
-    else if (valeurTelemetreDroit > 30 && valeurTelemetreCentre > 30 && valeurTelemetreGauche < 30)
+    else if (robotState.distanceTelemetreDroit > 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche < 30)
         positionObstacle = OBSTACLE_A_GAUCHE;
 
-    else if (valeurTelemetreCentre < 30)
+    else if (robotState.distanceTelemetreCentre < 30)
         positionObstacle = OBSTACLE_EN_FACE;
 
-    else if (valeurTelemetreDroit > 30 && valeurTelemetreCentre > 30 && valeurTelemetreGauche > 30)
+    else if (robotState.distanceTelemetreDroit > 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche > 30)
+    {
+        robotState.vitesseGaucheConsigne = 30;
+        robotState.vitesseDroitConsigne = 30;
+        if (valeurTelemetreDroit > 32 && valeurTelemetreCentre > 32 && valeurTelemetreGauche > 32) // si plus de 32
+        {
+            if (valeurTelemetreDroit > 35 && valeurTelemetreCentre > 35 && valeurTelemetreGauche > 35) // si plus de 35
+            {
+                robotState.vitesseGaucheConsigne = 70;
+                robotState.vitesseDroitConsigne = 70;
+            }
+            else
+            {
+                robotState.vitesseGaucheConsigne = 50;
+                robotState.vitesseDroitConsigne = 50;
+            }
+        }
         positionObstacle = PAS_D_OBSTACLE;
+    }
 
     if (positionObstacle == PAS_D_OBSTACLE)
         nextStateRobot = STATE_AVANCE;
@@ -534,7 +611,7 @@ void SetNextRobotStateInAutomaticMode()
     if (nextStateRobot != stateRobot - 1)
         stateRobot = nextStateRobot;
 }
-
+#endif
 void SendState()
 {
     unsigned char stateMessagePayload[8];
