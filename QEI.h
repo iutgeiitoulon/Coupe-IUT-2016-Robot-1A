@@ -19,6 +19,8 @@
     #define distroues 181.6 //186.6
 #elif defined(GROS_ROBOT)
     #define distroues 338//342.3
+#elif defined(ROBOT_CACHAN)
+    #define distroues 281.2//a mesurer
 #endif
 
 extern double QeiDroitPosition;
