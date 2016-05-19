@@ -10,10 +10,13 @@
 #include "UART_Protocol.h"
 #include "robot.h"
 #include "Toolbox.h"
+#include "main.h"
 
 #ifdef GROS_ROBOT
 #define SPEED_FACTOR 30.0  //25.0 au départ
 #elif defined(PETIT_ROBOT)
+#define SPEED_FACTOR 10.0  //25.0 au départ
+#elif defined(ROBOT_CACHAN)
 #define SPEED_FACTOR 10.0  //25.0 au départ
 #endif
 
