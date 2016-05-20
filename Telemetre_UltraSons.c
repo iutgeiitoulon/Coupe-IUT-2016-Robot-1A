@@ -23,6 +23,7 @@ void InitTelemetres(void)
     //I2C1Write1(0xE0, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
     I2C1Write1(0xE2, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
     I2C1Write1(0xE4, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
+    I2C1Write1(0xFE, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
 }
 
 void SetUpAddressTelemetre(unsigned char address) //attention reprogramme tout les capteurs !
@@ -42,12 +43,14 @@ void StartNewUltrasonicMeasure()
     robotState.distanceTelemetreGauche = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
     I2C1ReadN(TELEMETRE_DROIT, CMD_REG, data, 10);
     robotState.distanceTelemetreDroit = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
+    I2C1ReadN(TELEMETRE_CENTRE, CMD_REG, data, 10);
+    robotState.distanceTelemetreCentre = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
 
     I2C1Write1(ALL_I2C, CMD_REG, 0x51); // Lecture en broadcast avec retour 
     // distance en cm - cf datasheet page 4
 
     //Post-processing des distances ultrason mesurées
-    if (((robotState.distanceTelemetreGauche < SEUIL_DETECTION_OBSTACLE) || (robotState.distanceTelemetreDroit < SEUIL_DETECTION_OBSTACLE)) && sysEvents.DisableDetectionObstacle == 0)
+    if (((robotState.distanceTelemetreGauche < SEUIL_DETECTION_OBSTACLE) || (robotState.distanceTelemetreDroit < SEUIL_DETECTION_OBSTACLE)|| (robotState.distanceTelemetreCentre < SEUIL_DETECTION_OBSTACLE)) && sysEvents.DisableDetectionObstacle == 0)
     {
 #if defined(ROBOT_EUROBOT)
         //On regarde si on n'est pas dans une zone d'exclusion
@@ -68,7 +71,7 @@ void StartNewUltrasonicMeasure()
 
 void SendUltrasonicMeasure()
 {
-    unsigned char payload[8];
+    unsigned char payload[10];
     int pos = 0;
     payload[pos++] = (unsigned char) ((timestamp) >> 24);
     payload[pos++] = (unsigned char) ((timestamp) >> 16);
@@ -78,6 +81,8 @@ void SendUltrasonicMeasure()
     payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreGauche) >> 0);
     payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreDroit) >> 8);
     payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreDroit) >> 0);
+    payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreCentre) >> 8);
+    payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreCentre) >> 0);
 
     Uart1EncodeAndSendMessage(TELEMETRE_ULTRASONIC_DATA, pos, payload);
 }
