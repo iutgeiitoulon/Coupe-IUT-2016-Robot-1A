@@ -277,10 +277,7 @@ void SystemStateMachine(void)
             break;
 
         case STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS:
-            //if (robotAutoControlActivated)
-            //{
                 SetNextRobotStateInAutomaticMode();
-           // }
             break;
         default:
             stateRobot = STATE_ATTENTE;
@@ -311,6 +308,7 @@ void SetNextRobotStateInAutomaticMode()
 
     if (nextStateRobot != stateRobot - 1)
         stateRobot = nextStateRobot;
+    
 }
 
 void SendState()
