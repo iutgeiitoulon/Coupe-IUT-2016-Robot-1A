@@ -10,7 +10,7 @@
 #if defined (ROBOT_EUROBOT)
 #define SEUIL_DETECTION_OBSTACLE 20
 #elif defined(ROBOT_CACHAN) 
-#define SEUIL_DETECTION_OBSTACLE 5
+#define SEUIL_DETECTION_OBSTACLE 15
 #endif
 
 unsigned int seuilDetectionTelemetreCentre;
@@ -21,9 +21,16 @@ void InitTelemetres(void)
 {
     //Configuration des télémètres
     //I2C1Write1(0xE0, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
+    
+    //Distances maximales de détection
     I2C1Write1(0xE2, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
     I2C1Write1(0xE4, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
     I2C1Write1(0xFE, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
+    
+    //Gain analogique
+    I2C1Write1(0xE2, ANALOG_GAIN_REG, 0x00); //Configuration du range maximal = value*43mm + 43mm
+    I2C1Write1(0xE4, ANALOG_GAIN_REG, 0x00); //Configuration du range maximal = value*43mm + 43mm
+    I2C1Write1(0xFE, ANALOG_GAIN_REG, 0x00); //Configuration du range maximal = value*43mm + 43mm
 }
 
 void SetUpAddressTelemetre(unsigned char address) //attention reprogramme tout les capteurs !
@@ -89,6 +96,7 @@ void SendUltrasonicMeasure()
 
 void InitSeuilDetectionSRF08(void)
 {
-    seuilDetectionTelemetreGauche = 20;
-    seuilDetectionTelemetreDroit = 20;
+    seuilDetectionTelemetreGauche = 5;
+    seuilDetectionTelemetreDroit = 5;
+    seuilDetectionTelemetreCentre = 5;
 }
