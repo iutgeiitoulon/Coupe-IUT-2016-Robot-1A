@@ -25,9 +25,9 @@ void InitTelemetres(void)
     I2C1Write1(0xFE, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
     
     //Gain analogique
-    I2C1Write1(0xE2, ANALOG_GAIN_REG, 0x00); //Configuration du range maximal = value*43mm + 43mm
-    I2C1Write1(0xE4, ANALOG_GAIN_REG, 0x00); //Configuration du range maximal = value*43mm + 43mm
-    I2C1Write1(0xFE, ANALOG_GAIN_REG, 0x00); //Configuration du range maximal = value*43mm + 43mm
+    I2C1Write1(0xE2, ANALOG_GAIN_REG, 0x00); //
+    I2C1Write1(0xE4, ANALOG_GAIN_REG, 0x00); //
+    I2C1Write1(0xFE, ANALOG_GAIN_REG, 0x00); //
 }
 
 void SetUpAddressTelemetre(unsigned char address) //attention reprogramme tout les capteurs !

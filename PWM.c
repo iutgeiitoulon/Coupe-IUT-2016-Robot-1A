@@ -90,7 +90,7 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                     MOTOR_DROIT_IN1 = 1;
                     PWM1CON1bits.PEN1L = 1;
                 }
-                P1DC1 = (unsigned int)((100 - Abs(robotState.vitesseDroitSortieCorrecteur))*20);
+                P1DC1 = (unsigned int) ((100 - Abs(robotState.vitesseDroitSortieCorrecteur))*20);
                 break;
             case MOTEUR_GAUCHE:
                 robotState.vitesseGaucheSortieCorrecteur = robotState.vitesseGaucheConsigne;
@@ -107,7 +107,7 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                     MOTOR_GAUCHE_IN2 = 1;
                     PWM1CON1bits.PEN2H = 1;
                 }
-                P1DC2 = (unsigned int)((100 - Abs(robotState.vitesseGaucheSortieCorrecteur))*20);
+                P1DC2 = (unsigned int) ((100 - Abs(robotState.vitesseGaucheSortieCorrecteur))*20);
 
                 break;
             case MOTEUR_3:
@@ -130,7 +130,7 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                 break;
             case MOTEUR_4:
                 robotState.vitesseMoteur4SortieCorrecteur = robotState.vitesseMoteur4Consigne;
-                
+
                 //TODO : Mise à jour des consignes des hacheurs du moteur 4                
                 break;
         }
@@ -140,7 +140,39 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
         switch (pwmNumber)
         {
             case MOTEUR_DROIT:
-                error = robotState.vitesseDroitConsigne - robotState.vitesseDroitFromOdometry / SPEED_FACTOR;
+                if (robotState.rampeAccelerationActive)
+                {
+                    if (robotState.vitesseDroitRampe < robotState.vitesseDroitConsigne)
+                    {
+                        if(Abs(robotState.vitesseDroitRampe)<Abs(robotState.vitesseDroitConsigne))
+                        {
+                            robotState.vitesseDroitRampe += robotState.acceleration;
+                        }
+                        else
+                        {
+                            robotState.vitesseDroitRampe += 2*robotState.acceleration;
+                        }
+                        robotState.vitesseDroitRampe = Min(robotState.vitesseDroitConsigne, robotState.vitesseDroitRampe);
+                    }
+                    else if (robotState.vitesseDroitRampe > robotState.vitesseDroitConsigne)
+                    {                        
+                        if(Abs(robotState.vitesseDroitRampe)<Abs(robotState.vitesseDroitConsigne))
+                        {
+                            robotState.vitesseDroitRampe -= robotState.acceleration;
+                        }
+                        else
+                        {
+                            robotState.vitesseDroitRampe -= 2*robotState.acceleration;
+                        }
+                        robotState.vitesseDroitRampe = Max(robotState.vitesseDroitConsigne, robotState.vitesseDroitRampe);
+                    }
+                    error = robotState.vitesseDroitRampe - robotState.vitesseDroitFromOdometry / SPEED_FACTOR;
+                }
+                else
+                {
+                    error = robotState.vitesseDroitConsigne - robotState.vitesseDroitFromOdometry / SPEED_FACTOR;
+                }
+
                 robotState.vitesseDroitSortieCorrecteur = CorrecteurVitesseDroit(error);
 
                 //Limitation du range de consignes à + ou - 100 %
@@ -180,7 +212,38 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                 break;
 
             case MOTEUR_GAUCHE:
-                error = robotState.vitesseGaucheConsigne - robotState.vitesseGaucheFromOdometry / SPEED_FACTOR;
+                if (robotState.rampeAccelerationActive)
+                {
+                    if (robotState.vitesseGaucheRampe < robotState.vitesseGaucheConsigne)
+                    {
+                        if(Abs(robotState.vitesseGaucheRampe)<Abs(robotState.vitesseGaucheConsigne))
+                        {
+                            robotState.vitesseGaucheRampe += robotState.acceleration;
+                        }
+                        else
+                        {
+                            robotState.vitesseGaucheRampe += 2*robotState.acceleration;
+                        }
+                        robotState.vitesseGaucheRampe = Min(robotState.vitesseGaucheConsigne, robotState.vitesseGaucheRampe);
+                    }
+                    else if (robotState.vitesseGaucheRampe > robotState.vitesseGaucheConsigne)
+                    {                        
+                        if(Abs(robotState.vitesseGaucheRampe)<Abs(robotState.vitesseGaucheConsigne))
+                        {
+                            robotState.vitesseGaucheRampe -= robotState.acceleration;
+                        }
+                        else
+                        {
+                            robotState.vitesseGaucheRampe -= 2*robotState.acceleration;
+                        }
+                        robotState.vitesseGaucheRampe = Max(robotState.vitesseGaucheConsigne, robotState.vitesseGaucheRampe);
+                    }
+                    error = robotState.vitesseGaucheRampe - robotState.vitesseGaucheFromOdometry / SPEED_FACTOR;
+                }
+                else
+                {
+                    error = robotState.vitesseGaucheConsigne - robotState.vitesseGaucheFromOdometry / SPEED_FACTOR;
+                }
                 robotState.vitesseGaucheSortieCorrecteur = CorrecteurVitesseGauche(error);
 
                 //Limitation du range de consignes à + ou - 100 %

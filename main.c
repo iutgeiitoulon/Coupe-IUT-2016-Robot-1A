@@ -95,6 +95,9 @@ int main(void)
     SetUpPAsservissementAngulaire(0.008); // 0.012
     //SetUpPiAsservissementLineaire(0.1, 0.4);
     SetUpPAsservissementLineaire(0.010); // 0.016
+    
+    robotState.acceleration = 0.4;
+    robotState.rampeAccelerationActive = 1;
 
     LED_BLANCHE = 0;
     LED_BLEUE = 0;
@@ -240,24 +243,13 @@ void SystemStateMachine(void)
             stateRobot = STATE_AVANCE_EN_COURS;
             break;
         case STATE_AVANCE_EN_COURS:
+        {
             //Exceptionnellement on recharge à chaque passage les vitesses moteurs pour les modifier en fonction des distances mesurées
-            if (robotState.distanceTelemetreDroit > 32 && robotState.distanceTelemetreCentre > 32 && robotState.distanceTelemetreGauche > 32) // si plus de 32
-            {
-                if (robotState.distanceTelemetreDroit > 35 && robotState.distanceTelemetreCentre > 35 && robotState.distanceTelemetreGauche > 35) // si plus de 35
-                {
-                    SetRobotVitesseAsservie(70, 70); //Gauche puis droite
-                }
-                else
-                {
-                   SetRobotVitesseAsservie(50, 50); //Gauche puis droite
-                }
-            }
-            else
-            {
-                SetRobotVitesseAsservie(30, 30); //Gauche puis droite
-            }
+            signed char vitesseAvance = Max(0,Min(70, robotState.distanceTelemetreCentre*3-10));
+            SetRobotVitesseAsservie(vitesseAvance, vitesseAvance); //Gauche puis droite
             SetNextRobotStateInAutomaticMode();
-            break;
+            break;            
+        }
         case STATE_TOURNE_GAUCHE:
             SetRobotVitesseAsservie(0, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
@@ -298,6 +290,7 @@ void SetNextRobotStateInAutomaticMode()
         positionObstacle = OBSTACLE_EN_FACE;
     else if (robotState.distanceTelemetreDroit > 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche > 30)
         positionObstacle = PAS_D_OBSTACLE;
+    
     if (positionObstacle == PAS_D_OBSTACLE)
         nextStateRobot = STATE_AVANCE;
     else if (positionObstacle == OBSTACLE_A_DROITE)

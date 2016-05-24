@@ -17,14 +17,21 @@ typedef struct robotStateBITS {
             unsigned ModeAsservissement : 2;
             unsigned char matchState;
             unsigned char taskState;
+            
+            unsigned rampeAccelerationActive : 1;
+            
+            //Acceleration
+            double acceleration;
 
             //Asservissement en vitesse
             double vitesseDroitFromOdometry;
             double vitesseDroitConsigne;
+            double vitesseDroitRampe;
             double vitesseDroitSortieCorrecteur;
 
             double vitesseGaucheFromOdometry;
             double vitesseGaucheConsigne;
+            double vitesseGaucheRampe;
             double vitesseGaucheSortieCorrecteur;
 
             double vitesseMoteur3Consigne;
