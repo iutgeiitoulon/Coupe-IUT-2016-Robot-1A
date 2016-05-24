@@ -194,23 +194,25 @@ void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void)
     ManageServos();
     //IncrementSPIAntiBlockCounter();
     IncrementI2CAntiBlockCounter();
+    
+    //division par 10 de la fréquence à 10kHz pour horodatage à 1 ms
     countT2++;
     if (countT2 >= 10)
     {
         timestamp++;   
         if (timestamp > DUREE_MATCH)
         {
-            stateRobot = STATE_FIN_MATCH;            
-            robotState.taskEnCours = NO_TASK;
-            //SetRobotVitesseLibre(0, 0);
-            robotState.ModeAsservissement = ASSERVISSEMENT_DESACTIVE;
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            PWMSetSpeedConsigne(0, MOTEUR_ROULEAU);
-            
-            SetRobotTargetPosition(robotState.xPosFromOdometry, robotState.yPosFromOdometry);
-            SetRobotVitesseLibre(0, 0);       
-            SetConsigneServoPinceDroit(30);
+//            stateRobot = STATE_FIN_MATCH;            
+//            robotState.taskEnCours = NO_TASK;
+//            //SetRobotVitesseLibre(0, 0);
+//           robotState.ModeAsservissement = ASSERVISSEMENT_DESACTIVE;
+//            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+//            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+//            PWMSetSpeedConsigne(0, MOTEUR_ROULEAU);
+//            
+//            SetRobotTargetPosition(robotState.xPosFromOdometry, robotState.yPosFromOdometry);
+//            SetRobotVitesseLibre(0, 0);       
+//            SetConsigneServoPinceDroit(30);
         }
         countT2 = 0;
     }
@@ -264,23 +266,25 @@ void __attribute__((interrupt, no_auto_psv)) _T4Interrupt(void)
     IFS1bits.T4IF = 0;
     SystemStateMachine();
     
-    switch(robotState.taskEnCours)
-    {
-        case NO_TASK:
-            break;
-        case TASK_VIDAGE_CHATEAU:
-            TaskVidageChateau();
-            break;            
-        case TASK_FERMETURE_PORTES:
-            TaskFermeturePortes();
-            break; 
-        case TASK_AVALAGE_CHATEAU:
-            TaskAvalageChateau();
-            break;
-        case TASK_PECHE_POISSON:
-            TaskPechePoisson();
-            break;
-        default:
-            break;
-    }
+//    LED_BLANCHE = !LED_BLANCHE;
+//    
+//    switch(robotState.taskEnCours)
+//    {
+//        case NO_TASK:
+//            break;
+//        case TASK_VIDAGE_CHATEAU:
+//            TaskVidageChateau();
+//            break;            
+//        case TASK_FERMETURE_PORTES:
+//            TaskFermeturePortes();
+//            break; 
+//        case TASK_AVALAGE_CHATEAU:
+//            TaskAvalageChateau();
+//            break;
+//        case TASK_PECHE_POISSON:
+//            TaskPechePoisson();
+//            break;
+//        default:
+//            break;
+//    }
 }

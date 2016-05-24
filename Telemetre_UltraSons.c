@@ -7,11 +7,8 @@
 #include "robot.h"
 #include "main.h"
 
-#if defined (ROBOT_EUROBOT)
-#define SEUIL_DETECTION_OBSTACLE 20
-#elif defined(ROBOT_CACHAN) 
 #define SEUIL_DETECTION_OBSTACLE 15
-#endif
+
 
 unsigned int seuilDetectionTelemetreCentre;
 unsigned int seuilDetectionTelemetreDroit;
@@ -52,6 +49,9 @@ void StartNewUltrasonicMeasure()
     robotState.distanceTelemetreDroit = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
     I2C1ReadN(TELEMETRE_CENTRE, CMD_REG, data, 10);
     robotState.distanceTelemetreCentre = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
+    lissage_capteur(robotState.distanceTelemetreGauche);
+    lissage_capteur(robotState.distanceTelemetreDroit);
+    lissage_capteur(robotState.distanceTelemetreCentre);
 
     I2C1Write1(ALL_I2C, CMD_REG, 0x51); // Lecture en broadcast avec retour 
     // distance en cm - cf datasheet page 4
@@ -99,4 +99,10 @@ void InitSeuilDetectionSRF08(void)
     seuilDetectionTelemetreGauche = 5;
     seuilDetectionTelemetreDroit = 5;
     seuilDetectionTelemetreCentre = 5;
+}
+
+unsigned int lissage_capteur(unsigned int distance)
+{
+    if(distance<5)
+        return 70;
 }

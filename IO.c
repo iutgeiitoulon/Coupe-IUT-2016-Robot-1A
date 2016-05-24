@@ -39,14 +39,14 @@ void InitIO()
     CNPU1bits.CN9PUE = 1; //Enable Pull-up for CN pin
     
     _TRISC9 = 1;  //Entrée Sélecteur Couleur
-    CNEN2bits.CN19IE = 0; //Diaable interrupt for CN pin
+    CNEN2bits.CN19IE = 0; //Disable interrupt for CN pin
     CNPU2bits.CN19PUE = 1; //Enable Pull-up for CN pin
 
     //Configuration des pins remappables
     UnlockIO();
     //TX/RX 1
-    RPINR18bits.U1RXR = 2;          //Rx du PIC sur RP2 (SPI CLK sur la carte)
-    RPOR1bits.RP3R = 0b00011;       //Tx du PIC sur RP3 (SPI MOSI sur la carte)
+    RPINR18bits.U1RXR = 25;          //Rx du PIC sur RP24 
+    RPOR12bits.RP24R = 0b00011;       //Tx du PIC sur RP25 
     //TX/RX 2
     RPINR19bits.U2RXR= 16;          //Rx2 du PIC sur RP16 (SPI MISO sur la carte)
     //RPOR5bits.RP10R= 0b00101;

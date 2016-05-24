@@ -110,9 +110,9 @@ int main(void)
     {
         //        LED_BLANCHE = ENTREE_JACK;
         //        if (ENTREE_SELECTEUR_COULEUR == VIOLET)
-        //            LED_ORANGE = 1;
-        //        else
-        //            LED_ORANGE = 0;
+               //     LED_ORANGE = 1;
+              //  else
+                //    LED_ORANGE = 0;
 
         //On process un éventuel crash I2C
         if (IsI2CCrashed() == 1)
@@ -214,6 +214,7 @@ int main(void)
 
 
         SystemStateMachine();
+       
         while (CB_RX1_IsDataAvailable())
             Uart1DecodeMessage(CB_RX1_Get());
 
@@ -229,7 +230,7 @@ void SystemStateMachine(void)
     switch (stateRobot)
     {
         case STATE_ATTENTE:
-            SetRobotVitesseLibre(0, 0); //Gauche puis droite
+            SetRobotVitesseAsservie(0, 0); //Gauche puis droite
             stateRobot = STATE_ATTENTE_EN_COURS;
         case STATE_ATTENTE_EN_COURS:
             if (timestamp > 1000)
@@ -244,35 +245,35 @@ void SystemStateMachine(void)
             {
                 if (robotState.distanceTelemetreDroit > 35 && robotState.distanceTelemetreCentre > 35 && robotState.distanceTelemetreGauche > 35) // si plus de 35
                 {
-                    SetRobotVitesseLibre(40, 40); //Gauche puis droite
+                    SetRobotVitesseAsservie(70, 70); //Gauche puis droite
                 }
                 else
                 {
-                   SetRobotVitesseLibre(50, 50); //Gauche puis droite
+                   SetRobotVitesseAsservie(50, 50); //Gauche puis droite
                 }
             }
             else
             {
-                SetRobotVitesseLibre(35, 35); //Gauche puis droite
+                SetRobotVitesseAsservie(30, 30); //Gauche puis droite
             }
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_GAUCHE:
-            SetRobotVitesseLibre(0, 30); //Gauche puis droite
+            SetRobotVitesseAsservie(0, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
         case STATE_TOURNE_GAUCHE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            SetRobotVitesseLibre(30, 0); //Gauche puis droite
+            SetRobotVitesseAsservie(30, 0); //Gauche puis droite
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
         case STATE_TOURNE_DROITE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            SetRobotVitesseLibre(-30, 30); //Gauche puis droite
+            SetRobotVitesseAsservie(-30, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             break;
 

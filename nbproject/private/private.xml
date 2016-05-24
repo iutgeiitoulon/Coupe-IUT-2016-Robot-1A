@@ -3,13 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/main.c</file>
-            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/Servo.c</file>
-            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/PWM.c</file>
-            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/RobotManagement.c</file>
-            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/Toolbox.c</file>
-            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/TaskVidageChateau.c</file>
-            <file>file:/C:/Github/Coupe-IUT-2016-Robot-1A/TaskFermeturePortes.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/main.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/Telemetre_UltraSons.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/UART_Protocol.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/Servo.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/main.h</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/Robot.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/CB_RX1.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/ustv_i2c.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/robot.h</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/PWM.c</file>
+            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/CB_RX2.c</file>
         </group>
     </open-files>
 </project-private>

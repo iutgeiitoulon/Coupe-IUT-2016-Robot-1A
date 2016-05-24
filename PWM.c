@@ -12,13 +12,8 @@
 #include "Toolbox.h"
 #include "main.h"
 
-#ifdef GROS_ROBOT
-#define SPEED_FACTOR 30.0  //25.0 au départ
-#elif defined(PETIT_ROBOT)
+
 #define SPEED_FACTOR 10.0  //25.0 au départ
-#elif defined(ROBOT_CACHAN)
-#define SPEED_FACTOR 10.0  //25.0 au départ
-#endif
 
 long timestampSansCollisionDroit = 0;
 long timestampSansCollisionGauche = 0;
@@ -82,15 +77,61 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
         {
             case MOTEUR_DROIT:
                 robotState.vitesseDroitSortieCorrecteur = robotState.vitesseDroitConsigne;
+                //Mise à jour des consignes des hacheurs
+                if (robotState.vitesseDroitSortieCorrecteur > 0)
+                {
+                    PWM1CON1bits.PEN1L = 0;
+                    MOTOR_DROIT_IN2 = 1;
+                    PWM1CON1bits.PEN1H = 1;
+                }
+                else
+                {
+                    PWM1CON1bits.PEN1H = 0;
+                    MOTOR_DROIT_IN1 = 1;
+                    PWM1CON1bits.PEN1L = 1;
+                }
+                P1DC1 = (unsigned int)((100 - Abs(robotState.vitesseDroitSortieCorrecteur))*20);
                 break;
             case MOTEUR_GAUCHE:
                 robotState.vitesseGaucheSortieCorrecteur = robotState.vitesseGaucheConsigne;
+                //Mise à jour des consignes des hacheurs
+                if (robotState.vitesseGaucheSortieCorrecteur > 0)
+                {
+                    PWM1CON1bits.PEN2H = 0;
+                    MOTOR_GAUCHE_IN1 = 1;
+                    PWM1CON1bits.PEN2L = 1;
+                }
+                else
+                {
+                    PWM1CON1bits.PEN2L = 0;
+                    MOTOR_GAUCHE_IN2 = 1;
+                    PWM1CON1bits.PEN2H = 1;
+                }
+                P1DC2 = (unsigned int)((100 - Abs(robotState.vitesseGaucheSortieCorrecteur))*20);
+
                 break;
             case MOTEUR_3:
                 robotState.vitesseMoteur3SortieCorrecteur = robotState.vitesseMoteur3Consigne;
+                //Mise à jour des consignes du moteur 3
+                if (robotState.vitesseMoteur3SortieCorrecteur > 0)
+                {
+                    PWM1CON1bits.PEN3H = 0;
+                    MOTOR_3_IN1 = 1;
+                    PWM1CON1bits.PEN3L = 1;
+                }
+                else
+                {
+                    PWM1CON1bits.PEN3L = 0;
+                    MOTOR_3_IN2 = 1;
+                    PWM1CON1bits.PEN3H = 1;
+                }
+                P1DC3 = (unsigned int) ((100 - Abs(robotState.vitesseMoteur3SortieCorrecteur))*20);
+
                 break;
             case MOTEUR_4:
                 robotState.vitesseMoteur4SortieCorrecteur = robotState.vitesseMoteur4Consigne;
+                
+                //TODO : Mise à jour des consignes des hacheurs du moteur 4                
                 break;
         }
     }
@@ -106,15 +147,15 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                 robotState.vitesseDroitSortieCorrecteur = Min(robotState.vitesseDroitSortieCorrecteur, 100);
                 robotState.vitesseDroitSortieCorrecteur = Max(robotState.vitesseDroitSortieCorrecteur, -100);
 
-                //Détection des blocage roue en observant la valeur de l'erreurdu correcteur
-                if (robotState.vitesseDroitSortieCorrecteur > 70)
+                //Détection des blocage roue en observant la valeur de l'erreur du correcteur
+                if (error > 70)
                 {
                     //On détecte une erreur importante sur les correcteurs qui indique que 
                     //on est en blocage de roues
                     if ((timestamp - timestampSansCollisionDroit) > 500) //0.5 seconde
                         sysEvents.CollisionMoteurDroitEvent = COLLISION_AVANT;
                 }
-                else if (robotState.vitesseDroitSortieCorrecteur<-70)
+                else if (error < -70)
                 {
                     if ((timestamp - timestampSansCollisionDroit) > 500) //0.5 seconde                    
                         sysEvents.CollisionMoteurDroitEvent = COLLISION_ARRIERE;
@@ -135,7 +176,7 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                     MOTOR_DROIT_IN1 = 1;
                     PWM1CON1bits.PEN1L = 1;
                 }
-                P1DC1 = (unsigned int)(100 - Abs(robotState.vitesseDroitSortieCorrecteur)*20);
+                P1DC1 = (unsigned int) ((100 - Abs(robotState.vitesseDroitSortieCorrecteur))*20);
                 break;
 
             case MOTEUR_GAUCHE:
@@ -175,7 +216,7 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                     MOTOR_GAUCHE_IN2 = 1;
                     PWM1CON1bits.PEN2H = 1;
                 }
-                P1DC2 = (unsigned int)(100 - Abs(robotState.vitesseGaucheSortieCorrecteur)*20);
+                P1DC2 = (unsigned int) ((100 - Abs(robotState.vitesseGaucheSortieCorrecteur))*20);
 
                 break;
             case MOTEUR_3:
@@ -199,7 +240,7 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                     MOTOR_3_IN2 = 1;
                     PWM1CON1bits.PEN3H = 1;
                 }
-                P1DC3 = (unsigned int)(100 - Abs(robotState.vitesseMoteur3SortieCorrecteur)*20);
+                P1DC3 = (unsigned int) ((100 - Abs(robotState.vitesseMoteur3SortieCorrecteur))*20);
 
                 break;
             case MOTEUR_4:
