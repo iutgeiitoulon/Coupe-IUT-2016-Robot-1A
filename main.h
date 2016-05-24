@@ -1,10 +1,3 @@
-/* 
- * File:   main.h
- * Author: E105-POSTE2
- *
- * Created on 21 septembre 2015, 10:56
- */
-
 #ifndef MAIN_H
 #define	MAIN_H
 
