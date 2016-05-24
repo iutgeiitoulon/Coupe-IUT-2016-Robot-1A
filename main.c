@@ -55,15 +55,12 @@
 //// JTAG disabled
 //_FICD(JTAGEN_OFF)
 
-float valeurTelemetreGauche, valeurTelemetreCentre, valeurTelemetreDroit;
 volatile unsigned char stateRobot;
 unsigned char nextStateRobot, robotAutoControlActivated;
 unsigned char consigneVitesseMoteurDroit, consigneVitesseMoteurGauche;
 unsigned char valeursTelemetres[3];
 unsigned char valeursMoteurs[2];
-unsigned char EssaiMangeChateau = 0;
 char autoControlActivated = 0;
-int AxeY = 900;
 
 int main(void)
 {
@@ -80,52 +77,13 @@ int main(void)
     InitQEI1();
     InitQEI2();
     InitI2C1();
-
     SetInterruptPriority();
-
-    __delay32(32000000); //Nécessaire pour attendre le démarrage du LIDAR
-
-    //    unsigned char startlidar[] = {0xA5, 0x20};
-    //    SendMessage2(startlidar, 2);
 
     InitSeuilDetectionSRF08();
     InitTelemetres();
-    SetConsigneServoBrasGauche(100);
-    SetConsigneServoBrasDroit(100);
-    SetConsigneServoPinceGauche(100);
-    SetConsigneServoPinceDroit(100);
-    SetConsigneServo5(100);
-    PWMSetSpeedConsigne(0, 3);
-
-#ifdef PETIT_ROBOT
-    //Valeurs mesurées petit robot :  Ku=3 - Tu=0.1
-    SetUpPidAsservissementVitesseMoteur(3, 0.05);
-    //Valeurs mesurées oscillations asserv angulaire :  Ku=100 - Tu=0.6   
-    double KpAngulaire = 0.0012;
-    double KpLineaire = 0.00009;
-    SetUpPAsservissementAngulaire(0.004); // 0.012
-    SetUpPAsservissementLineaire(0.003); // 0.016
-    robotState.GainVitesseLineaire = 0.03 / KpLineaire; //10
-    robotState.VitesseLimiteLineaire = 6000; //1000
-    robotState.GainVitesseRotation = 0.12 / KpAngulaire; //10
-    robotState.VitesseLimiteRotation = 3500; //600
-    //SetUpPiAsservissementAngulaire(0.1, 0.4); // réglage du gain 
-#elif defined(GROS_ROBOT)    
-    //Valeurs mesurées gros robot :  Ku=3 - Tu=0.1
-    SetUpPidAsservissementVitesseMoteur(3, 0.05);
-    //Valeurs mesurées oscillations asserv angulaire :  Ku=100 - Tu=0.6    
-    robotState.GainVitesseLineaire = 10; //10
-    robotState.VitesseLimiteLineaire = 2000; //1000
-    robotState.GainVitesseRotation = 16; //10
-    robotState.VitesseLimiteRotation = 1400; //600
-    //SetUpPiAsservissementAngulaire(0.1, 0.4); // réglage du gain   
-    SetUpPAsservissementAngulaire(0.008); // 0.012
-    //SetUpPiAsservissementLineaire(0.1, 0.4);
-    SetUpPAsservissementLineaire(0.010); // 0.016
-#elif defined(ROBOT_CACHAN)  
 
     //A DEFINIR!!
-
+    stateRobot = STATE_ATTENTE;
     //Valeurs mesurées robot :  Ku=? - Tu=?
     SetUpPidAsservissementVitesseMoteur(3, 0.05);
     //Valeurs mesurées oscillations asserv angulaire :  Ku=100 - Tu=0.6    
@@ -137,7 +95,6 @@ int main(void)
     SetUpPAsservissementAngulaire(0.008); // 0.012
     //SetUpPiAsservissementLineaire(0.1, 0.4);
     SetUpPAsservissementLineaire(0.010); // 0.016
-#endif
 
     LED_BLANCHE = 0;
     LED_BLEUE = 0;
@@ -147,10 +104,6 @@ int main(void)
     int counterPositionData = 0;
     int counterAsservissementAngulaireData = 0;
     int counterAsservissementVitesseData = 0;
-
-
-
-
 
     //Boucle principale
     while (1)
@@ -162,29 +115,19 @@ int main(void)
         //            LED_ORANGE = 0;
 
         //On process un éventuel crash I2C
-        //        if(IsI2CCrashed()==1)
-        //        {            
-        //            InitI2C1();
-        //            __delay32(4000000);
-        //            InitTelemetres();
-        //            ResetI2CCrash();
-        //        }     
+        if (IsI2CCrashed() == 1)
+        {
+            InitI2C1();
+            __delay32(4000000);
+            InitTelemetres();
+            ResetI2CCrash();
+        }
 
         if (ENTREE_JACK == 0)
         {
             //Dès lors que le jack est mis on revient à l'étape d'attente initiale
-#if ROBOT_EUROBOT
-            SetConsigneServoBras(0);
-            SetConsigneServoBrasInactif(0);
-            SetConsigneServoPince(0);
-            SetConsigneServoPinceInactif(0);
-            PWMSetSpeedConsigne(0, MOTEUR_ROULEAU);
-            stateRobot = STATE_ATTENTE;
-#endif
-
+            //stateRobot = STATE_ATTENTE;
         }
-
-        stateRobot = STATE_FIN_MATCH;
 
         if (sysEvents.QeiDataEvent)
         {
@@ -233,43 +176,44 @@ int main(void)
             SendUltrasonicMeasure();
         }
 
-        if (sysEvents.UltrasonicObjectDetectionEvent)
-        {
-            sysEvents.UltrasonicObjectDetectionEvent = 0;
-            if ((robotState.vitesseDroitConsigne > 0) || (robotState.vitesseGaucheConsigne > 0))
-                SetRobotVitesseAsservie(0, 0);
-            robotState.AligneAvantVersDirectionMouvement = 0;
-        }
+        //        if (sysEvents.UltrasonicObjectDetectionEvent)
+        //        {
+        //            sysEvents.UltrasonicObjectDetectionEvent = 0;
+        //            if ((robotState.vitesseDroitConsigne > 0) || (robotState.vitesseGaucheConsigne > 0))
+        //                SetRobotVitesseAsservie(0, 0);
+        //            robotState.AligneAvantVersDirectionMouvement = 0;
+        //        }
 
-        if (sysEvents.CollisionMoteurGaucheEvent != 0)
-        {
-            ResetCorrecteurVitesseGauche();
-            SetRobotVitesseLibre(0, 0);
-            robotState.AligneAvantVersDirectionMouvement = 0;
-            if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_AVANT)
-                SetRobotVitesseAsservie(0, 0);
-            else if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_ARRIERE)
-                SetRobotVitesseAsservie(0, 0);
-            sysEvents.CollisionMoteurGaucheEvent = 0b00;
-        }
-
-        if (sysEvents.CollisionMoteurDroitEvent != 0)
-        {
-            ResetCorrecteurVitesseDroit();
-            SetRobotVitesseLibre(0, 0);
-            robotState.AligneAvantVersDirectionMouvement = 0;
-            if (sysEvents.CollisionMoteurDroitEvent == COLLISION_AVANT)
-            {
-                SetRobotVitesseAsservie(0, 0);
-            }
-            else if (sysEvents.CollisionMoteurDroitEvent == COLLISION_ARRIERE)
-            {
-                SetRobotVitesseAsservie(0, 0);
-            }
-            sysEvents.CollisionMoteurDroitEvent = 0b00;
-        }
+        //        if (sysEvents.CollisionMoteurGaucheEvent != 0)
+        //        {
+        //            ResetCorrecteurVitesseGauche();
+        //            SetRobotVitesseLibre(0, 0);
+        //            robotState.AligneAvantVersDirectionMouvement = 0;
+        //            if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_AVANT)
+        //                SetRobotVitesseAsservie(0, 0);
+        //            else if (sysEvents.CollisionMoteurGaucheEvent == COLLISION_ARRIERE)
+        //                SetRobotVitesseAsservie(0, 0);
+        //            sysEvents.CollisionMoteurGaucheEvent = 0b00;
 
 
+        //        if (sysEvents.CollisionMoteurDroitEvent != 0)
+        //        {
+        //            ResetCorrecteurVitesseDroit();
+        //            SetRobotVitesseLibre(0, 0);
+        //            robotState.AligneAvantVersDirectionMouvement = 0;
+        //            if (sysEvents.CollisionMoteurDroitEvent == COLLISION_AVANT)
+        //            {
+        //                SetRobotVitesseAsservie(0, 0);
+        //            }
+        //            else if (sysEvents.CollisionMoteurDroitEvent == COLLISION_ARRIERE)
+        //            {
+        //                SetRobotVitesseAsservie(0, 0);
+        //            }
+        //            sysEvents.CollisionMoteurDroitEvent = 0b00;
+        //        }
+
+
+        SystemStateMachine();
         while (CB_RX1_IsDataAvailable())
             Uart1DecodeMessage(CB_RX1_Get());
 
@@ -280,282 +224,63 @@ int main(void)
 
 volatile int counterAvalage = 0;
 
-
-#ifdef GROS_ROBOT
-
 void SystemStateMachine(void)
 {
     switch (stateRobot)
     {
         case STATE_ATTENTE:
-            timestamp = 0;
-            robotState.taskEnCours = NO_TASK;
-            //SetRobotVitesseLibre(0, 0);
-            SetRobotVitesseAsservie(0, 0);
-            //PWMSetSpeedConsigne(VITESSE_ROULEAU_ARRET, MOTEUR_ROULEAU);
-            PWMSetSpeedConsigne(0, MOTEUR_ROULEAU);
-
-            //Initialisation des tasks !!!!!!!!!!!!!!!!!!!!!!
-            TaskVidageChateauInit();
-            TaskFermeturePortesInit();
-            TaskAvalageChateauInit();
-            TaskPechePoissonInit();
-            SendState();
-            stateRobot = STATE_ATTENTE_EN_COURS;
-            break;
-
-        case STATE_ATTENTE_EN_COURS:
-            if (ENTREE_JACK == 1)
-                stateRobot = STATE_MATCH;
-            SetConsigneServoPinceDroit(90);
-
-            robotState.matchState = MATCH_INIT;
-            break;
-
-        case STATE_MATCH:
-            SendState();
-            stateRobot = STATE_MATCH_EN_COURS;
-            break;
-
-        case STATE_MATCH_EN_COURS:
-            switch (robotState.matchState)
-            {
-                case MATCH_INIT:
-                    QEISetPosition(800, 60, 0);
-                    SendState();
-                    robotState.matchState = MATCH_INIT_EN_COURS;
-                    break;
-
-                case MATCH_INIT_EN_COURS:
-                    robotState.matchState = MATCH_FERMETURE_PORTES;
-                    break;
-
-
-                case MATCH_FERMETURE_PORTES:
-                    TaskFermeturePortesStart();
-                    robotState.matchState = MATCH_FERMETURE_PORTES_EN_COURS;
-                    break;
-
-                case MATCH_FERMETURE_PORTES_EN_COURS:
-                    if (TaskFermeturePortesIsFinished())
-                    {
-                        robotState.matchState = MATCH_AVALAGE_CHATEAU;
-                    }
-                    break;
-
-                case MATCH_AVALAGE_CHATEAU:
-                    if (counterAvalage % 5 == 0)
-                        AxeY = 1650;
-                    else if (counterAvalage % 5 == 1)
-                        AxeY = 1300;
-                    else if (counterAvalage % 5 == 2)
-                        AxeY = 1580;
-                    else if (counterAvalage % 5 == 3)
-                        AxeY = 1500;
-
-                    robotState.matchState = MATCH_AVALAGE_CHATEAU_EN_COURS;
-                    TaskAvalageChateauStart(AxeY); //-counterAvalage*150);                        
-                    counterAvalage++;
-                    break;
-
-                case MATCH_AVALAGE_CHATEAU_EN_COURS:
-                    if (TaskAvalageChateauIsFinished())
-                    {
-                        robotState.matchState = MATCH_VIDAGE_CHATEAU;
-                    }
-                    break;
-
-                case MATCH_VIDAGE_CHATEAU:
-                    TaskVidageChateauStart();
-                    robotState.matchState = MATCH_VIDAGE_CHATEAU_EN_COURS;
-                    break;
-
-                case MATCH_VIDAGE_CHATEAU_EN_COURS:
-                    if (TaskVidageChateauIsFinished())
-                    {
-                        LED_BLANCHE = 1;
-                        LED_BLEUE = 1;
-                        LED_ORANGE = 1;
-                        if (EssaiMangeChateau)
-                            robotState.matchState = MATCH_FERMETURE_PORTES;
-                        else
-                            robotState.matchState = MATCH_AVALAGE_CHATEAU;
-                    }
-                    break;
-
-
-
-                case MATCH_NO_TASK:
-                    break;
-
-                default:
-                    robotState.matchState = MATCH_AVALAGE_CHATEAU;
-                    break;
-            }
-            break;
-
-        case STATE_FIN_MATCH:
-            robotState.taskEnCours = NO_TASK;
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            SendState();
-            stateRobot = STATE_FIN_MATCH_EN_COURS;
-            break;
-
-        case STATE_FIN_MATCH_EN_COURS:
-            break;
-
-        default:
-            stateRobot = STATE_ATTENTE;
-            break;
-    }
-}
-
-#endif
-
-#ifdef PETIT_ROBOT
-
-void SystemStateMachine(void)
-{
-    switch (stateRobot)
-    {
-        case STATE_ATTENTE:
-            timestamp = 0;
-            robotState.taskEnCours = NO_TASK;
-            //SetRobotVitesseLibre(0, 0);
-            SetRobotVitesseAsservie(0, 0);
-            //PWMSetSpeedConsigne(VITESSE_ROULEAU_ARRET, MOTEUR_ROULEAU);
-            PWMSetSpeedConsigne(0, MOTEUR_ROULEAU);
-
-            //Initialisation des tasks !!!!!!!!!!!!!!!!!!!!!!
-            TaskVidageChateauInit();
-            TaskFermeturePortesInit();
-            TaskAvalageChateauInit();
-            TaskPechePoissonInit();
-            SendState();
-            stateRobot = STATE_ATTENTE_EN_COURS;
-            break;
-
-        case STATE_ATTENTE_EN_COURS:
-            if (ENTREE_JACK == 1)
-                stateRobot = STATE_MATCH;
-            SetConsigneServoPinceDroit(0);
-            SetConsigneServoPinceGauche(0);
-            SetConsigneServoBrasDroit(0);
-            SetConsigneServoBrasGauche(0);
-
-            robotState.matchState = MATCH_INIT;
-            break;
-
-        case STATE_MATCH:
-            SendState();
-            stateRobot = STATE_MATCH_EN_COURS;
-            break;
-
-        case STATE_MATCH_EN_COURS:
-            switch (robotState.matchState)
-            {
-                case MATCH_INIT:
-                    QEISetPosition(1045, 200, -90);
-                    SendState();
-                    robotState.matchState = MATCH_INIT_EN_COURS;
-                    break;
-
-                case MATCH_INIT_EN_COURS:
-                    robotState.matchState = MATCH_PECHE_POISSON;
-                    break;
-
-                case MATCH_PECHE_POISSON:
-                    TaskPechePoissonStart();
-                    robotState.matchState = MATCH_PECHE_POISSON_EN_COURS;
-                    break;
-
-                case MATCH_PECHE_POISSON_EN_COURS:
-                    if (TaskPechePoissonIsFinished())
-                    {
-                        robotState.matchState = MATCH_NO_TASK;
-                        counterAvalage = 0;
-                    }
-                    break;
-
-                case MATCH_NO_TASK:
-                    break;
-
-                default:
-                    robotState.matchState = MATCH_AVALAGE_CHATEAU;
-                    break;
-            }
-            break;
-
-        case STATE_FIN_MATCH:
-            robotState.taskEnCours = NO_TASK;
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            SendState();
-            stateRobot = STATE_FIN_MATCH_EN_COURS;
-            break;
-
-        case STATE_FIN_MATCH_EN_COURS:
-            break;
-
-        default:
-            stateRobot = STATE_ATTENTE;
-            break;
-    }
-}
-
-#endif
-
-#if defined(ROBOT_CACHAN)
-
-void SystemStateMachine(void)
-{
-    switch (stateRobot)
-    {
-        case STATE_ATTENTE:
-            timestamp = 0;
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+            SetRobotVitesseAsservie(0, 0); //Gauche puis droite
             stateRobot = STATE_ATTENTE_EN_COURS;
         case STATE_ATTENTE_EN_COURS:
             if (timestamp > 1000)
                 stateRobot = STATE_AVANCE;
             break;
         case STATE_AVANCE:
-            PWMSetSpeedConsigne(robotState.vitesseDroitConsigne, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(robotState.vitesseGaucheConsigne, MOTEUR_GAUCHE);
             stateRobot = STATE_AVANCE_EN_COURS;
             break;
         case STATE_AVANCE_EN_COURS:
+            //Exceptionnellement on recharge à chaque passage les vitesses moteurs pour les modifier en fonction des distances mesurées
+            if (robotState.distanceTelemetreDroit > 32 && robotState.distanceTelemetreCentre > 32 && robotState.distanceTelemetreGauche > 32) // si plus de 32
+            {
+                if (robotState.distanceTelemetreDroit > 35 && robotState.distanceTelemetreCentre > 35 && robotState.distanceTelemetreGauche > 35) // si plus de 35
+                {
+                    SetRobotVitesseAsservie(40, 40); //Gauche puis droite
+                }
+                else
+                {
+                   SetRobotVitesseAsservie(50, 50); //Gauche puis droite
+                }
+            }
+            else
+            {
+                SetRobotVitesseAsservie(35, 35); //Gauche puis droite
+            }
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_GAUCHE:
-            PWMSetSpeedConsigne(robotState.vitesseDroitConsigne, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+            SetRobotVitesseAsservie(0, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
         case STATE_TOURNE_GAUCHE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(robotState.vitesseGaucheConsigne, MOTEUR_GAUCHE);
+            SetRobotVitesseAsservie(30, 0); //Gauche puis droite
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
         case STATE_TOURNE_DROITE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            PWMSetSpeedConsigne(30, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(-30, MOTEUR_GAUCHE);
+            SetRobotVitesseAsservie(-30, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             break;
 
         case STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS:
-            if (robotAutoControlActivated)
-            {
+            //if (robotAutoControlActivated)
+            //{
                 SetNextRobotStateInAutomaticMode();
-            }
+           // }
             break;
         default:
             stateRobot = STATE_ATTENTE;
@@ -569,49 +294,25 @@ void SetNextRobotStateInAutomaticMode()
 
     if (robotState.distanceTelemetreDroit < 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche > 30)
         positionObstacle = OBSTACLE_A_DROITE;
-
     else if (robotState.distanceTelemetreDroit > 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche < 30)
         positionObstacle = OBSTACLE_A_GAUCHE;
-
     else if (robotState.distanceTelemetreCentre < 30)
         positionObstacle = OBSTACLE_EN_FACE;
-
     else if (robotState.distanceTelemetreDroit > 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche > 30)
-    {
-        robotState.vitesseGaucheConsigne = 30;
-        robotState.vitesseDroitConsigne = 30;
-        if (valeurTelemetreDroit > 32 && valeurTelemetreCentre > 32 && valeurTelemetreGauche > 32) // si plus de 32
-        {
-            if (valeurTelemetreDroit > 35 && valeurTelemetreCentre > 35 && valeurTelemetreGauche > 35) // si plus de 35
-            {
-                robotState.vitesseGaucheConsigne = 70;
-                robotState.vitesseDroitConsigne = 70;
-            }
-            else
-            {
-                robotState.vitesseGaucheConsigne = 50;
-                robotState.vitesseDroitConsigne = 50;
-            }
-        }
         positionObstacle = PAS_D_OBSTACLE;
-    }
-
     if (positionObstacle == PAS_D_OBSTACLE)
         nextStateRobot = STATE_AVANCE;
-
     else if (positionObstacle == OBSTACLE_A_DROITE)
         nextStateRobot = STATE_TOURNE_GAUCHE;
-
     else if (positionObstacle == OBSTACLE_A_GAUCHE)
         nextStateRobot = STATE_TOURNE_DROITE;
-
     else if (positionObstacle == OBSTACLE_EN_FACE)
         nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
 
     if (nextStateRobot != stateRobot - 1)
         stateRobot = nextStateRobot;
 }
-#endif
+
 void SendState()
 {
     unsigned char stateMessagePayload[8];
