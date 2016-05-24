@@ -229,7 +229,7 @@ void SystemStateMachine(void)
     switch (stateRobot)
     {
         case STATE_ATTENTE:
-            SetRobotVitesseAsservie(0, 0); //Gauche puis droite
+            SetRobotVitesseLibre(0, 0); //Gauche puis droite
             stateRobot = STATE_ATTENTE_EN_COURS;
         case STATE_ATTENTE_EN_COURS:
             if (timestamp > 1000)
@@ -244,35 +244,35 @@ void SystemStateMachine(void)
             {
                 if (robotState.distanceTelemetreDroit > 35 && robotState.distanceTelemetreCentre > 35 && robotState.distanceTelemetreGauche > 35) // si plus de 35
                 {
-                    SetRobotVitesseAsservie(40, 40); //Gauche puis droite
+                    SetRobotVitesseLibre(40, 40); //Gauche puis droite
                 }
                 else
                 {
-                   SetRobotVitesseAsservie(50, 50); //Gauche puis droite
+                   SetRobotVitesseLibre(50, 50); //Gauche puis droite
                 }
             }
             else
             {
-                SetRobotVitesseAsservie(35, 35); //Gauche puis droite
+                SetRobotVitesseLibre(35, 35); //Gauche puis droite
             }
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_GAUCHE:
-            SetRobotVitesseAsservie(0, 30); //Gauche puis droite
+            SetRobotVitesseLibre(0, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
         case STATE_TOURNE_GAUCHE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            SetRobotVitesseAsservie(30, 0); //Gauche puis droite
+            SetRobotVitesseLibre(30, 0); //Gauche puis droite
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
         case STATE_TOURNE_DROITE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            SetRobotVitesseAsservie(-30, 30); //Gauche puis droite
+            SetRobotVitesseLibre(-30, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             break;
 
