@@ -6,6 +6,7 @@
 #include "IO.h"
 #include "robot.h"
 #include "main.h"
+#include "Toolbox.h"
 
 #define SEUIL_DETECTION_OBSTACLE 15
 
@@ -49,10 +50,9 @@ void StartNewUltrasonicMeasure()
     robotState.distanceTelemetreDroit = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
     I2C1ReadN(TELEMETRE_CENTRE, CMD_REG, data, 10);
     robotState.distanceTelemetreCentre = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
-    lissage_capteur(robotState.distanceTelemetreGauche);
-    lissage_capteur(robotState.distanceTelemetreDroit);
-    lissage_capteur(robotState.distanceTelemetreCentre);
-
+    robotState.distanceTelemetreGauche=Limiteur(robotState.distanceTelemetreGauche,3,40);
+    robotState.distanceTelemetreDroit=Limiteur(robotState.distanceTelemetreDroit,3,40);
+    robotState.distanceTelemetreCentre=Limiteur(robotState.distanceTelemetreCentre,2,40);
     I2C1Write1(ALL_I2C, CMD_REG, 0x51); // Lecture en broadcast avec retour 
     // distance en cm - cf datasheet page 4
 
@@ -60,12 +60,6 @@ void StartNewUltrasonicMeasure()
     if (((robotState.distanceTelemetreGauche < SEUIL_DETECTION_OBSTACLE) || (robotState.distanceTelemetreDroit < SEUIL_DETECTION_OBSTACLE)|| (robotState.distanceTelemetreCentre < SEUIL_DETECTION_OBSTACLE)) && sysEvents.DisableDetectionObstacle == 0)
     {
 #if defined(ROBOT_EUROBOT)
-        //On regarde si on n'est pas dans une zone d'exclusion
-        if ((robotState.xPosFromOdometry < 500) && (robotState.xPosFromOdometry > -500))
-        {
-            //On ne déclenche pas : proche du chateau
-        }
-        //        else
 #endif
         sysEvents.UltrasonicObjectDetectionEvent = 1;
     }
@@ -96,13 +90,8 @@ void SendUltrasonicMeasure()
 
 void InitSeuilDetectionSRF08(void)
 {
-    seuilDetectionTelemetreGauche = 5;
-    seuilDetectionTelemetreDroit = 5;
-    seuilDetectionTelemetreCentre = 5;
+    seuilDetectionTelemetreGauche = 2;
+    seuilDetectionTelemetreDroit = 2;
+    seuilDetectionTelemetreCentre = 2;
 }
 
-unsigned int lissage_capteur(unsigned int distance)
-{
-    if(distance<5)
-        return 70;
-}
