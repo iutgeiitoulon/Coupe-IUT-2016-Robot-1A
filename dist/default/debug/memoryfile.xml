@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/Coupe-IUT-2016-Robot-1A.production.elf">
+  <executable name="dist/default/debug/Coupe-IUT-2016-Robot-1A.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>16384</length>
-      <used>2228</used>
-      <free>14156</free>
+      <used>2308</used>
+      <free>14076</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>131328</length>
-      <used>25536</used>
-      <free>105792</free>
+      <used>25302</used>
+      <free>106026</free>
     </memory>
   </executable>
 </project>

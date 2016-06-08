@@ -8,6 +8,7 @@
 #include "AsservissementPolaire.h"
 #include "RobotManagement.h"
 #include "robot.h"
+#include "events.h"
 
 #define RECEPTION_MAX_PAYLOAD_LENGTH 128
 
@@ -184,6 +185,7 @@ unsigned char UartCalculateChecksum(int msgFunction,
     }
     return checksum;
 }
+
 void UartProcessMessage(unsigned char function,
         unsigned char payloadLength, unsigned char* payload)
 {
@@ -208,46 +210,47 @@ void UartProcessMessage(unsigned char function,
             }
             break;
         case SET_MOTOR_SPEED:
-            
+
             if (payloadLength == 2)
             {
                 //On bascule l'asservissement en vitesse
                 robotState.ModeAsservissement = ASSERVISSEMENT_VITESSE;
                 PWMSetSpeedConsigne(payload[0], 1);
                 PWMSetSpeedConsigne(payload[1], 2);
-            }        
+            }
             break;
         case SET_POSITION:
             if (payloadLength == 4)
             {
-                int X = (((int)payload[0])<<8) + ((int)payload[1]);
-                int Y = (((int)payload[2])<<8) + ((int)payload[3]);
+                int X = (((int) payload[0]) << 8) + ((int) payload[1]);
+                int Y = (((int) payload[2]) << 8) + ((int) payload[3]);
                 SetRobotTargetPosition(X, Y);
             }
             break;
-            
+
         case SET_LIDAR_SENSITIVITY:
-            if(payloadLength==1)
+            if (payloadLength == 1)
             {
                 robotState.LidarSensitivity = payload[0];
             }
             break;
-            
+
         case BALISE_POSITION:
-            if (payloadLength == 10)
+            if (payloadLength == 17)
             {
                 //int X = (((int)payload[0])<<8) + ((int)payload[1]);
                 //int Y = (((int)payload[2])<<8) + ((int)payload[3]);
-//                int Xfiltered = (((int)payload[4])<<8) + ((int)payload[5]);
-//                int Yfiltered = (((int)payload[6])<<8) + ((int)payload[7]);
-                int angle = (((int)payload[13])<<8) + ((int)payload[14]);
-//                
-//                robotState.xPosFromBalise = Xfiltered;
-//                robotState.yPosFromBalise = Yfiltered;
-                robotState.angleDegreeFromBalise = angle;
+                //                int Xfiltered = (((int)payload[4])<<8) + ((int)payload[5]);
+                //                int Yfiltered = (((int)payload[6])<<8) + ((int)payload[7]);
+                int angle = (((int) payload[13]) << 8) + ((int) payload[14]);
+                //                
+                //                robotState.xPosFromBalise = Xfiltered;
+                //                robotState.yPosFromBalise = Yfiltered;
+                robotState.AngleDegreFromBalise = angle;
+                sysEvents.BaliseEvent = 1;
             }
             break;
-            
+
         default:
             break;
     }

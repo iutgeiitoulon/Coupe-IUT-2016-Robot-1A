@@ -78,6 +78,7 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
+      <itemPath>Carte_Moteur_V3_image.pdf</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

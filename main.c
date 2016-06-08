@@ -62,7 +62,8 @@ unsigned char valeursTelemetres[3];
 unsigned char valeursMoteurs[2];
 char autoControlActivated = 0;
 
-int main(void) {
+int main(void)
+{
     // Configuration des entrées sorties
     InitOscillator();
     InitIO();
@@ -108,9 +109,8 @@ int main(void) {
     int counterAsservissementVitesseData = 0;
 
     //Boucle principale
-    while (1) {
-
-        LED_BLEUE = 0;
+    while (1)
+    {
 
         //        if (ENTREE_SELECTEUR_COULEUR == VIOLET)
         //     LED_ORANGE = 1;
@@ -118,79 +118,108 @@ int main(void) {
         //    LED_ORANGE = 0;
 
         //On process un éventuel crash I2C
-        if (IsI2CCrashed() == 1) {
+        if (IsI2CCrashed() == 1)
+        {
             InitI2C1();
             __delay32(4000000);
             InitTelemetres();
             ResetI2CCrash();
         }
+        if(sysEvents.BaliseEvent==1)
+        {
+            EnvoiAngleInterface();
+            sysEvents.BaliseEvent= 0;
+        }
 
-        if ((!ENTREE_Color_Capture_2) && (!ENTREE_Color_Capture_1)) {
-            sysEvents.ColorCapture = 1;
+        if ((!ENTREE_CAPTEUR_COULEUR_1) && (!ENTREE_CAPTEUR_COULEUR_2))
+        {
+          //  sysEvents.ColorCapture = 1;
         }
 
 
 
-        if (BUMPERS == 1) {
+        if (BUMPERS == 1)
+        {
             sysEvents.BumpersDetection = 1;
         }
 
-        if (sysEvents.ColorCapture) {
+        if (sysEvents.ColorCapture)
+        {
             LED_ORANGE = 1;
+            stateRobot = STATE_FIN_MATCH;
             sysEvents.ColorCapture = 0;
-        } else
+        }
+        else
+        {
             LED_ORANGE = 0;
+        }
 
-        if (ENTREE_JACK == 0) {
+        if (ENTREE_JACK == 0)
+        {
             //Dès lors que le jack est mis on revient à l'étape d'attente initiale
+            LED_BLEUE = 1;
             stateRobot = STATE_ATTENTE;
         }
-
-        SystemStateMachine();
-
-        if (sysEvents.QeiDataEvent) {
-            sysEvents.QeiDataEvent = 0;
-            if (counterQeiData++ >= 25) {
-                SendQeiData();
-                counterQeiData = 0;
-            }
+        else
+        {
+            LED_BLEUE = 0;
         }
 
-        if (sysEvents.PositionDataEvent) {
-            sysEvents.PositionDataEvent = 0;
-            if (counterPositionData++ >= 25) {
-                SendPositionData();
-                counterPositionData = 0;
-            }
-        }
 
-        if (sysEvents.AsservissementVitesseEvent) {
-            sysEvents.AsservissementVitesseEvent = 0;
-            if (counterAsservissementVitesseData++ >= 25) {
-                SendTelemetrieAsservissementVitesse();
-                counterAsservissementVitesseData = 0;
-            }
-        }
+//        if (sysEvents.QeiDataEvent)
+//        {
+//            sysEvents.QeiDataEvent = 0;
+//            if (counterQeiData++ >= 25)
+//            {
+//                SendQeiData();
+//                counterQeiData = 0;
+//            }
+//        }
+//
+//        if (sysEvents.PositionDataEvent)
+//        {
+//            sysEvents.PositionDataEvent = 0;
+//            if (counterPositionData++ >= 25)
+//            {
+//                SendPositionData();
+//                counterPositionData = 0;
+//            }
+//        }
+//
+//        if (sysEvents.AsservissementVitesseEvent)
+//        {
+//            sysEvents.AsservissementVitesseEvent = 0;
+//            if (counterAsservissementVitesseData++ >= 25)
+//            {
+//                SendTelemetrieAsservissementVitesse();
+//                counterAsservissementVitesseData = 0;
+//            }
+//        }
+//
+//        if (sysEvents.AsservissementPositionEvent)
+//        {
+//            sysEvents.AsservissementPositionEvent = 0;
+//            if (counterAsservissementAngulaireData++ >= 25)
+//            {
+//                SendTelemetrieAsservissementAngulaire();
+//                counterAsservissementAngulaireData = 0;
+//            }
+//        }
 
-        if (sysEvents.AsservissementPositionEvent) {
-            sysEvents.AsservissementPositionEvent = 0;
-            if (counterAsservissementAngulaireData++ >= 25) {
-                SendTelemetrieAsservissementAngulaire();
-                counterAsservissementAngulaireData = 0;
-            }
-        }
+//        if (sysEvents.UltrasonicRangeFinderEvent)
+//        {
+//            sysEvents.UltrasonicRangeFinderEvent = 0;
+//            StartNewUltrasonicMeasure();
+//            SendUltrasonicMeasure();
+//        }
 
-        if (sysEvents.UltrasonicRangeFinderEvent) {
-            sysEvents.UltrasonicRangeFinderEvent = 0;
-            StartNewUltrasonicMeasure();
-            SendUltrasonicMeasure();
-        }
-
-        if (sysEvents.BumpersDetection == 1) {
+        if (sysEvents.BumpersDetection == 1)
+        {
             stateRobot = RECULE_OBSTACLE;
             LED_BLANCHE = 1;
             sysEvents.BumpersDetection = 0;
-        } else
+        }
+        else
             LED_BLANCHE = 0;
 
 
@@ -232,7 +261,7 @@ int main(void) {
         //        }
 
 
-
+        SystemStateMachine();
 
         while (CB_RX1_IsDataAvailable())
             Uart1DecodeMessage(CB_RX1_Get());
@@ -244,8 +273,10 @@ int main(void) {
 
 long timestampStateStart;
 
-void SystemStateMachine(void) {
-    switch (stateRobot) {
+void SystemStateMachine(void)
+{
+    switch (stateRobot)
+    {
         case STATE_ATTENTE:
             SetRobotVitesseLibre(0, 0); //Gauche puis droite
             stateRobot = STATE_ATTENTE_EN_COURS;
@@ -262,7 +293,7 @@ void SystemStateMachine(void) {
         case STATE_AVANCE_EN_COURS:
         {
             //Exceptionnellement on recharge à chaque passage les vitesses moteurs pour les modifier en fonction des distances mesurées
-            int angleOptimal = ModuloAngleDegre(robotState.angleDegreeFromBalise);
+            int angleOptimal = ModuloAngleDegre(robotState.AngleDegreFromBalise);
             signed char vitesseAvance = Max(10, Min(70, robotState.distanceTelemetreCentre * 3 - 10));
             SetRobotVitesseLibre(vitesseAvance - (angleOptimal * 0.5), vitesseAvance + (angleOptimal * 0.5)); //Gauche puis droite coefficient à déterminer
             SetNextRobotStateInAutomaticMode();
@@ -299,13 +330,22 @@ void SystemStateMachine(void) {
             if ((timestamp - timestampStateStart) > 500)
                 stateRobot = STATE_AVANCE;
             break;
+        case STATE_FIN_MATCH:
+            timestampStateStart = timestamp;
+            SetRobotVitesseLibre(0, 0); //Gauche puis droite
+            SetConsigneServoCreveBallon(1);
+            stateRobot = STATE_FIN_MATCH_EN_COURS;
+            break;
+        case STATE_FIN_MATCH_EN_COURS:
+            break;
         default:
             stateRobot = STATE_ATTENTE;
             break;
     }
 }
 
-void SetNextRobotStateInAutomaticMode() {
+void SetNextRobotStateInAutomaticMode()
+{
     unsigned char positionObstacle = PAS_D_OBSTACLE;
 
     if (robotState.distanceTelemetreDroit < 30 && robotState.distanceTelemetreCentre > 30 && robotState.distanceTelemetreGauche > 30)
@@ -331,7 +371,8 @@ void SetNextRobotStateInAutomaticMode() {
 
 }
 
-void SendState() {
+void SendState()
+{
     unsigned char stateMessagePayload[8];
     unsigned char pos = 0;
     int i;
@@ -347,14 +388,17 @@ void SendState() {
     Uart1EncodeAndSendMessage(STATE_PROTOCOL, 5, stateMessagePayload);
 }
 
-void SetRobotAutoControlState(char state) {
+void SetRobotAutoControlState(char state)
+{
     autoControlActivated = state ? 1 : 0;
-    if (autoControlActivated) {
+    if (autoControlActivated)
+    {
         SetRobotState(STATE_ATTENTE);
         timestamp = 0;
     }
 }
 
-void SetRobotState(char state) {
+void SetRobotState(char state)
+{
     stateRobot = state;
 }

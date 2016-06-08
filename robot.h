@@ -58,7 +58,7 @@ typedef struct robotStateBITS {
 
             signed xPosFromBalise : 16;
             signed yPosFromBalise : 16;
-            signed angleDegreeFromBalise : 16;
+            signed AngleDegreFromBalise : 16;
 
             unsigned AligneAvantVersDirectionMouvement : 1;
 
@@ -76,4 +76,9 @@ typedef struct robotStateBITS {
 extern volatile ROBOT_STATE_BITS robotState;
 
 #endif	/* ROBOT_H */
+
+
+
+
+void EnvoiAngleInterface();
 

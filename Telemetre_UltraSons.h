@@ -19,7 +19,6 @@
 #define TELEMETRE_DROIT 0xE2
 #define TELEMETRE_CENTRE 0xFE
 
-#define TELEMETRE_ULTRASONIC_DATA 0xB0
 
 extern unsigned int distanceTelemetreDroit;
 extern unsigned int distanceTelemetreGauche;

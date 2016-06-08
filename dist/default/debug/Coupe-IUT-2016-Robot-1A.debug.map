@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p33FJ128MC804 \
   -o \
-  dist/default/production/Coupe-IUT-2016-Robot-1A.production.elf \
+  dist/default/debug/Coupe-IUT-2016-Robot-1A.debug.elf \
   -Lc:/program files (x86)/microchip/xc16/v1.25/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../support/PIC24E/gld \
@@ -15,36 +15,44 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../support/dsPIC30F/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../support/dsPIC33F/gld \
-  build/default/production/TaskVidageChateau.o \
-  build/default/production/TaskFermeturePortes.o \
-  build/default/production/TaskAvalageChateau.o \
-  build/default/production/TaskPechePoisson.o \
-  build/default/production/main.o \
-  build/default/production/IO.o \
-  build/default/production/timer.o \
-  build/default/production/PWM.o \
-  build/default/production/UART.o \
-  build/default/production/CB_TX1.o \
-  build/default/production/CB_RX1.o \
-  build/default/production/UART_Protocol.o \
-  build/default/production/QEI.o \
-  build/default/production/Lidar.o \
-  build/default/production/CB_RX2.o \
-  build/default/production/CB_TX2.o \
-  build/default/production/AsservissementPosition.o \
-  build/default/production/Toolbox.o \
-  build/default/production/Telemetre_UltraSons.o \
-  build/default/production/ustv_i2c.o \
-  build/default/production/oscillator.o \
-  build/default/production/Servo.o \
-  build/default/production/events.o \
-  build/default/production/interrupt.o \
-  build/default/production/RobotManagement.o \
-  build/default/production/Robot.o \
-  build/default/production/AsservissementVitesse.o \
-  build/default/production/Task.o \
+  build/default/debug/TaskVidageChateau.o \
+  build/default/debug/TaskFermeturePortes.o \
+  build/default/debug/TaskAvalageChateau.o \
+  build/default/debug/TaskPechePoisson.o \
+  build/default/debug/main.o \
+  build/default/debug/IO.o \
+  build/default/debug/timer.o \
+  build/default/debug/PWM.o \
+  build/default/debug/UART.o \
+  build/default/debug/CB_TX1.o \
+  build/default/debug/CB_RX1.o \
+  build/default/debug/UART_Protocol.o \
+  build/default/debug/QEI.o \
+  build/default/debug/Lidar.o \
+  build/default/debug/CB_RX2.o \
+  build/default/debug/CB_TX2.o \
+  build/default/debug/AsservissementPosition.o \
+  build/default/debug/Toolbox.o \
+  build/default/debug/Telemetre_UltraSons.o \
+  build/default/debug/ustv_i2c.o \
+  build/default/debug/oscillator.o \
+  build/default/debug/Servo.o \
+  build/default/debug/events.o \
+  build/default/debug/interrupt.o \
+  build/default/debug/RobotManagement.o \
+  build/default/debug/Robot.o \
+  build/default/debug/AsservissementVitesse.o \
+  build/default/debug/Task.o \
+  -TC:\\tmp000026e0.00 \
+  -TC:\\tmp000026e0.01 \
+  -TC:\\tmp000026e0.02 \
+  -TC:\\tmp000026e0.03 \
+  -TC:\\tmp000026e0.04 \
   --defsym=__MPLAB_BUILD=1 \
-  -Tp33FJ128MC804.gld.00 \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_ICD3=1 \
+  -Tp33FJ128MC804.gld.05 \
   --stack=16 \
   --check-sections \
   --data-init \
@@ -56,10 +64,10 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/Coupe-IUT-2016-Robot-1A.production.map \
+  -Map=dist/default/debug/Coupe-IUT-2016-Robot-1A.debug.map \
   --report-mem \
   --memorysummary \
-  dist/default/production/memoryfile.xml \
+  dist/default/debug/memoryfile.xml \
   -start-group \
   --library=pic30-elf \
   --library=m-elf \
@@ -75,31 +83,31 @@ c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.a(crt
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
                               c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o) (__data_init_standard)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
-                              build/default/production/main.o (___delay32)
+                              build/default/debug/main.o (___delay32)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(addsf3.eo)
-                              build/default/production/main.o (___subsf3)
+                              build/default/debug/main.o (___subsf3)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(atan2f.eo)
-                              build/default/production/AsservissementPosition.o (_atan2f)
+                              build/default/debug/AsservissementPosition.o (_atan2f)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(atanf.eo)
-                              build/default/production/QEI.o (_atanf)
+                              build/default/debug/QEI.o (_atanf)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(cosf.eo)
-                              build/default/production/QEI.o (_cosf)
+                              build/default/debug/QEI.o (_cosf)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(divsf3.eo)
-                              build/default/production/timer.o (___divsf3)
+                              build/default/debug/timer.o (___divsf3)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(errno.eo)
                               c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(atan2f.eo) (_errno)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(feqltle.eo)
-                              build/default/production/PWM.o (___ltsf2)
+                              build/default/debug/PWM.o (___ltsf2)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(fgtge.eo)
-                              build/default/production/timer.o (___gtsf2)
+                              build/default/debug/timer.o (___gtsf2)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
-                              build/default/production/main.o (_(float, int, long long, short, float, short, int))
+                              build/default/debug/main.o (_(float, int, long long, short, float, short, int))
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
-                              build/default/production/PWM.o (___fixunssfsi)
+                              build/default/debug/PWM.o (___fixunssfsi)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
-                              build/default/production/main.o (___floatsisf)
+                              build/default/debug/main.o (___floatsisf)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
-                              build/default/production/main.o (___floatunsisf)
+                              build/default/debug/main.o (___floatunsisf)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(fpack.eo)
                               c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(addsf3.eo) (__fpack)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(funpack.eo)
@@ -109,13 +117,13 @@ c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(funpack
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(futil.eo)
                               c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(addsf3.eo) (__fPropagateNaN)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
-                              build/default/production/main.o (___mulsf3)
+                              build/default/debug/main.o (___mulsf3)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(sincosf.eo)
                               c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(cosf.eo) (__sincosf)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(sinf.eo)
-                              build/default/production/QEI.o (_sinf)
+                              build/default/debug/QEI.o (_sinf)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(sqrtf.eo)
-                              build/default/production/AsservissementPosition.o (_sqrtf)
+                              build/default/debug/AsservissementPosition.o (_sqrtf)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(fcompare.eo)
                               c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(feqltle.eo) (__fcompare)
 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
@@ -135,26 +143,31 @@ Program Memory  [Origin = 0x200, Length = 0x15600]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x714           0xa9e  (2718)
-.text                        0x914              0x3850          0x5478  (21624)
-.dinit                      0x4164                0xcc           0x132  (306)
-.text                       0x4230               0x234           0x34e  (846)
-.init.delay32               0x4464                0x1c            0x2a  (42)
+.text                        0x914              0x37b4          0x538e  (21390)
+.dinit                      0x40c8                0xcc           0x132  (306)
+.text                       0x4194               0x234           0x34e  (846)
+.init.delay32               0x43c8                0x1c            0x2a  (42)
 
-                     Total program memory used (bytes):         0x63c0  (25536) 19%
+                     Total program memory used (bytes):         0x62d6  (25302) 19%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0           0x144  (324)
-.ndata                       0x944                   0             0x4  (4)
-.nbss                        0x948                   0             0x8  (8)
-.ndata                       0x950                   0             0x6  (6)
-.nbss                        0x956                   0             0x2  (2)
-.bss                         0x958                   0           0x75c  (1884)
+reserve_data_0x800           0x800                0x20            0x20  (32)
+reserve_data_0x820           0x820                 0x2             0x2  (2)
+reserve_data_0x822           0x822                 0x2             0x2  (2)
+reserve_data_0x824           0x824                 0x2             0x2  (2)
+reserve_data_0x826           0x826                0x2a            0x2a  (42)
+.nbss                        0x850                   0           0x144  (324)
+.ndata                       0x994                   0             0x4  (4)
+.nbss                        0x998                   0             0x8  (8)
+.ndata                       0x9a0                   0             0x6  (6)
+.nbss                        0x9a6                   0             0x2  (2)
+.bss                         0x9a8                   0           0x75c  (1884)
 
-                        Total data memory used (bytes):          0x8b4  (2228) 13%
+                        Total data memory used (bytes):          0x904  (2308) 14%
 
 
 Dynamic Memory Usage
@@ -162,268 +175,268 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x10b4                              0x374c  (14156)
+stack                       0x1104                              0x36fc  (14076)
 
-                        Maximum dynamic memory (bytes):         0x374c  (14156)
+                        Maximum dynamic memory (bytes):         0x36fc  (14076)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0800                  _vitesseMoyenne_T1
-                    0x0804                  _vitesseMoyenne
-                    0x0808                  _deltaVitesse_T1
-                    0x080c                  _deltaVitesse
-                    0x0810                  _counter
-                    0x0812                  _consigneDeltaVitesse
-                    0x0816                  _consigneVitesseMoyenne
-                    0x081a                  _deltaAngleDegre
-                    0x081e                  _distanceColineaire
-                    0x0822                  _ea0
-                    0x0826                  _ea1
-                    0x082a                  _ea2
-                    0x082e                  _sa0
-                    0x0832                  _sa1
-                    0x0836                  _sa2
-                    0x083a                  _el0
-                    0x083e                  _el1
-                    0x0842                  _el2
-                    0x0846                  _sl0
-                    0x084a                  _sl1
-                    0x084e                  _sl2
-                    0x0852                  _alpha_a
-                    0x0856                  _beta_a
-                    0x085a                  _delta_a
-                    0x085e                  _alpha_l
-                    0x0862                  _beta_l
-                    0x0866                  _delta_l
-                    0x0872                  _ed0
-                    0x0876                  _ed1
-                    0x087a                  _ed2
-                    0x087e                  _sd0
-                    0x0882                  _sd1
-                    0x0886                  _sd2
-                    0x088a                  _eg0
-                    0x088e                  _eg1
-                    0x0892                  _eg2
-                    0x0896                  _sg0
-                    0x089a                  _sg1
-                    0x089e                  _sg2
-                    0x08a2                  _alpha
-                    0x08a6                  _beta
-                    0x08aa                  _delta
-                    0x08ae                  _QeiDroitPosMSbytes
-                    0x08b0                  _QeiDroitPosition
-                    0x08b4                  _QeiDroitPosition_T_1
-                    0x08b8                  _QeiGauchePosMSbytes
-                    0x08ba                  _QeiGauchePosition
-                    0x08be                  _QeiGauchePosition_T_1
-                    0x08c2                  _delta_d
-                    0x08c6                  _delta_g
-                    0x08ca                  _delta_theta
-                    0x08ce                  _dx
-                    0x08d2                  _angleCourant
-                    0x08d4                  _distanceCourante
-                    0x08d6                  _qualityCourante
-                    0x08d8                  _nouveauTour
-                    0x08da                  _i
-                    0x08dc                  _cpt_angle
-                    0x08de                  _flagLidarFrameReady
-                    0x08e0                  _rx1ReceptionState
-                    0x08e1                  _rx1ReceivedFunction
-                    0x08e2                  _rx1ReceivedPayloadLength
-                    0x08e4                  _rx1ReceivedPayloadIndex
-                    0x08e5                  _rx2ReceptionState
-                    0x08e6                  _rx2ReceivedFunction
-                    0x08e8                  _rx2ReceivedPayloadLength
-                    0x08ea                  _rx2ReceivedPayloadIndex
-                    0x08ec                  _countServo
-                    0x08ee                  _consigneServo1
-                    0x08f0                  _consigneServo2
-                    0x08f2                  _consigneServo3
-                    0x08f4                  _consigneServo4
-                    0x08f6                  _consigneServo5
-                    0x08f8                  _stateRobot
-                    0x08f9                  _nextStateRobot
-                    0x08fa                  _robotAutoControlActivated
-                    0x08fb                  _consigneVitesseMoteurDroit
-                    0x08fc                  _consigneVitesseMoteurGauche
-                    0x08fd                  _autoControlActivated
-                    0x08fe                  _timestampStateStart
-                    0x0902                  _consignePWM
-                    0x0904                  _timestamp
-                    0x0908                  _countTimer2
-                    0x090a                  _countT2
-                    0x090c                  _timestampSansCollisionDroit
-                    0x0910                  _timestampSansCollisionGauche
-                    0x0914                  _taskVidageChateau
-                    0x0918                  _allerRetourCounter
-                    0x091a                  _taskAvalageChateau
-                    0x091e                  _nbAllerRetour
-                    0x091f                  _nbTourne
-                    0x0920                  _taskPechePoisson
-                    0x0924                  _counterTimes
-                    0x0926                  _cbTx1Tail
-                    0x0928                  _cbTx1Head
-                    0x092a                  _isTransmitting
-                    0x092c                  _cbTx2Head
-                    0x092e                  _cbTx2Tail
-                    0x0930                  _isTransmitting2
-                    0x0932                  _seuilDetectionTelemetreCentre
-                    0x0934                  _seuilDetectionTelemetreDroit
-                    0x0936                  _seuilDetectionTelemetreGauche
-                    0x0938                  _taskFermeturePortes
-                    0x093c                  _cbRx1Head
-                    0x093e                  _cbRx1Tail
-                    0x0940                  _cbRX2Head
-                    0x0942                  _cbRX2Tail
-                    0x0944                  _KpDistance
-                    0x0948                  _I2CAntiBlockCounter
-                    0x094a                  _I2CCrash
-                    0x094c                  _sysEvents
-                    0x0950                  _Te
-                    0x0954                  _DecodeState
-                    0x0958                  _DistanceTable
-                    0x09ee                  _DistanceTableToSend
-                    0x0a84                  _ListAngle
-                    0x0b1a                  _ListDistance
-                    0x0bb0                  _cbTx1Buffer
-                    0x0cb0                  _rx1ReceivedPayload
-                    0x0d30                  _rx2ReceivedPayload
-                    0x0db0                  _cbRx2Buffer
-                    0x0eb0                  _cbTx2Buffer
-                    0x0fb0                  _cbRx1Buffer
-                    0x1030                  _robotState
-                    0x10ae                  _valeursTelemetres
-                    0x10b1                  _valeursMoteurs
+                    0x0850                  _vitesseMoyenne_T1
+                    0x0854                  _vitesseMoyenne
+                    0x0858                  _deltaVitesse_T1
+                    0x085c                  _deltaVitesse
+                    0x0860                  _counter
+                    0x0862                  _consigneDeltaVitesse
+                    0x0866                  _consigneVitesseMoyenne
+                    0x086a                  _deltaAngleDegre
+                    0x086e                  _distanceColineaire
+                    0x0872                  _ea0
+                    0x0876                  _ea1
+                    0x087a                  _ea2
+                    0x087e                  _sa0
+                    0x0882                  _sa1
+                    0x0886                  _sa2
+                    0x088a                  _el0
+                    0x088e                  _el1
+                    0x0892                  _el2
+                    0x0896                  _sl0
+                    0x089a                  _sl1
+                    0x089e                  _sl2
+                    0x08a2                  _alpha_a
+                    0x08a6                  _beta_a
+                    0x08aa                  _delta_a
+                    0x08ae                  _alpha_l
+                    0x08b2                  _beta_l
+                    0x08b6                  _delta_l
+                    0x08c2                  _ed0
+                    0x08c6                  _ed1
+                    0x08ca                  _ed2
+                    0x08ce                  _sd0
+                    0x08d2                  _sd1
+                    0x08d6                  _sd2
+                    0x08da                  _eg0
+                    0x08de                  _eg1
+                    0x08e2                  _eg2
+                    0x08e6                  _sg0
+                    0x08ea                  _sg1
+                    0x08ee                  _sg2
+                    0x08f2                  _alpha
+                    0x08f6                  _beta
+                    0x08fa                  _delta
+                    0x08fe                  _QeiDroitPosMSbytes
+                    0x0900                  _QeiDroitPosition
+                    0x0904                  _QeiDroitPosition_T_1
+                    0x0908                  _QeiGauchePosMSbytes
+                    0x090a                  _QeiGauchePosition
+                    0x090e                  _QeiGauchePosition_T_1
+                    0x0912                  _delta_d
+                    0x0916                  _delta_g
+                    0x091a                  _delta_theta
+                    0x091e                  _dx
+                    0x0922                  _angleCourant
+                    0x0924                  _distanceCourante
+                    0x0926                  _qualityCourante
+                    0x0928                  _nouveauTour
+                    0x092a                  _i
+                    0x092c                  _cpt_angle
+                    0x092e                  _flagLidarFrameReady
+                    0x0930                  _rx1ReceptionState
+                    0x0931                  _rx1ReceivedFunction
+                    0x0932                  _rx1ReceivedPayloadLength
+                    0x0934                  _rx1ReceivedPayloadIndex
+                    0x0935                  _rx2ReceptionState
+                    0x0936                  _rx2ReceivedFunction
+                    0x0938                  _rx2ReceivedPayloadLength
+                    0x093a                  _rx2ReceivedPayloadIndex
+                    0x093c                  _countServo
+                    0x093e                  _consigneServo1
+                    0x0940                  _consigneServo2
+                    0x0942                  _consigneServo3
+                    0x0944                  _consigneServo4
+                    0x0946                  _consigneServo5
+                    0x0948                  _stateRobot
+                    0x0949                  _nextStateRobot
+                    0x094a                  _robotAutoControlActivated
+                    0x094b                  _consigneVitesseMoteurDroit
+                    0x094c                  _consigneVitesseMoteurGauche
+                    0x094d                  _autoControlActivated
+                    0x094e                  _timestampStateStart
+                    0x0952                  _consignePWM
+                    0x0954                  _timestamp
+                    0x0958                  _countTimer2
+                    0x095a                  _countT2
+                    0x095c                  _timestampSansCollisionDroit
+                    0x0960                  _timestampSansCollisionGauche
+                    0x0964                  _taskVidageChateau
+                    0x0968                  _allerRetourCounter
+                    0x096a                  _taskAvalageChateau
+                    0x096e                  _nbAllerRetour
+                    0x096f                  _nbTourne
+                    0x0970                  _taskPechePoisson
+                    0x0974                  _counterTimes
+                    0x0976                  _cbTx1Tail
+                    0x0978                  _cbTx1Head
+                    0x097a                  _isTransmitting
+                    0x097c                  _cbTx2Head
+                    0x097e                  _cbTx2Tail
+                    0x0980                  _isTransmitting2
+                    0x0982                  _seuilDetectionTelemetreCentre
+                    0x0984                  _seuilDetectionTelemetreDroit
+                    0x0986                  _seuilDetectionTelemetreGauche
+                    0x0988                  _taskFermeturePortes
+                    0x098c                  _cbRx1Head
+                    0x098e                  _cbRx1Tail
+                    0x0990                  _cbRX2Head
+                    0x0992                  _cbRX2Tail
+                    0x0994                  _KpDistance
+                    0x0998                  _I2CAntiBlockCounter
+                    0x099a                  _I2CCrash
+                    0x099c                  _sysEvents
+                    0x09a0                  _Te
+                    0x09a4                  _DecodeState
+                    0x09a8                  _DistanceTable
+                    0x0a3e                  _DistanceTableToSend
+                    0x0ad4                  _ListAngle
+                    0x0b6a                  _ListDistance
+                    0x0c00                  _cbTx1Buffer
+                    0x0d00                  _rx1ReceivedPayload
+                    0x0d80                  _rx2ReceivedPayload
+                    0x0e00                  _cbRx2Buffer
+                    0x0f00                  _cbTx2Buffer
+                    0x1000                  _cbRx1Buffer
+                    0x1080                  _robotState
+                    0x10fe                  _valeursTelemetres
+                    0x1101                  _valeursMoteurs
 
 External Symbols in Data Memory (by name):
 
-                    0x0954                  _DecodeState
-                    0x0958                  _DistanceTable
-                    0x09ee                  _DistanceTableToSend
-                    0x0948                  _I2CAntiBlockCounter
-                    0x094a                  _I2CCrash
-                    0x0944                  _KpDistance
-                    0x0a84                  _ListAngle
-                    0x0b1a                  _ListDistance
-                    0x08ae                  _QeiDroitPosMSbytes
-                    0x08b0                  _QeiDroitPosition
-                    0x08b4                  _QeiDroitPosition_T_1
-                    0x08b8                  _QeiGauchePosMSbytes
-                    0x08ba                  _QeiGauchePosition
-                    0x08be                  _QeiGauchePosition_T_1
-                    0x0950                  _Te
-                    0x0918                  _allerRetourCounter
-                    0x08a2                  _alpha
-                    0x0852                  _alpha_a
-                    0x085e                  _alpha_l
-                    0x08d2                  _angleCourant
-                    0x08fd                  _autoControlActivated
-                    0x08a6                  _beta
-                    0x0856                  _beta_a
-                    0x0862                  _beta_l
-                    0x0940                  _cbRX2Head
-                    0x0942                  _cbRX2Tail
-                    0x0fb0                  _cbRx1Buffer
-                    0x093c                  _cbRx1Head
-                    0x093e                  _cbRx1Tail
-                    0x0db0                  _cbRx2Buffer
-                    0x0bb0                  _cbTx1Buffer
-                    0x0928                  _cbTx1Head
-                    0x0926                  _cbTx1Tail
-                    0x0eb0                  _cbTx2Buffer
-                    0x092c                  _cbTx2Head
-                    0x092e                  _cbTx2Tail
-                    0x0812                  _consigneDeltaVitesse
-                    0x0902                  _consignePWM
-                    0x08ee                  _consigneServo1
-                    0x08f0                  _consigneServo2
-                    0x08f2                  _consigneServo3
-                    0x08f4                  _consigneServo4
-                    0x08f6                  _consigneServo5
-                    0x08fb                  _consigneVitesseMoteurDroit
-                    0x08fc                  _consigneVitesseMoteurGauche
-                    0x0816                  _consigneVitesseMoyenne
-                    0x08ec                  _countServo
-                    0x090a                  _countT2
-                    0x0908                  _countTimer2
-                    0x0810                  _counter
-                    0x0924                  _counterTimes
-                    0x08dc                  _cpt_angle
-                    0x08aa                  _delta
-                    0x081a                  _deltaAngleDegre
-                    0x080c                  _deltaVitesse
-                    0x0808                  _deltaVitesse_T1
-                    0x085a                  _delta_a
-                    0x08c2                  _delta_d
-                    0x08c6                  _delta_g
-                    0x0866                  _delta_l
-                    0x08ca                  _delta_theta
-                    0x081e                  _distanceColineaire
-                    0x08d4                  _distanceCourante
-                    0x08ce                  _dx
-                    0x0822                  _ea0
-                    0x0826                  _ea1
-                    0x082a                  _ea2
-                    0x0872                  _ed0
-                    0x0876                  _ed1
-                    0x087a                  _ed2
-                    0x088a                  _eg0
-                    0x088e                  _eg1
-                    0x0892                  _eg2
-                    0x083a                  _el0
-                    0x083e                  _el1
-                    0x0842                  _el2
-                    0x08de                  _flagLidarFrameReady
-                    0x08da                  _i
-                    0x092a                  _isTransmitting
-                    0x0930                  _isTransmitting2
-                    0x091e                  _nbAllerRetour
-                    0x091f                  _nbTourne
-                    0x08f9                  _nextStateRobot
-                    0x08d8                  _nouveauTour
-                    0x08d6                  _qualityCourante
-                    0x08fa                  _robotAutoControlActivated
-                    0x1030                  _robotState
-                    0x08e1                  _rx1ReceivedFunction
-                    0x0cb0                  _rx1ReceivedPayload
-                    0x08e4                  _rx1ReceivedPayloadIndex
-                    0x08e2                  _rx1ReceivedPayloadLength
-                    0x08e0                  _rx1ReceptionState
-                    0x08e6                  _rx2ReceivedFunction
-                    0x0d30                  _rx2ReceivedPayload
-                    0x08ea                  _rx2ReceivedPayloadIndex
-                    0x08e8                  _rx2ReceivedPayloadLength
-                    0x08e5                  _rx2ReceptionState
-                    0x082e                  _sa0
-                    0x0832                  _sa1
-                    0x0836                  _sa2
-                    0x087e                  _sd0
-                    0x0882                  _sd1
-                    0x0886                  _sd2
-                    0x0932                  _seuilDetectionTelemetreCentre
-                    0x0934                  _seuilDetectionTelemetreDroit
-                    0x0936                  _seuilDetectionTelemetreGauche
-                    0x0896                  _sg0
-                    0x089a                  _sg1
-                    0x089e                  _sg2
-                    0x0846                  _sl0
-                    0x084a                  _sl1
-                    0x084e                  _sl2
-                    0x08f8                  _stateRobot
-                    0x094c                  _sysEvents
-                    0x091a                  _taskAvalageChateau
-                    0x0938                  _taskFermeturePortes
-                    0x0920                  _taskPechePoisson
-                    0x0914                  _taskVidageChateau
-                    0x0904                  _timestamp
-                    0x090c                  _timestampSansCollisionDroit
-                    0x0910                  _timestampSansCollisionGauche
-                    0x08fe                  _timestampStateStart
-                    0x10b1                  _valeursMoteurs
-                    0x10ae                  _valeursTelemetres
-                    0x0804                  _vitesseMoyenne
-                    0x0800                  _vitesseMoyenne_T1
+                    0x09a4                  _DecodeState
+                    0x09a8                  _DistanceTable
+                    0x0a3e                  _DistanceTableToSend
+                    0x0998                  _I2CAntiBlockCounter
+                    0x099a                  _I2CCrash
+                    0x0994                  _KpDistance
+                    0x0ad4                  _ListAngle
+                    0x0b6a                  _ListDistance
+                    0x08fe                  _QeiDroitPosMSbytes
+                    0x0900                  _QeiDroitPosition
+                    0x0904                  _QeiDroitPosition_T_1
+                    0x0908                  _QeiGauchePosMSbytes
+                    0x090a                  _QeiGauchePosition
+                    0x090e                  _QeiGauchePosition_T_1
+                    0x09a0                  _Te
+                    0x0968                  _allerRetourCounter
+                    0x08f2                  _alpha
+                    0x08a2                  _alpha_a
+                    0x08ae                  _alpha_l
+                    0x0922                  _angleCourant
+                    0x094d                  _autoControlActivated
+                    0x08f6                  _beta
+                    0x08a6                  _beta_a
+                    0x08b2                  _beta_l
+                    0x0990                  _cbRX2Head
+                    0x0992                  _cbRX2Tail
+                    0x1000                  _cbRx1Buffer
+                    0x098c                  _cbRx1Head
+                    0x098e                  _cbRx1Tail
+                    0x0e00                  _cbRx2Buffer
+                    0x0c00                  _cbTx1Buffer
+                    0x0978                  _cbTx1Head
+                    0x0976                  _cbTx1Tail
+                    0x0f00                  _cbTx2Buffer
+                    0x097c                  _cbTx2Head
+                    0x097e                  _cbTx2Tail
+                    0x0862                  _consigneDeltaVitesse
+                    0x0952                  _consignePWM
+                    0x093e                  _consigneServo1
+                    0x0940                  _consigneServo2
+                    0x0942                  _consigneServo3
+                    0x0944                  _consigneServo4
+                    0x0946                  _consigneServo5
+                    0x094b                  _consigneVitesseMoteurDroit
+                    0x094c                  _consigneVitesseMoteurGauche
+                    0x0866                  _consigneVitesseMoyenne
+                    0x093c                  _countServo
+                    0x095a                  _countT2
+                    0x0958                  _countTimer2
+                    0x0860                  _counter
+                    0x0974                  _counterTimes
+                    0x092c                  _cpt_angle
+                    0x08fa                  _delta
+                    0x086a                  _deltaAngleDegre
+                    0x085c                  _deltaVitesse
+                    0x0858                  _deltaVitesse_T1
+                    0x08aa                  _delta_a
+                    0x0912                  _delta_d
+                    0x0916                  _delta_g
+                    0x08b6                  _delta_l
+                    0x091a                  _delta_theta
+                    0x086e                  _distanceColineaire
+                    0x0924                  _distanceCourante
+                    0x091e                  _dx
+                    0x0872                  _ea0
+                    0x0876                  _ea1
+                    0x087a                  _ea2
+                    0x08c2                  _ed0
+                    0x08c6                  _ed1
+                    0x08ca                  _ed2
+                    0x08da                  _eg0
+                    0x08de                  _eg1
+                    0x08e2                  _eg2
+                    0x088a                  _el0
+                    0x088e                  _el1
+                    0x0892                  _el2
+                    0x092e                  _flagLidarFrameReady
+                    0x092a                  _i
+                    0x097a                  _isTransmitting
+                    0x0980                  _isTransmitting2
+                    0x096e                  _nbAllerRetour
+                    0x096f                  _nbTourne
+                    0x0949                  _nextStateRobot
+                    0x0928                  _nouveauTour
+                    0x0926                  _qualityCourante
+                    0x094a                  _robotAutoControlActivated
+                    0x1080                  _robotState
+                    0x0931                  _rx1ReceivedFunction
+                    0x0d00                  _rx1ReceivedPayload
+                    0x0934                  _rx1ReceivedPayloadIndex
+                    0x0932                  _rx1ReceivedPayloadLength
+                    0x0930                  _rx1ReceptionState
+                    0x0936                  _rx2ReceivedFunction
+                    0x0d80                  _rx2ReceivedPayload
+                    0x093a                  _rx2ReceivedPayloadIndex
+                    0x0938                  _rx2ReceivedPayloadLength
+                    0x0935                  _rx2ReceptionState
+                    0x087e                  _sa0
+                    0x0882                  _sa1
+                    0x0886                  _sa2
+                    0x08ce                  _sd0
+                    0x08d2                  _sd1
+                    0x08d6                  _sd2
+                    0x0982                  _seuilDetectionTelemetreCentre
+                    0x0984                  _seuilDetectionTelemetreDroit
+                    0x0986                  _seuilDetectionTelemetreGauche
+                    0x08e6                  _sg0
+                    0x08ea                  _sg1
+                    0x08ee                  _sg2
+                    0x0896                  _sl0
+                    0x089a                  _sl1
+                    0x089e                  _sl2
+                    0x0948                  _stateRobot
+                    0x099c                  _sysEvents
+                    0x096a                  _taskAvalageChateau
+                    0x0988                  _taskFermeturePortes
+                    0x0970                  _taskPechePoisson
+                    0x0964                  _taskVidageChateau
+                    0x0954                  _timestamp
+                    0x095c                  _timestampSansCollisionDroit
+                    0x0960                  _timestampSansCollisionGauche
+                    0x094e                  _timestampStateStart
+                    0x1101                  _valeursMoteurs
+                    0x10fe                  _valeursTelemetres
+                    0x0854                  _vitesseMoyenne
+                    0x0850                  _vitesseMoyenne_T1
 
 External Symbols in Program Memory (by address):
 
@@ -476,300 +489,300 @@ External Symbols in Program Memory (by address):
                   0x0011a0                  _PWMSetSpeedConsigne
                   0x0011fa                  _PWMUpdateSpeed
                   0x0016b6                  _SendTelemetrieAsservissementVitesse
-                  0x00180a                  _main
-                  0x0019ae                  _SystemStateMachine
-                  0x001bba                  _SetNextRobotStateInAutomaticMode
-                  0x001c56                  _SendState
-                  0x001cca                  _SetRobotAutoControlState
-                  0x001cea                  _SetRobotState
-                  0x001cf6                  _InitTimer1
-                  0x001d10                  __T1Interrupt
-                  0x001d84                  _SetFreqTimer1
-                  0x001e5a                  _InitTimer2
-                  0x001e74                  _SetFreqTimer2
-                  0x001f4a                  __T2Interrupt
-                  0x001f54                  _InitTimer3
-                  0x001f6e                  _SetFreqTimer3
-                  0x002044                  __T3Interrupt
-                  0x00207e                  _InitTimer4
-                  0x002098                  _SetFreqTimer4
-                  0x00216e                  __T4Interrupt
-                  0x00218c                  _InitQEI1
-                  0x0021b8                  __QEI1Interrupt
-                  0x0021dc                  _InitQEI2
-                  0x002212                  __QEI2Interrupt
-                  0x002236                  _QEIUpdateData
-                  0x002482                  _QEIReset
-                  0x002490                  _QEISetPosition
-                  0x0024dc                  _SendQeiData
-                  0x00255e                  _SendPositionData
-                  0x0025ca                  _Uart1EncodeAndSendMessage
-                  0x002680                  _Uart1DecodeMessage
-                  0x002760                  _Uart2DecodeMessage
-                  0x002840                  _UartCalculateChecksum
-                  0x002894                  _UartProcessMessage
-                  0x0029ee                  _InitI2C1
-                  0x002a28                  _I2C1ReadN
-                  0x002ae0                  _I2C1Write1
-                  0x002b42                  _putI2C1
-                  0x002b8c                  _getI2C1
-                  0x002bfc                  _IncrementI2CAntiBlockCounter
-                  0x002c08                  _ResetI2CAntiBlockCounter
-                  0x002c10                  _SetI2CCrash
-                  0x002c1a                  _ResetI2CCrash
-                  0x002c22                  _IsI2CCrashed
-                  0x002c2a                  _IdleI2C1Antiblock
-                  0x002c78                  _ModuloAngleDegre
-                  0x002cc6                  _Abs
-                  0x002cec                  _Max
-                  0x002d18                  _Min
-                  0x002d44                  _Recule
-                  0x002d8e                  _Modulo2PIAngleRadian
-                  0x002ddc                  _ModuloPIAngleRadian
-                  0x002e2a                  _Limiteur
-                  0x002e76                  _RadianToDegree
-                  0x002e8c                  _DegreeToRadian
-                  0x002ea2                  _RadianToMmInRotation
-                  0x002eb8                  _TaskPechePoissonInit
-                  0x002ec6                  _TaskPechePoissonIsFinished
-                  0x002edc                  _TaskPechePoissonStart
-                  0x002eee                  _TaskPechePoisson
-                  0x0030e0                  _BaisseBras
-                  0x0030ea                  _MonteBras
-                  0x0030f4                  _SetUpPidAsservissementVitesseMoteur
-                  0x0031a0                  _SetUpPAsservissementVitesseMoteur
-                  0x00321a                  _CorrecteurVitesseDroit
-                  0x003292                  _CorrecteurVitesseGauche
-                  0x00330a                  _ResetCorrecteurVitesseGauche
-                  0x00331c                  _ResetCorrecteurVitesseDroit
-                  0x00332e                  _InitTelemetres
-                  0x003364                  _SetUpAddressTelemetre
-                  0x00338c                  _StartNewUltrasonicMeasure
-                  0x003442                  _SendUltrasonicMeasure
-                  0x0034e8                  _InitSeuilDetectionSRF08
-                  0x0034fa                  _TaskAvalageChateauInit
-                  0x003508                  _TaskAvalageChateauIsFinished
-                  0x00351c                  _TaskAvalageChateauStart
-                  0x003536                  _TaskAvalageChateau
-                  0x00367e                  _ManageServos
-                  0x0036cc                  _SetConsigneServoCreveBallon
-                  0x0036e4                  _SetConsigneServoBrasGauche
-                  0x003710                  _SetConsigneServoBrasDroit
-                  0x00373c                  _SetConsigneServoBras
-                  0x003748                  _SetConsigneServoBrasInactif
-                  0x003754                  _SetConsigneServoPinceGauche
-                  0x003780                  _SetConsigneServoPinceDroit
-                  0x0037ac                  _SetConsigneServoPince
-                  0x0037b8                  _SetConsigneServoPinceInactif
-                  0x0037c4                  _SetConsigneServo5
-                  0x0037f6                  _TaskVidageChateauInit
-                  0x003804                  _TaskVidageChateauStart
-                  0x003818                  _TaskVidageChateauIsFinished
-                  0x00382c                  _TaskVidageChateau
-                  0x003964                  _TaskFermeturePortesInit
-                  0x003972                  _TaskFermeturePortesStart
-                  0x003984                  _TaskFermeturePortesIsFinished
-                  0x00399a                  _TaskFermeturePortes
-                  0x003aac                  _DecodeIrRangeFinder
-                  0x003bd2                  _CB_RX1_Add
-                  0x003bfa                  _CB_RX1_Get
-                  0x003c22                  _CB_RX1_IsDataAvailable
-                  0x003c36                  __U1RXInterrupt
-                  0x003c82                  _CB_RX1_GetRemainingSize
-                  0x003cb8                  _CB_RX1_GetDataSize
-                  0x003cf0                  _SendMessage
-                  0x003d28                  _CB_TX1_Add
-                  0x003d50                  _CB_TX1_Get
-                  0x003d7a                  __U1TXInterrupt
-                  0x003dac                  _SendOne
-                  0x003dbe                  _CB_TX1_IsTransmitting
-                  0x003dc6                  _CB_TX1_RemainingSize
-                  0x003df4                  _SendMessage2
-                  0x003e2c                  _CB_TX2_Add
-                  0x003e4e                  _CB_TX2_Get
-                  0x003e6e                  __U2TXInterrupt
-                  0x003ea0                  _SendOne2
-                  0x003eb2                  _CB_TX2_IsTranmitting
-                  0x003eba                  _CB_TX2_RemainingSize
-                  0x003ede                  _InitIO
-                  0x003f9a                  _LockIO
-                  0x003fac                  _UnlockIO
-                  0x003fbe                  _CB_RX2_Add
-                  0x003fe6                  _CB_RX2_Get
-                  0x004006                  _CB_RX2_IsDataAvailable
-                  0x00401a                  __U2RXInterrupt
-                  0x004068                  _CB_RX2_GetRemainingSize
-                  0x00408a                  _CB_RX2_GetDataSize
-                  0x004096                  _InitUART1
-                  0x0040dc                  _SendMessageDirect
-                  0x004114                  _InitUART2
-                  0x004230                  _StartMove
-                  0x004266                  _StartTempo
-                  0x00427e                  _IsCurrentMoveFinishedGoToState
-                  0x0042b2                  _IsCurrentTempoFinished
-                  0x0042dc                  _SetRobotTargetPosition
-                  0x0042fa                  _SetRobotTargetAngle
-                  0x004316                  _SetRobotVitesseAsservie
-                  0x00433e                  _SetRobotVitesseLibre
-                  0x004366                  _EnvoiAngleInterface
-                  0x0043d0                  _InitOscillator
-                  0x004422                  _SetInterruptPriority
-                  0x004464                  ___delay32
+                  0x00180a                  _InitTimer1
+                  0x001824                  __T1Interrupt
+                  0x001898                  _SetFreqTimer1
+                  0x00196e                  _InitTimer2
+                  0x001988                  _SetFreqTimer2
+                  0x001a5e                  __T2Interrupt
+                  0x001a68                  _InitTimer3
+                  0x001a82                  _SetFreqTimer3
+                  0x001b58                  __T3Interrupt
+                  0x001b92                  _InitTimer4
+                  0x001bac                  _SetFreqTimer4
+                  0x001c82                  __T4Interrupt
+                  0x001ca0                  _main
+                  0x001da8                  _SystemStateMachine
+                  0x001fb4                  _SetNextRobotStateInAutomaticMode
+                  0x002050                  _SendState
+                  0x0020c4                  _SetRobotAutoControlState
+                  0x0020e4                  _SetRobotState
+                  0x0020f0                  _InitQEI1
+                  0x00211c                  __QEI1Interrupt
+                  0x002140                  _InitQEI2
+                  0x002176                  __QEI2Interrupt
+                  0x00219a                  _QEIUpdateData
+                  0x0023e6                  _QEIReset
+                  0x0023f4                  _QEISetPosition
+                  0x002440                  _SendQeiData
+                  0x0024c2                  _SendPositionData
+                  0x00252e                  _Uart1EncodeAndSendMessage
+                  0x0025e4                  _Uart1DecodeMessage
+                  0x0026c4                  _Uart2DecodeMessage
+                  0x0027a4                  _UartCalculateChecksum
+                  0x0027f8                  _UartProcessMessage
+                  0x002952                  _InitI2C1
+                  0x00298c                  _I2C1ReadN
+                  0x002a44                  _I2C1Write1
+                  0x002aa6                  _putI2C1
+                  0x002af0                  _getI2C1
+                  0x002b60                  _IncrementI2CAntiBlockCounter
+                  0x002b6c                  _ResetI2CAntiBlockCounter
+                  0x002b74                  _SetI2CCrash
+                  0x002b7e                  _ResetI2CCrash
+                  0x002b86                  _IsI2CCrashed
+                  0x002b8e                  _IdleI2C1Antiblock
+                  0x002bdc                  _ModuloAngleDegre
+                  0x002c2a                  _Abs
+                  0x002c50                  _Max
+                  0x002c7c                  _Min
+                  0x002ca8                  _Recule
+                  0x002cf2                  _Modulo2PIAngleRadian
+                  0x002d40                  _ModuloPIAngleRadian
+                  0x002d8e                  _Limiteur
+                  0x002dda                  _RadianToDegree
+                  0x002df0                  _DegreeToRadian
+                  0x002e06                  _RadianToMmInRotation
+                  0x002e1c                  _TaskPechePoissonInit
+                  0x002e2a                  _TaskPechePoissonIsFinished
+                  0x002e40                  _TaskPechePoissonStart
+                  0x002e52                  _TaskPechePoisson
+                  0x003044                  _BaisseBras
+                  0x00304e                  _MonteBras
+                  0x003058                  _SetUpPidAsservissementVitesseMoteur
+                  0x003104                  _SetUpPAsservissementVitesseMoteur
+                  0x00317e                  _CorrecteurVitesseDroit
+                  0x0031f6                  _CorrecteurVitesseGauche
+                  0x00326e                  _ResetCorrecteurVitesseGauche
+                  0x003280                  _ResetCorrecteurVitesseDroit
+                  0x003292                  _InitTelemetres
+                  0x0032c8                  _SetUpAddressTelemetre
+                  0x0032f0                  _StartNewUltrasonicMeasure
+                  0x0033a6                  _SendUltrasonicMeasure
+                  0x00344c                  _InitSeuilDetectionSRF08
+                  0x00345e                  _TaskAvalageChateauInit
+                  0x00346c                  _TaskAvalageChateauIsFinished
+                  0x003480                  _TaskAvalageChateauStart
+                  0x00349a                  _TaskAvalageChateau
+                  0x0035e2                  _ManageServos
+                  0x003630                  _SetConsigneServoCreveBallon
+                  0x003648                  _SetConsigneServoBrasGauche
+                  0x003674                  _SetConsigneServoBrasDroit
+                  0x0036a0                  _SetConsigneServoBras
+                  0x0036ac                  _SetConsigneServoBrasInactif
+                  0x0036b8                  _SetConsigneServoPinceGauche
+                  0x0036e4                  _SetConsigneServoPinceDroit
+                  0x003710                  _SetConsigneServoPince
+                  0x00371c                  _SetConsigneServoPinceInactif
+                  0x003728                  _SetConsigneServo5
+                  0x00375a                  _TaskVidageChateauInit
+                  0x003768                  _TaskVidageChateauStart
+                  0x00377c                  _TaskVidageChateauIsFinished
+                  0x003790                  _TaskVidageChateau
+                  0x0038c8                  _TaskFermeturePortesInit
+                  0x0038d6                  _TaskFermeturePortesStart
+                  0x0038e8                  _TaskFermeturePortesIsFinished
+                  0x0038fe                  _TaskFermeturePortes
+                  0x003a10                  _DecodeIrRangeFinder
+                  0x003b36                  _CB_RX1_Add
+                  0x003b5e                  _CB_RX1_Get
+                  0x003b86                  _CB_RX1_IsDataAvailable
+                  0x003b9a                  __U1RXInterrupt
+                  0x003be6                  _CB_RX1_GetRemainingSize
+                  0x003c1c                  _CB_RX1_GetDataSize
+                  0x003c54                  _SendMessage
+                  0x003c8c                  _CB_TX1_Add
+                  0x003cb4                  _CB_TX1_Get
+                  0x003cde                  __U1TXInterrupt
+                  0x003d10                  _SendOne
+                  0x003d22                  _CB_TX1_IsTransmitting
+                  0x003d2a                  _CB_TX1_RemainingSize
+                  0x003d58                  _SendMessage2
+                  0x003d90                  _CB_TX2_Add
+                  0x003db2                  _CB_TX2_Get
+                  0x003dd2                  __U2TXInterrupt
+                  0x003e04                  _SendOne2
+                  0x003e16                  _CB_TX2_IsTranmitting
+                  0x003e1e                  _CB_TX2_RemainingSize
+                  0x003e42                  _InitIO
+                  0x003efe                  _LockIO
+                  0x003f10                  _UnlockIO
+                  0x003f22                  _CB_RX2_Add
+                  0x003f4a                  _CB_RX2_Get
+                  0x003f6a                  _CB_RX2_IsDataAvailable
+                  0x003f7e                  __U2RXInterrupt
+                  0x003fcc                  _CB_RX2_GetRemainingSize
+                  0x003fee                  _CB_RX2_GetDataSize
+                  0x003ffa                  _InitUART1
+                  0x004040                  _SendMessageDirect
+                  0x004078                  _InitUART2
+                  0x004194                  _StartMove
+                  0x0041ca                  _StartTempo
+                  0x0041e2                  _IsCurrentMoveFinishedGoToState
+                  0x004216                  _IsCurrentTempoFinished
+                  0x004240                  _SetRobotTargetPosition
+                  0x00425e                  _SetRobotTargetAngle
+                  0x00427a                  _SetRobotVitesseAsservie
+                  0x0042a2                  _SetRobotVitesseLibre
+                  0x0042ca                  _EnvoiAngleInterface
+                  0x004334                  _InitOscillator
+                  0x004386                  _SetInterruptPriority
+                  0x0043c8                  ___delay32
 
 External Symbols in Program Memory (by name):
 
-                  0x002cc6                  _Abs
+                  0x002c2a                  _Abs
                   0x000bde                  _AsservissementAngle
                   0x000914                  _AsservissementPosition
-                  0x0030e0                  _BaisseBras
-                  0x003bd2                  _CB_RX1_Add
-                  0x003bfa                  _CB_RX1_Get
-                  0x003cb8                  _CB_RX1_GetDataSize
-                  0x003c82                  _CB_RX1_GetRemainingSize
-                  0x003c22                  _CB_RX1_IsDataAvailable
-                  0x003fbe                  _CB_RX2_Add
-                  0x003fe6                  _CB_RX2_Get
-                  0x00408a                  _CB_RX2_GetDataSize
-                  0x004068                  _CB_RX2_GetRemainingSize
-                  0x004006                  _CB_RX2_IsDataAvailable
-                  0x003d28                  _CB_TX1_Add
-                  0x003d50                  _CB_TX1_Get
-                  0x003dbe                  _CB_TX1_IsTransmitting
-                  0x003dc6                  _CB_TX1_RemainingSize
-                  0x003e2c                  _CB_TX2_Add
-                  0x003e4e                  _CB_TX2_Get
-                  0x003eb2                  _CB_TX2_IsTranmitting
-                  0x003eba                  _CB_TX2_RemainingSize
+                  0x003044                  _BaisseBras
+                  0x003b36                  _CB_RX1_Add
+                  0x003b5e                  _CB_RX1_Get
+                  0x003c1c                  _CB_RX1_GetDataSize
+                  0x003be6                  _CB_RX1_GetRemainingSize
+                  0x003b86                  _CB_RX1_IsDataAvailable
+                  0x003f22                  _CB_RX2_Add
+                  0x003f4a                  _CB_RX2_Get
+                  0x003fee                  _CB_RX2_GetDataSize
+                  0x003fcc                  _CB_RX2_GetRemainingSize
+                  0x003f6a                  _CB_RX2_IsDataAvailable
+                  0x003c8c                  _CB_TX1_Add
+                  0x003cb4                  _CB_TX1_Get
+                  0x003d22                  _CB_TX1_IsTransmitting
+                  0x003d2a                  _CB_TX1_RemainingSize
+                  0x003d90                  _CB_TX2_Add
+                  0x003db2                  _CB_TX2_Get
+                  0x003e16                  _CB_TX2_IsTranmitting
+                  0x003e1e                  _CB_TX2_RemainingSize
                   0x000f62                  _CorrecteurAngulaire
                   0x0010ec                  _CorrecteurLineaire
-                  0x00321a                  _CorrecteurVitesseDroit
-                  0x003292                  _CorrecteurVitesseGauche
-                  0x003aac                  _DecodeIrRangeFinder
-                  0x002e8c                  _DegreeToRadian
-                  0x004366                  _EnvoiAngleInterface
-                  0x002a28                  _I2C1ReadN
-                  0x002ae0                  _I2C1Write1
-                  0x002c2a                  _IdleI2C1Antiblock
-                  0x002bfc                  _IncrementI2CAntiBlockCounter
-                  0x0029ee                  _InitI2C1
-                  0x003ede                  _InitIO
-                  0x0043d0                  _InitOscillator
+                  0x00317e                  _CorrecteurVitesseDroit
+                  0x0031f6                  _CorrecteurVitesseGauche
+                  0x003a10                  _DecodeIrRangeFinder
+                  0x002df0                  _DegreeToRadian
+                  0x0042ca                  _EnvoiAngleInterface
+                  0x00298c                  _I2C1ReadN
+                  0x002a44                  _I2C1Write1
+                  0x002b8e                  _IdleI2C1Antiblock
+                  0x002b60                  _IncrementI2CAntiBlockCounter
+                  0x002952                  _InitI2C1
+                  0x003e42                  _InitIO
+                  0x004334                  _InitOscillator
                   0x001164                  _InitPWM
-                  0x00218c                  _InitQEI1
-                  0x0021dc                  _InitQEI2
-                  0x0034e8                  _InitSeuilDetectionSRF08
-                  0x00332e                  _InitTelemetres
-                  0x001cf6                  _InitTimer1
-                  0x001e5a                  _InitTimer2
-                  0x001f54                  _InitTimer3
-                  0x00207e                  _InitTimer4
-                  0x004096                  _InitUART1
-                  0x004114                  _InitUART2
-                  0x00427e                  _IsCurrentMoveFinishedGoToState
-                  0x0042b2                  _IsCurrentTempoFinished
-                  0x002c22                  _IsI2CCrashed
-                  0x002e2a                  _Limiteur
-                  0x003f9a                  _LockIO
-                  0x00367e                  _ManageServos
-                  0x002cec                  _Max
-                  0x002d18                  _Min
-                  0x002d8e                  _Modulo2PIAngleRadian
-                  0x002c78                  _ModuloAngleDegre
-                  0x002ddc                  _ModuloPIAngleRadian
-                  0x0030ea                  _MonteBras
+                  0x0020f0                  _InitQEI1
+                  0x002140                  _InitQEI2
+                  0x00344c                  _InitSeuilDetectionSRF08
+                  0x003292                  _InitTelemetres
+                  0x00180a                  _InitTimer1
+                  0x00196e                  _InitTimer2
+                  0x001a68                  _InitTimer3
+                  0x001b92                  _InitTimer4
+                  0x003ffa                  _InitUART1
+                  0x004078                  _InitUART2
+                  0x0041e2                  _IsCurrentMoveFinishedGoToState
+                  0x004216                  _IsCurrentTempoFinished
+                  0x002b86                  _IsI2CCrashed
+                  0x002d8e                  _Limiteur
+                  0x003efe                  _LockIO
+                  0x0035e2                  _ManageServos
+                  0x002c50                  _Max
+                  0x002c7c                  _Min
+                  0x002cf2                  _Modulo2PIAngleRadian
+                  0x002bdc                  _ModuloAngleDegre
+                  0x002d40                  _ModuloPIAngleRadian
+                  0x00304e                  _MonteBras
                   0x0011a0                  _PWMSetSpeedConsigne
                   0x0011fa                  _PWMUpdateSpeed
-                  0x002482                  _QEIReset
-                  0x002490                  _QEISetPosition
-                  0x002236                  _QEIUpdateData
-                  0x002e76                  _RadianToDegree
-                  0x002ea2                  _RadianToMmInRotation
-                  0x002d44                  _Recule
-                  0x00331c                  _ResetCorrecteurVitesseDroit
-                  0x00330a                  _ResetCorrecteurVitesseGauche
-                  0x002c08                  _ResetI2CAntiBlockCounter
-                  0x002c1a                  _ResetI2CCrash
-                  0x003cf0                  _SendMessage
-                  0x003df4                  _SendMessage2
-                  0x0040dc                  _SendMessageDirect
-                  0x003dac                  _SendOne
-                  0x003ea0                  _SendOne2
-                  0x00255e                  _SendPositionData
-                  0x0024dc                  _SendQeiData
-                  0x001c56                  _SendState
+                  0x0023e6                  _QEIReset
+                  0x0023f4                  _QEISetPosition
+                  0x00219a                  _QEIUpdateData
+                  0x002dda                  _RadianToDegree
+                  0x002e06                  _RadianToMmInRotation
+                  0x002ca8                  _Recule
+                  0x003280                  _ResetCorrecteurVitesseDroit
+                  0x00326e                  _ResetCorrecteurVitesseGauche
+                  0x002b6c                  _ResetI2CAntiBlockCounter
+                  0x002b7e                  _ResetI2CCrash
+                  0x003c54                  _SendMessage
+                  0x003d58                  _SendMessage2
+                  0x004040                  _SendMessageDirect
+                  0x003d10                  _SendOne
+                  0x003e04                  _SendOne2
+                  0x0024c2                  _SendPositionData
+                  0x002440                  _SendQeiData
+                  0x002050                  _SendState
                   0x000cb4                  _SendTelemetrieAsservissementAngulaire
                   0x0016b6                  _SendTelemetrieAsservissementVitesse
-                  0x003442                  _SendUltrasonicMeasure
-                  0x0037c4                  _SetConsigneServo5
-                  0x00373c                  _SetConsigneServoBras
-                  0x003710                  _SetConsigneServoBrasDroit
-                  0x0036e4                  _SetConsigneServoBrasGauche
-                  0x003748                  _SetConsigneServoBrasInactif
-                  0x0036cc                  _SetConsigneServoCreveBallon
-                  0x0037ac                  _SetConsigneServoPince
-                  0x003780                  _SetConsigneServoPinceDroit
-                  0x003754                  _SetConsigneServoPinceGauche
-                  0x0037b8                  _SetConsigneServoPinceInactif
-                  0x001d84                  _SetFreqTimer1
-                  0x001e74                  _SetFreqTimer2
-                  0x001f6e                  _SetFreqTimer3
-                  0x002098                  _SetFreqTimer4
-                  0x002c10                  _SetI2CCrash
-                  0x004422                  _SetInterruptPriority
-                  0x001bba                  _SetNextRobotStateInAutomaticMode
-                  0x001cca                  _SetRobotAutoControlState
-                  0x001cea                  _SetRobotState
-                  0x0042fa                  _SetRobotTargetAngle
-                  0x0042dc                  _SetRobotTargetPosition
-                  0x004316                  _SetRobotVitesseAsservie
-                  0x00433e                  _SetRobotVitesseLibre
-                  0x003364                  _SetUpAddressTelemetre
+                  0x0033a6                  _SendUltrasonicMeasure
+                  0x003728                  _SetConsigneServo5
+                  0x0036a0                  _SetConsigneServoBras
+                  0x003674                  _SetConsigneServoBrasDroit
+                  0x003648                  _SetConsigneServoBrasGauche
+                  0x0036ac                  _SetConsigneServoBrasInactif
+                  0x003630                  _SetConsigneServoCreveBallon
+                  0x003710                  _SetConsigneServoPince
+                  0x0036e4                  _SetConsigneServoPinceDroit
+                  0x0036b8                  _SetConsigneServoPinceGauche
+                  0x00371c                  _SetConsigneServoPinceInactif
+                  0x001898                  _SetFreqTimer1
+                  0x001988                  _SetFreqTimer2
+                  0x001a82                  _SetFreqTimer3
+                  0x001bac                  _SetFreqTimer4
+                  0x002b74                  _SetI2CCrash
+                  0x004386                  _SetInterruptPriority
+                  0x001fb4                  _SetNextRobotStateInAutomaticMode
+                  0x0020c4                  _SetRobotAutoControlState
+                  0x0020e4                  _SetRobotState
+                  0x00425e                  _SetRobotTargetAngle
+                  0x004240                  _SetRobotTargetPosition
+                  0x00427a                  _SetRobotVitesseAsservie
+                  0x0042a2                  _SetRobotVitesseLibre
+                  0x0032c8                  _SetUpAddressTelemetre
                   0x000ee8                  _SetUpPAsservissementAngulaire
                   0x000fda                  _SetUpPAsservissementLineaire
-                  0x0031a0                  _SetUpPAsservissementVitesseMoteur
+                  0x003104                  _SetUpPAsservissementVitesseMoteur
                   0x000e50                  _SetUpPiAsservissementAngulaire
                   0x001054                  _SetUpPiAsservissementLineaire
                   0x000da4                  _SetUpPidAsservissementAngulaire
-                  0x0030f4                  _SetUpPidAsservissementVitesseMoteur
-                  0x004230                  _StartMove
-                  0x00338c                  _StartNewUltrasonicMeasure
-                  0x004266                  _StartTempo
-                  0x0019ae                  _SystemStateMachine
-                  0x003536                  _TaskAvalageChateau
-                  0x0034fa                  _TaskAvalageChateauInit
-                  0x003508                  _TaskAvalageChateauIsFinished
-                  0x00351c                  _TaskAvalageChateauStart
-                  0x00399a                  _TaskFermeturePortes
-                  0x003964                  _TaskFermeturePortesInit
-                  0x003984                  _TaskFermeturePortesIsFinished
-                  0x003972                  _TaskFermeturePortesStart
-                  0x002eee                  _TaskPechePoisson
-                  0x002eb8                  _TaskPechePoissonInit
-                  0x002ec6                  _TaskPechePoissonIsFinished
-                  0x002edc                  _TaskPechePoissonStart
-                  0x00382c                  _TaskVidageChateau
-                  0x0037f6                  _TaskVidageChateauInit
-                  0x003818                  _TaskVidageChateauIsFinished
-                  0x003804                  _TaskVidageChateauStart
-                  0x002680                  _Uart1DecodeMessage
-                  0x0025ca                  _Uart1EncodeAndSendMessage
-                  0x002760                  _Uart2DecodeMessage
-                  0x002840                  _UartCalculateChecksum
-                  0x002894                  _UartProcessMessage
-                  0x003fac                  _UnlockIO
+                  0x003058                  _SetUpPidAsservissementVitesseMoteur
+                  0x004194                  _StartMove
+                  0x0032f0                  _StartNewUltrasonicMeasure
+                  0x0041ca                  _StartTempo
+                  0x001da8                  _SystemStateMachine
+                  0x00349a                  _TaskAvalageChateau
+                  0x00345e                  _TaskAvalageChateauInit
+                  0x00346c                  _TaskAvalageChateauIsFinished
+                  0x003480                  _TaskAvalageChateauStart
+                  0x0038fe                  _TaskFermeturePortes
+                  0x0038c8                  _TaskFermeturePortesInit
+                  0x0038e8                  _TaskFermeturePortesIsFinished
+                  0x0038d6                  _TaskFermeturePortesStart
+                  0x002e52                  _TaskPechePoisson
+                  0x002e1c                  _TaskPechePoissonInit
+                  0x002e2a                  _TaskPechePoissonIsFinished
+                  0x002e40                  _TaskPechePoissonStart
+                  0x003790                  _TaskVidageChateau
+                  0x00375a                  _TaskVidageChateauInit
+                  0x00377c                  _TaskVidageChateauIsFinished
+                  0x003768                  _TaskVidageChateauStart
+                  0x0025e4                  _Uart1DecodeMessage
+                  0x00252e                  _Uart1EncodeAndSendMessage
+                  0x0026c4                  _Uart2DecodeMessage
+                  0x0027a4                  _UartCalculateChecksum
+                  0x0027f8                  _UartProcessMessage
+                  0x003f10                  _UnlockIO
                   0x00029a                  __DefaultInterrupt
-                  0x0021b8                  __QEI1Interrupt
-                  0x002212                  __QEI2Interrupt
-                  0x001d10                  __T1Interrupt
-                  0x001f4a                  __T2Interrupt
-                  0x002044                  __T3Interrupt
-                  0x00216e                  __T4Interrupt
-                  0x003c36                  __U1RXInterrupt
-                  0x003d7a                  __U1TXInterrupt
-                  0x00401a                  __U2RXInterrupt
-                  0x003e6e                  __U2TXInterrupt
+                  0x00211c                  __QEI1Interrupt
+                  0x002176                  __QEI2Interrupt
+                  0x001824                  __T1Interrupt
+                  0x001a5e                  __T2Interrupt
+                  0x001b58                  __T3Interrupt
+                  0x001c82                  __T4Interrupt
+                  0x003b9a                  __U1RXInterrupt
+                  0x003cde                  __U1TXInterrupt
+                  0x003f7e                  __U2RXInterrupt
+                  0x003dd2                  __U2TXInterrupt
                   0x0002a0                  ___addsf3
-                  0x004464                  ___delay32
+                  0x0043c8                  ___delay32
                   0x000462                  ___divsf3
                   0x0004e6                  ___eqsf2
                   0x0004ee                  ___fixsfsi
@@ -801,9 +814,9 @@ External Symbols in Program Memory (by name):
                   0x000394                  _atanf
                   0x00045e                  _cosf
                   0x000872                  _fmodf
-                  0x002b8c                  _getI2C1
-                  0x00180a                  _main
-                  0x002b42                  _putI2C1
+                  0x002af0                  _getI2C1
+                  0x001ca0                  _main
+                  0x002aa6                  _putI2C1
                   0x000750                  _sinf
                   0x000754                  _sqrtf
 
@@ -832,35 +845,63 @@ FUID3            0xf80016           0x000002
 
 Linker script and memory map
 
-LOAD build/default/production/TaskVidageChateau.o
-LOAD build/default/production/TaskFermeturePortes.o
-LOAD build/default/production/TaskAvalageChateau.o
-LOAD build/default/production/TaskPechePoisson.o
-LOAD build/default/production/main.o
-LOAD build/default/production/IO.o
-LOAD build/default/production/timer.o
-LOAD build/default/production/PWM.o
-LOAD build/default/production/UART.o
-LOAD build/default/production/CB_TX1.o
-LOAD build/default/production/CB_RX1.o
-LOAD build/default/production/UART_Protocol.o
-LOAD build/default/production/QEI.o
-LOAD build/default/production/Lidar.o
-LOAD build/default/production/CB_RX2.o
-LOAD build/default/production/CB_TX2.o
-LOAD build/default/production/AsservissementPosition.o
-LOAD build/default/production/Toolbox.o
-LOAD build/default/production/Telemetre_UltraSons.o
-LOAD build/default/production/ustv_i2c.o
-LOAD build/default/production/oscillator.o
-LOAD build/default/production/Servo.o
-LOAD build/default/production/events.o
-LOAD build/default/production/interrupt.o
-LOAD build/default/production/RobotManagement.o
-LOAD build/default/production/Robot.o
-LOAD build/default/production/AsservissementVitesse.o
-LOAD build/default/production/Task.o
+LOAD build/default/debug/TaskVidageChateau.o
+LOAD build/default/debug/TaskFermeturePortes.o
+LOAD build/default/debug/TaskAvalageChateau.o
+LOAD build/default/debug/TaskPechePoisson.o
+LOAD build/default/debug/main.o
+LOAD build/default/debug/IO.o
+LOAD build/default/debug/timer.o
+LOAD build/default/debug/PWM.o
+LOAD build/default/debug/UART.o
+LOAD build/default/debug/CB_TX1.o
+LOAD build/default/debug/CB_RX1.o
+LOAD build/default/debug/UART_Protocol.o
+LOAD build/default/debug/QEI.o
+LOAD build/default/debug/Lidar.o
+LOAD build/default/debug/CB_RX2.o
+LOAD build/default/debug/CB_TX2.o
+LOAD build/default/debug/AsservissementPosition.o
+LOAD build/default/debug/Toolbox.o
+LOAD build/default/debug/Telemetre_UltraSons.o
+LOAD build/default/debug/ustv_i2c.o
+LOAD build/default/debug/oscillator.o
+LOAD build/default/debug/Servo.o
+LOAD build/default/debug/events.o
+LOAD build/default/debug/interrupt.o
+LOAD build/default/debug/RobotManagement.o
+LOAD build/default/debug/Robot.o
+LOAD build/default/debug/AsservissementVitesse.o
+LOAD build/default/debug/Task.o
+
+reserve_data_0x800
+                    0x0800         0x20
+                    0x0820                  . = 0x20
+ *fill*             0x0800         0x2000
+
+reserve_data_0x820
+                    0x0820          0x2
+                    0x0822                  . = 0x2
+ *fill*             0x0820          0x200
+
+reserve_data_0x822
+                    0x0822          0x2
+                    0x0824                  . = 0x2
+ *fill*             0x0822          0x200
+
+reserve_data_0x824
+                    0x0824          0x2
+                    0x0826                  . = 0x2
+ *fill*             0x0824          0x200
+
+reserve_data_0x826
+                    0x0826         0x2a
+                    0x0850                  . = 0x2a
+ *fill*             0x0826         0x2a00
                     0x0001                  __MPLAB_BUILD = 0x1
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_ICD3 = 0x1
 LOAD p33FJ128MC804
 LOAD c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libfx-elf.a
                     0xf80000                  __FBS = 0xf80000
@@ -1020,156 +1061,156 @@ __FUID3
 
 .debug_info       0x000000      0x1232b
  *(.debug_info)
- .debug_info      0x000000        0x781 build/default/production/TaskVidageChateau.o
- .debug_info      0x000781        0x76c build/default/production/TaskFermeturePortes.o
- .debug_info      0x000eed        0x7bf build/default/production/TaskAvalageChateau.o
- .debug_info      0x0016ac        0x7ad build/default/production/TaskPechePoisson.o
- .debug_info      0x001e59       0x1017 build/default/production/main.o
- .debug_info      0x002e70       0x12cd build/default/production/IO.o
- .debug_info      0x00413d       0x1658 build/default/production/timer.o
- .debug_info      0x005795       0x1168 build/default/production/PWM.o
- .debug_info      0x0068fd       0x10eb build/default/production/UART.o
- .debug_info      0x0079e8        0x4a3 build/default/production/CB_TX1.o
- .debug_info      0x007e8b        0x605 build/default/production/CB_RX1.o
- .debug_info      0x008490        0xcc0 build/default/production/UART_Protocol.o
- .debug_info      0x009150       0x13a0 build/default/production/QEI.o
- .debug_info      0x00a4f0        0x813 build/default/production/Lidar.o
- .debug_info      0x00ad03        0x659 build/default/production/CB_RX2.o
- .debug_info      0x00b35c        0x4e9 build/default/production/CB_TX2.o
- .debug_info      0x00b845       0x1190 build/default/production/AsservissementPosition.o
- .debug_info      0x00c9d5        0x8a1 build/default/production/Toolbox.o
- .debug_info      0x00d276        0xa6e build/default/production/Telemetre_UltraSons.o
- .debug_info      0x00dce4        0xe16 build/default/production/ustv_i2c.o
- .debug_info      0x00eafa        0x4d3 build/default/production/oscillator.o
- .debug_info      0x00efcd        0x786 build/default/production/Servo.o
- .debug_info      0x00f753        0x33d build/default/production/events.o
- .debug_info      0x00fa90        0x966 build/default/production/interrupt.o
- .debug_info      0x0103f6        0x9e4 build/default/production/RobotManagement.o
- .debug_info      0x010dda        0x686 build/default/production/Robot.o
- .debug_info      0x011460        0x4bd build/default/production/AsservissementVitesse.o
- .debug_info      0x01191d        0xa0e build/default/production/Task.o
+ .debug_info      0x000000        0x781 build/default/debug/TaskVidageChateau.o
+ .debug_info      0x000781        0x76c build/default/debug/TaskFermeturePortes.o
+ .debug_info      0x000eed        0x7bf build/default/debug/TaskAvalageChateau.o
+ .debug_info      0x0016ac        0x7ad build/default/debug/TaskPechePoisson.o
+ .debug_info      0x001e59       0x1017 build/default/debug/main.o
+ .debug_info      0x002e70       0x12cd build/default/debug/IO.o
+ .debug_info      0x00413d       0x1658 build/default/debug/timer.o
+ .debug_info      0x005795       0x1168 build/default/debug/PWM.o
+ .debug_info      0x0068fd       0x10eb build/default/debug/UART.o
+ .debug_info      0x0079e8        0x4a3 build/default/debug/CB_TX1.o
+ .debug_info      0x007e8b        0x605 build/default/debug/CB_RX1.o
+ .debug_info      0x008490        0xcc0 build/default/debug/UART_Protocol.o
+ .debug_info      0x009150       0x13a0 build/default/debug/QEI.o
+ .debug_info      0x00a4f0        0x813 build/default/debug/Lidar.o
+ .debug_info      0x00ad03        0x659 build/default/debug/CB_RX2.o
+ .debug_info      0x00b35c        0x4e9 build/default/debug/CB_TX2.o
+ .debug_info      0x00b845       0x1190 build/default/debug/AsservissementPosition.o
+ .debug_info      0x00c9d5        0x8a1 build/default/debug/Toolbox.o
+ .debug_info      0x00d276        0xa6e build/default/debug/Telemetre_UltraSons.o
+ .debug_info      0x00dce4        0xe16 build/default/debug/ustv_i2c.o
+ .debug_info      0x00eafa        0x4d3 build/default/debug/oscillator.o
+ .debug_info      0x00efcd        0x786 build/default/debug/Servo.o
+ .debug_info      0x00f753        0x33d build/default/debug/events.o
+ .debug_info      0x00fa90        0x966 build/default/debug/interrupt.o
+ .debug_info      0x0103f6        0x9e4 build/default/debug/RobotManagement.o
+ .debug_info      0x010dda        0x686 build/default/debug/Robot.o
+ .debug_info      0x011460        0x4bd build/default/debug/AsservissementVitesse.o
+ .debug_info      0x01191d        0xa0e build/default/debug/Task.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000       0x1f57
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xef build/default/production/TaskVidageChateau.o
- .debug_abbrev    0x0000ef         0xef build/default/production/TaskFermeturePortes.o
- .debug_abbrev    0x0001de        0x115 build/default/production/TaskAvalageChateau.o
- .debug_abbrev    0x0002f3         0xef build/default/production/TaskPechePoisson.o
- .debug_abbrev    0x0003e2        0x1a3 build/default/production/main.o
- .debug_abbrev    0x000585         0xc9 build/default/production/IO.o
- .debug_abbrev    0x00064e        0x1d2 build/default/production/timer.o
- .debug_abbrev    0x000820        0x19f build/default/production/PWM.o
- .debug_abbrev    0x0009bf         0xf6 build/default/production/UART.o
- .debug_abbrev    0x000ab5        0x145 build/default/production/CB_TX1.o
- .debug_abbrev    0x000bfa        0x160 build/default/production/CB_RX1.o
- .debug_abbrev    0x000d5a        0x156 build/default/production/UART_Protocol.o
- .debug_abbrev    0x000eb0        0x1da build/default/production/QEI.o
- .debug_abbrev    0x00108a        0x10c build/default/production/Lidar.o
- .debug_abbrev    0x001196        0x145 build/default/production/CB_RX2.o
- .debug_abbrev    0x0012db        0x16f build/default/production/CB_TX2.o
- .debug_abbrev    0x00144a        0x1ad build/default/production/AsservissementPosition.o
- .debug_abbrev    0x0015f7         0xef build/default/production/Toolbox.o
- .debug_abbrev    0x0016e6        0x123 build/default/production/Telemetre_UltraSons.o
- .debug_abbrev    0x001809        0x157 build/default/production/ustv_i2c.o
- .debug_abbrev    0x001960         0xb6 build/default/production/oscillator.o
- .debug_abbrev    0x001a16         0xd4 build/default/production/Servo.o
- .debug_abbrev    0x001aea         0x92 build/default/production/events.o
- .debug_abbrev    0x001b7c         0xa5 build/default/production/interrupt.o
- .debug_abbrev    0x001c21         0xd6 build/default/production/RobotManagement.o
- .debug_abbrev    0x001cf7         0xe8 build/default/production/Robot.o
- .debug_abbrev    0x001ddf         0xa2 build/default/production/AsservissementVitesse.o
- .debug_abbrev    0x001e81         0xd6 build/default/production/Task.o
+ .debug_abbrev    0x000000         0xef build/default/debug/TaskVidageChateau.o
+ .debug_abbrev    0x0000ef         0xef build/default/debug/TaskFermeturePortes.o
+ .debug_abbrev    0x0001de        0x115 build/default/debug/TaskAvalageChateau.o
+ .debug_abbrev    0x0002f3         0xef build/default/debug/TaskPechePoisson.o
+ .debug_abbrev    0x0003e2        0x1a3 build/default/debug/main.o
+ .debug_abbrev    0x000585         0xc9 build/default/debug/IO.o
+ .debug_abbrev    0x00064e        0x1d2 build/default/debug/timer.o
+ .debug_abbrev    0x000820        0x19f build/default/debug/PWM.o
+ .debug_abbrev    0x0009bf         0xf6 build/default/debug/UART.o
+ .debug_abbrev    0x000ab5        0x145 build/default/debug/CB_TX1.o
+ .debug_abbrev    0x000bfa        0x160 build/default/debug/CB_RX1.o
+ .debug_abbrev    0x000d5a        0x156 build/default/debug/UART_Protocol.o
+ .debug_abbrev    0x000eb0        0x1da build/default/debug/QEI.o
+ .debug_abbrev    0x00108a        0x10c build/default/debug/Lidar.o
+ .debug_abbrev    0x001196        0x145 build/default/debug/CB_RX2.o
+ .debug_abbrev    0x0012db        0x16f build/default/debug/CB_TX2.o
+ .debug_abbrev    0x00144a        0x1ad build/default/debug/AsservissementPosition.o
+ .debug_abbrev    0x0015f7         0xef build/default/debug/Toolbox.o
+ .debug_abbrev    0x0016e6        0x123 build/default/debug/Telemetre_UltraSons.o
+ .debug_abbrev    0x001809        0x157 build/default/debug/ustv_i2c.o
+ .debug_abbrev    0x001960         0xb6 build/default/debug/oscillator.o
+ .debug_abbrev    0x001a16         0xd4 build/default/debug/Servo.o
+ .debug_abbrev    0x001aea         0x92 build/default/debug/events.o
+ .debug_abbrev    0x001b7c         0xa5 build/default/debug/interrupt.o
+ .debug_abbrev    0x001c21         0xd6 build/default/debug/RobotManagement.o
+ .debug_abbrev    0x001cf7         0xe8 build/default/debug/Robot.o
+ .debug_abbrev    0x001ddf         0xa2 build/default/debug/AsservissementVitesse.o
+ .debug_abbrev    0x001e81         0xd6 build/default/debug/Task.o
 
-.debug_line       0x000000       0x4d52
+.debug_line       0x000000       0x4c92
  *(.debug_line)
- .debug_line      0x000000        0x29f build/default/production/TaskVidageChateau.o
- .debug_line      0x00029f        0x26b build/default/production/TaskFermeturePortes.o
- .debug_line      0x00050a        0x2c9 build/default/production/TaskAvalageChateau.o
- .debug_line      0x0007d3        0x401 build/default/production/TaskPechePoisson.o
- .debug_line      0x000bd4        0x6af build/default/production/main.o
- .debug_line      0x001283        0x202 build/default/production/IO.o
- .debug_line      0x001485        0x50f build/default/production/timer.o
- .debug_line      0x001994        0x54c build/default/production/PWM.o
- .debug_line      0x001ee0        0x22c build/default/production/UART.o
- .debug_line      0x00210c        0x24e build/default/production/CB_TX1.o
- .debug_line      0x00235a        0x23c build/default/production/CB_RX1.o
- .debug_line      0x002596        0x544 build/default/production/UART_Protocol.o
- .debug_line      0x002ada        0x437 build/default/production/QEI.o
- .debug_line      0x002f11        0x191 build/default/production/Lidar.o
- .debug_line      0x0030a2        0x204 build/default/production/CB_RX2.o
- .debug_line      0x0032a6        0x226 build/default/production/CB_TX2.o
- .debug_line      0x0034cc        0x54b build/default/production/AsservissementPosition.o
- .debug_line      0x003a17        0x2a2 build/default/production/Toolbox.o
- .debug_line      0x003cb9        0x222 build/default/production/Telemetre_UltraSons.o
- .debug_line      0x003edb        0x4ec build/default/production/ustv_i2c.o
- .debug_line      0x0043c7         0xe6 build/default/production/oscillator.o
- .debug_line      0x0044ad        0x2d5 build/default/production/Servo.o
- .debug_line      0x004782         0x3c build/default/production/events.o
- .debug_line      0x0047be         0xdd build/default/production/interrupt.o
- .debug_line      0x00489b        0x130 build/default/production/RobotManagement.o
- .debug_line      0x0049cb         0xa4 build/default/production/Robot.o
- .debug_line      0x004a6f        0x1cb build/default/production/AsservissementVitesse.o
- .debug_line      0x004c3a        0x118 build/default/production/Task.o
+ .debug_line      0x000000        0x29f build/default/debug/TaskVidageChateau.o
+ .debug_line      0x00029f        0x26b build/default/debug/TaskFermeturePortes.o
+ .debug_line      0x00050a        0x2c9 build/default/debug/TaskAvalageChateau.o
+ .debug_line      0x0007d3        0x401 build/default/debug/TaskPechePoisson.o
+ .debug_line      0x000bd4        0x5ef build/default/debug/main.o
+ .debug_line      0x0011c3        0x202 build/default/debug/IO.o
+ .debug_line      0x0013c5        0x50f build/default/debug/timer.o
+ .debug_line      0x0018d4        0x54c build/default/debug/PWM.o
+ .debug_line      0x001e20        0x22c build/default/debug/UART.o
+ .debug_line      0x00204c        0x24e build/default/debug/CB_TX1.o
+ .debug_line      0x00229a        0x23c build/default/debug/CB_RX1.o
+ .debug_line      0x0024d6        0x544 build/default/debug/UART_Protocol.o
+ .debug_line      0x002a1a        0x437 build/default/debug/QEI.o
+ .debug_line      0x002e51        0x191 build/default/debug/Lidar.o
+ .debug_line      0x002fe2        0x204 build/default/debug/CB_RX2.o
+ .debug_line      0x0031e6        0x226 build/default/debug/CB_TX2.o
+ .debug_line      0x00340c        0x54b build/default/debug/AsservissementPosition.o
+ .debug_line      0x003957        0x2a2 build/default/debug/Toolbox.o
+ .debug_line      0x003bf9        0x222 build/default/debug/Telemetre_UltraSons.o
+ .debug_line      0x003e1b        0x4ec build/default/debug/ustv_i2c.o
+ .debug_line      0x004307         0xe6 build/default/debug/oscillator.o
+ .debug_line      0x0043ed        0x2d5 build/default/debug/Servo.o
+ .debug_line      0x0046c2         0x3c build/default/debug/events.o
+ .debug_line      0x0046fe         0xdd build/default/debug/interrupt.o
+ .debug_line      0x0047db        0x130 build/default/debug/RobotManagement.o
+ .debug_line      0x00490b         0xa4 build/default/debug/Robot.o
+ .debug_line      0x0049af        0x1cb build/default/debug/AsservissementVitesse.o
+ .debug_line      0x004b7a        0x118 build/default/debug/Task.o
 
 .debug_frame      0x000000        0xb9c
  *(.debug_frame)
- .debug_frame     0x000000         0x54 build/default/production/TaskVidageChateau.o
- .debug_frame     0x000054         0x54 build/default/production/TaskFermeturePortes.o
- .debug_frame     0x0000a8         0x54 build/default/production/TaskAvalageChateau.o
- .debug_frame     0x0000fc         0x74 build/default/production/TaskPechePoisson.o
- .debug_frame     0x000170         0x74 build/default/production/main.o
- .debug_frame     0x0001e4         0x44 build/default/production/IO.o
- .debug_frame     0x000228         0xd4 build/default/production/timer.o
- .debug_frame     0x0002fc         0x54 build/default/production/PWM.o
- .debug_frame     0x000350         0x44 build/default/production/UART.o
- .debug_frame     0x000394         0x84 build/default/production/CB_TX1.o
- .debug_frame     0x000418         0x74 build/default/production/CB_RX1.o
- .debug_frame     0x00048c         0x64 build/default/production/UART_Protocol.o
- .debug_frame     0x0004f0         0xa4 build/default/production/QEI.o
- .debug_frame     0x000594         0x24 build/default/production/Lidar.o
- .debug_frame     0x0005b8         0x74 build/default/production/CB_RX2.o
- .debug_frame     0x00062c         0x84 build/default/production/CB_TX2.o
- .debug_frame     0x0006b0         0xb4 build/default/production/AsservissementPosition.o
- .debug_frame     0x000764         0xc4 build/default/production/Toolbox.o
- .debug_frame     0x000828         0x64 build/default/production/Telemetre_UltraSons.o
- .debug_frame     0x00088c         0xc4 build/default/production/ustv_i2c.o
- .debug_frame     0x000950         0x24 build/default/production/oscillator.o
- .debug_frame     0x000974         0xc4 build/default/production/Servo.o
- .debug_frame     0x000a38         0x24 build/default/production/interrupt.o
- .debug_frame     0x000a5c         0x54 build/default/production/RobotManagement.o
- .debug_frame     0x000ab0         0x24 build/default/production/Robot.o
- .debug_frame     0x000ad4         0x74 build/default/production/AsservissementVitesse.o
- .debug_frame     0x000b48         0x54 build/default/production/Task.o
+ .debug_frame     0x000000         0x54 build/default/debug/TaskVidageChateau.o
+ .debug_frame     0x000054         0x54 build/default/debug/TaskFermeturePortes.o
+ .debug_frame     0x0000a8         0x54 build/default/debug/TaskAvalageChateau.o
+ .debug_frame     0x0000fc         0x74 build/default/debug/TaskPechePoisson.o
+ .debug_frame     0x000170         0x74 build/default/debug/main.o
+ .debug_frame     0x0001e4         0x44 build/default/debug/IO.o
+ .debug_frame     0x000228         0xd4 build/default/debug/timer.o
+ .debug_frame     0x0002fc         0x54 build/default/debug/PWM.o
+ .debug_frame     0x000350         0x44 build/default/debug/UART.o
+ .debug_frame     0x000394         0x84 build/default/debug/CB_TX1.o
+ .debug_frame     0x000418         0x74 build/default/debug/CB_RX1.o
+ .debug_frame     0x00048c         0x64 build/default/debug/UART_Protocol.o
+ .debug_frame     0x0004f0         0xa4 build/default/debug/QEI.o
+ .debug_frame     0x000594         0x24 build/default/debug/Lidar.o
+ .debug_frame     0x0005b8         0x74 build/default/debug/CB_RX2.o
+ .debug_frame     0x00062c         0x84 build/default/debug/CB_TX2.o
+ .debug_frame     0x0006b0         0xb4 build/default/debug/AsservissementPosition.o
+ .debug_frame     0x000764         0xc4 build/default/debug/Toolbox.o
+ .debug_frame     0x000828         0x64 build/default/debug/Telemetre_UltraSons.o
+ .debug_frame     0x00088c         0xc4 build/default/debug/ustv_i2c.o
+ .debug_frame     0x000950         0x24 build/default/debug/oscillator.o
+ .debug_frame     0x000974         0xc4 build/default/debug/Servo.o
+ .debug_frame     0x000a38         0x24 build/default/debug/interrupt.o
+ .debug_frame     0x000a5c         0x54 build/default/debug/RobotManagement.o
+ .debug_frame     0x000ab0         0x24 build/default/debug/Robot.o
+ .debug_frame     0x000ad4         0x74 build/default/debug/AsservissementVitesse.o
+ .debug_frame     0x000b48         0x54 build/default/debug/Task.o
 
 .debug_str        0x000000        0xa2e
  *(.debug_str)
- .debug_str       0x000000         0x30 build/default/production/TaskVidageChateau.o
- .debug_str       0x000030         0x1f build/default/production/TaskFermeturePortes.o
- .debug_str       0x00004f         0x35 build/default/production/TaskAvalageChateau.o
- .debug_str       0x000084         0x29 build/default/production/TaskPechePoisson.o
- .debug_str       0x0000ad         0x7f build/default/production/main.o
- .debug_str       0x00012c         0x99 build/default/production/IO.o
- .debug_str       0x0001c5         0x99 build/default/production/timer.o
- .debug_str       0x00025e         0x93 build/default/production/PWM.o
- .debug_str       0x0002f1         0x7b build/default/production/UART.o
- .debug_str       0x00036c         0x38 build/default/production/CB_TX1.o
- .debug_str       0x0003a4         0x3e build/default/production/CB_RX1.o
- .debug_str       0x0003e2        0x135 build/default/production/UART_Protocol.o
- .debug_str       0x000517         0xdb build/default/production/QEI.o
- .debug_str       0x0005f2         0x91 build/default/production/Lidar.o
- .debug_str       0x000683         0x33 build/default/production/CB_RX2.o
- .debug_str       0x0006b6         0x39 build/default/production/CB_TX2.o
- .debug_str       0x0006ef        0x102 build/default/production/AsservissementPosition.o
- .debug_str       0x0007f1         0x1d build/default/production/Toolbox.o
- .debug_str       0x00080e         0x78 build/default/production/Telemetre_UltraSons.o
- .debug_str       0x000886         0x81 build/default/production/ustv_i2c.o
- .debug_str       0x000907         0x16 build/default/production/oscillator.o
- .debug_str       0x00091d         0x77 build/default/production/Servo.o
- .debug_str       0x000994         0x2d build/default/production/interrupt.o
- .debug_str       0x0009c1         0x30 build/default/production/RobotManagement.o
- .debug_str       0x0009f1          0xb build/default/production/Robot.o
- .debug_str       0x0009fc         0x32 build/default/production/Task.o
+ .debug_str       0x000000         0x30 build/default/debug/TaskVidageChateau.o
+ .debug_str       0x000030         0x1f build/default/debug/TaskFermeturePortes.o
+ .debug_str       0x00004f         0x35 build/default/debug/TaskAvalageChateau.o
+ .debug_str       0x000084         0x29 build/default/debug/TaskPechePoisson.o
+ .debug_str       0x0000ad         0x7f build/default/debug/main.o
+ .debug_str       0x00012c         0x99 build/default/debug/IO.o
+ .debug_str       0x0001c5         0x99 build/default/debug/timer.o
+ .debug_str       0x00025e         0x93 build/default/debug/PWM.o
+ .debug_str       0x0002f1         0x7b build/default/debug/UART.o
+ .debug_str       0x00036c         0x38 build/default/debug/CB_TX1.o
+ .debug_str       0x0003a4         0x3e build/default/debug/CB_RX1.o
+ .debug_str       0x0003e2        0x135 build/default/debug/UART_Protocol.o
+ .debug_str       0x000517         0xdb build/default/debug/QEI.o
+ .debug_str       0x0005f2         0x91 build/default/debug/Lidar.o
+ .debug_str       0x000683         0x33 build/default/debug/CB_RX2.o
+ .debug_str       0x0006b6         0x39 build/default/debug/CB_TX2.o
+ .debug_str       0x0006ef        0x102 build/default/debug/AsservissementPosition.o
+ .debug_str       0x0007f1         0x1d build/default/debug/Toolbox.o
+ .debug_str       0x00080e         0x78 build/default/debug/Telemetre_UltraSons.o
+ .debug_str       0x000886         0x81 build/default/debug/ustv_i2c.o
+ .debug_str       0x000907         0x16 build/default/debug/oscillator.o
+ .debug_str       0x00091d         0x77 build/default/debug/Servo.o
+ .debug_str       0x000994         0x2d build/default/debug/interrupt.o
+ .debug_str       0x0009c1         0x30 build/default/debug/RobotManagement.o
+ .debug_str       0x0009f1          0xb build/default/debug/Robot.o
+ .debug_str       0x0009fc         0x32 build/default/debug/Task.o
 
 .debug_loc
  *(.debug_loc)
@@ -1181,61 +1222,61 @@ __FUID3
                   0x000000       0x1787
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0xaa build/default/production/TaskVidageChateau.o
+                  0x000000         0xaa build/default/debug/TaskVidageChateau.o
  .debug_pubnames
-                  0x0000aa         0x9d build/default/production/TaskFermeturePortes.o
+                  0x0000aa         0x9d build/default/debug/TaskFermeturePortes.o
  .debug_pubnames
-                  0x000147         0xb7 build/default/production/TaskAvalageChateau.o
+                  0x000147         0xb7 build/default/debug/TaskAvalageChateau.o
  .debug_pubnames
-                  0x0001fe         0xbc build/default/production/TaskPechePoisson.o
+                  0x0001fe         0xbc build/default/debug/TaskPechePoisson.o
  .debug_pubnames
-                  0x0002ba        0x16d build/default/production/main.o
+                  0x0002ba        0x16d build/default/debug/main.o
  .debug_pubnames
-                  0x000427         0x35 build/default/production/IO.o
+                  0x000427         0x35 build/default/debug/IO.o
  .debug_pubnames
-                  0x00045c        0x114 build/default/production/timer.o
+                  0x00045c        0x114 build/default/debug/timer.o
  .debug_pubnames
-                  0x000570         0xb2 build/default/production/PWM.o
+                  0x000570         0xb2 build/default/debug/PWM.o
  .debug_pubnames
-                  0x000622         0x44 build/default/production/UART.o
+                  0x000622         0x44 build/default/debug/UART.o
  .debug_pubnames
-                  0x000666         0xd1 build/default/production/CB_TX1.o
+                  0x000666         0xd1 build/default/debug/CB_TX1.o
  .debug_pubnames
-                  0x000737         0xbd build/default/production/CB_RX1.o
+                  0x000737         0xbd build/default/debug/CB_RX1.o
  .debug_pubnames
-                  0x0007f4        0x18b build/default/production/UART_Protocol.o
+                  0x0007f4        0x18b build/default/debug/UART_Protocol.o
  .debug_pubnames
-                  0x00097f        0x165 build/default/production/QEI.o
+                  0x00097f        0x165 build/default/debug/QEI.o
  .debug_pubnames
-                  0x000ae4         0xf9 build/default/production/Lidar.o
+                  0x000ae4         0xf9 build/default/debug/Lidar.o
  .debug_pubnames
-                  0x000bdd         0xbd build/default/production/CB_RX2.o
+                  0x000bdd         0xbd build/default/debug/CB_RX2.o
  .debug_pubnames
-                  0x000c9a         0xd3 build/default/production/CB_TX2.o
+                  0x000c9a         0xd3 build/default/debug/CB_TX2.o
  .debug_pubnames
-                  0x000d6d        0x2b8 build/default/production/AsservissementPosition.o
+                  0x000d6d        0x2b8 build/default/debug/AsservissementPosition.o
  .debug_pubnames
-                  0x001025         0xc7 build/default/production/Toolbox.o
+                  0x001025         0xc7 build/default/debug/Toolbox.o
  .debug_pubnames
-                  0x0010ec         0xf8 build/default/production/Telemetre_UltraSons.o
+                  0x0010ec         0xf8 build/default/debug/Telemetre_UltraSons.o
  .debug_pubnames
-                  0x0011e4        0x100 build/default/production/ustv_i2c.o
+                  0x0011e4        0x100 build/default/debug/ustv_i2c.o
  .debug_pubnames
-                  0x0012e4         0x25 build/default/production/oscillator.o
+                  0x0012e4         0x25 build/default/debug/oscillator.o
  .debug_pubnames
-                  0x001309        0x1b7 build/default/production/Servo.o
+                  0x001309        0x1b7 build/default/debug/Servo.o
  .debug_pubnames
-                  0x0014c0         0x20 build/default/production/events.o
+                  0x0014c0         0x20 build/default/debug/events.o
  .debug_pubnames
-                  0x0014e0         0x2b build/default/production/interrupt.o
+                  0x0014e0         0x2b build/default/debug/interrupt.o
  .debug_pubnames
-                  0x00150b         0x7a build/default/production/RobotManagement.o
+                  0x00150b         0x7a build/default/debug/RobotManagement.o
  .debug_pubnames
-                  0x001585         0x39 build/default/production/Robot.o
+                  0x001585         0x39 build/default/debug/Robot.o
  .debug_pubnames
-                  0x0015be        0x15c build/default/production/AsservissementVitesse.o
+                  0x0015be        0x15c build/default/debug/AsservissementVitesse.o
  .debug_pubnames
-                  0x00171a         0x6d build/default/production/Task.o
+                  0x00171a         0x6d build/default/debug/Task.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1243,59 +1284,59 @@ __FUID3
 .debug_aranges    0x000000        0x288
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/production/TaskVidageChateau.o
+                  0x000000         0x18 build/default/debug/TaskVidageChateau.o
  .debug_aranges
-                  0x000018         0x18 build/default/production/TaskFermeturePortes.o
+                  0x000018         0x18 build/default/debug/TaskFermeturePortes.o
  .debug_aranges
-                  0x000030         0x18 build/default/production/TaskAvalageChateau.o
+                  0x000030         0x18 build/default/debug/TaskAvalageChateau.o
  .debug_aranges
-                  0x000048         0x18 build/default/production/TaskPechePoisson.o
+                  0x000048         0x18 build/default/debug/TaskPechePoisson.o
  .debug_aranges
-                  0x000060         0x18 build/default/production/main.o
+                  0x000060         0x18 build/default/debug/main.o
  .debug_aranges
-                  0x000078         0x18 build/default/production/IO.o
+                  0x000078         0x18 build/default/debug/IO.o
  .debug_aranges
-                  0x000090         0x18 build/default/production/timer.o
+                  0x000090         0x18 build/default/debug/timer.o
  .debug_aranges
-                  0x0000a8         0x18 build/default/production/PWM.o
+                  0x0000a8         0x18 build/default/debug/PWM.o
  .debug_aranges
-                  0x0000c0         0x18 build/default/production/UART.o
+                  0x0000c0         0x18 build/default/debug/UART.o
  .debug_aranges
-                  0x0000d8         0x18 build/default/production/CB_TX1.o
+                  0x0000d8         0x18 build/default/debug/CB_TX1.o
  .debug_aranges
-                  0x0000f0         0x18 build/default/production/CB_RX1.o
+                  0x0000f0         0x18 build/default/debug/CB_RX1.o
  .debug_aranges
-                  0x000108         0x18 build/default/production/UART_Protocol.o
+                  0x000108         0x18 build/default/debug/UART_Protocol.o
  .debug_aranges
-                  0x000120         0x18 build/default/production/QEI.o
+                  0x000120         0x18 build/default/debug/QEI.o
  .debug_aranges
-                  0x000138         0x18 build/default/production/Lidar.o
+                  0x000138         0x18 build/default/debug/Lidar.o
  .debug_aranges
-                  0x000150         0x18 build/default/production/CB_RX2.o
+                  0x000150         0x18 build/default/debug/CB_RX2.o
  .debug_aranges
-                  0x000168         0x18 build/default/production/CB_TX2.o
+                  0x000168         0x18 build/default/debug/CB_TX2.o
  .debug_aranges
-                  0x000180         0x18 build/default/production/AsservissementPosition.o
+                  0x000180         0x18 build/default/debug/AsservissementPosition.o
  .debug_aranges
-                  0x000198         0x18 build/default/production/Toolbox.o
+                  0x000198         0x18 build/default/debug/Toolbox.o
  .debug_aranges
-                  0x0001b0         0x18 build/default/production/Telemetre_UltraSons.o
+                  0x0001b0         0x18 build/default/debug/Telemetre_UltraSons.o
  .debug_aranges
-                  0x0001c8         0x18 build/default/production/ustv_i2c.o
+                  0x0001c8         0x18 build/default/debug/ustv_i2c.o
  .debug_aranges
-                  0x0001e0         0x18 build/default/production/oscillator.o
+                  0x0001e0         0x18 build/default/debug/oscillator.o
  .debug_aranges
-                  0x0001f8         0x18 build/default/production/Servo.o
+                  0x0001f8         0x18 build/default/debug/Servo.o
  .debug_aranges
-                  0x000210         0x18 build/default/production/interrupt.o
+                  0x000210         0x18 build/default/debug/interrupt.o
  .debug_aranges
-                  0x000228         0x18 build/default/production/RobotManagement.o
+                  0x000228         0x18 build/default/debug/RobotManagement.o
  .debug_aranges
-                  0x000240         0x18 build/default/production/Robot.o
+                  0x000240         0x18 build/default/debug/Robot.o
  .debug_aranges
-                  0x000258         0x18 build/default/production/AsservissementVitesse.o
+                  0x000258         0x18 build/default/debug/AsservissementVitesse.o
  .debug_aranges
-                  0x000270         0x18 build/default/production/Task.o
+                  0x000270         0x18 build/default/debug/Task.o
 
 .ivt              0x000004         0xfc
                   0x000004          0x4 LONG 0x29a DEFINED (__ReservedTrap0)?ABSOLUTE (__ReservedTrap0):ABSOLUTE (__DefaultInterrupt)
@@ -1309,16 +1350,16 @@ __FUID3
                   0x000014          0x4 LONG 0x29a DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x29a DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x29a DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x1d10 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x1824 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001c          0x4 LONG 0x29a DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x29a DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x29a DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000022          0x4 LONG 0x1f4a DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000024          0x4 LONG 0x2044 DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000022          0x4 LONG 0x1a5e DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000024          0x4 LONG 0x1b58 DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000026          0x4 LONG 0x29a DEFINED (__SPI1ErrInterrupt)?ABSOLUTE (__SPI1ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000028          0x4 LONG 0x29a DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00002a          0x4 LONG 0x3c36 DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00002c          0x4 LONG 0x3d7a DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00002a          0x4 LONG 0x3b9a DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00002c          0x4 LONG 0x3cde DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00002e          0x4 LONG 0x29a DEFINED (__ADC1Interrupt)?ABSOLUTE (__ADC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000030          0x4 LONG 0x29a DEFINED (__DMA1Interrupt)?ABSOLUTE (__DMA1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000032          0x4 LONG 0x29a DEFINED (__Interrupt15)?ABSOLUTE (__Interrupt15):ABSOLUTE (__DefaultInterrupt)
@@ -1333,11 +1374,11 @@ __FUID3
                   0x000044          0x4 LONG 0x29a DEFINED (__DMA2Interrupt)?ABSOLUTE (__DMA2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000046          0x4 LONG 0x29a DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000048          0x4 LONG 0x29a DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00004a          0x4 LONG 0x216e DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00004a          0x4 LONG 0x1c82 DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004c          0x4 LONG 0x29a DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004e          0x4 LONG 0x29a DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000050          0x4 LONG 0x401a DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000052          0x4 LONG 0x3e6e DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000050          0x4 LONG 0x3f7e DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000052          0x4 LONG 0x3dd2 DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000054          0x4 LONG 0x29a DEFINED (__SPI2ErrInterrupt)?ABSOLUTE (__SPI2ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000056          0x4 LONG 0x29a DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000058          0x4 LONG 0x29a DEFINED (__C1RxRdyInterrupt)?ABSOLUTE (__C1RxRdyInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1364,7 +1405,7 @@ __FUID3
                   0x000082          0x4 LONG 0x29a DEFINED (__Interrupt55)?ABSOLUTE (__Interrupt55):ABSOLUTE (__DefaultInterrupt)
                   0x000084          0x4 LONG 0x29a DEFINED (__Interrupt56)?ABSOLUTE (__Interrupt56):ABSOLUTE (__DefaultInterrupt)
                   0x000086          0x4 LONG 0x29a DEFINED (__MPWM1Interrupt)?ABSOLUTE (__MPWM1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000088          0x4 LONG 0x21b8 DEFINED (__QEI1Interrupt)?ABSOLUTE (__QEI1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000088          0x4 LONG 0x211c DEFINED (__QEI1Interrupt)?ABSOLUTE (__QEI1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00008a          0x4 LONG 0x29a DEFINED (__Interrupt59)?ABSOLUTE (__Interrupt59):ABSOLUTE (__DefaultInterrupt)
                   0x00008c          0x4 LONG 0x29a DEFINED (__Interrupt60)?ABSOLUTE (__Interrupt60):ABSOLUTE (__DefaultInterrupt)
                   0x00008e          0x4 LONG 0x29a DEFINED (__DMA5Interrupt)?ABSOLUTE (__DMA5Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1381,7 +1422,7 @@ __FUID3
                   0x0000a4          0x4 LONG 0x29a DEFINED (__Interrupt72)?ABSOLUTE (__Interrupt72):ABSOLUTE (__DefaultInterrupt)
                   0x0000a6          0x4 LONG 0x29a DEFINED (__MPWM2Interrupt)?ABSOLUTE (__MPWM2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000a8          0x4 LONG 0x29a DEFINED (__FLTA2Interrupt)?ABSOLUTE (__FLTA2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000aa          0x4 LONG 0x2212 DEFINED (__QEI2Interrupt)?ABSOLUTE (__QEI2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000aa          0x4 LONG 0x2176 DEFINED (__QEI2Interrupt)?ABSOLUTE (__QEI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000ac          0x4 LONG 0x29a DEFINED (__Interrupt76)?ABSOLUTE (__Interrupt76):ABSOLUTE (__DefaultInterrupt)
                   0x0000ae          0x4 LONG 0x29a DEFINED (__Interrupt77)?ABSOLUTE (__Interrupt77):ABSOLUTE (__DefaultInterrupt)
                   0x0000b0          0x4 LONG 0x29a DEFINED (__DAC1RInterrupt)?ABSOLUTE (__DAC1RInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1437,16 +1478,16 @@ __FUID3
                   0x000114          0x4 LONG 0x29a DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000116          0x4 LONG 0x29a DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000118          0x4 LONG 0x29a DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011a          0x4 LONG 0x1d10 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011a          0x4 LONG 0x1824 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011c          0x4 LONG 0x29a DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011e          0x4 LONG 0x29a DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000120          0x4 LONG 0x29a DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000122          0x4 LONG 0x1f4a DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000124          0x4 LONG 0x2044 DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000122          0x4 LONG 0x1a5e DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000124          0x4 LONG 0x1b58 DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000126          0x4 LONG 0x29a DEFINED (__AltSPI1ErrInterrupt)?ABSOLUTE (__AltSPI1ErrInterrupt):DEFINED (__SPI1ErrInterrupt)?ABSOLUTE (__SPI1ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000128          0x4 LONG 0x29a DEFINED (__AltSPI1Interrupt)?ABSOLUTE (__AltSPI1Interrupt):DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00012a          0x4 LONG 0x3c36 DEFINED (__AltU1RXInterrupt)?ABSOLUTE (__AltU1RXInterrupt):DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00012c          0x4 LONG 0x3d7a DEFINED (__AltU1TXInterrupt)?ABSOLUTE (__AltU1TXInterrupt):DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00012a          0x4 LONG 0x3b9a DEFINED (__AltU1RXInterrupt)?ABSOLUTE (__AltU1RXInterrupt):DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00012c          0x4 LONG 0x3cde DEFINED (__AltU1TXInterrupt)?ABSOLUTE (__AltU1TXInterrupt):DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00012e          0x4 LONG 0x29a DEFINED (__AltADC1Interrupt)?ABSOLUTE (__AltADC1Interrupt):DEFINED (__ADC1Interrupt)?ABSOLUTE (__ADC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000130          0x4 LONG 0x29a DEFINED (__AltDMA1Interrupt)?ABSOLUTE (__AltDMA1Interrupt):DEFINED (__DMA1Interrupt)?ABSOLUTE (__DMA1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000132          0x4 LONG 0x29a DEFINED (__AltInterrupt15)?ABSOLUTE (__AltInterrupt15):DEFINED (__Interrupt15)?ABSOLUTE (__Interrupt15):ABSOLUTE (__DefaultInterrupt)
@@ -1461,11 +1502,11 @@ __FUID3
                   0x000144          0x4 LONG 0x29a DEFINED (__AltDMA2Interrupt)?ABSOLUTE (__AltDMA2Interrupt):DEFINED (__DMA2Interrupt)?ABSOLUTE (__DMA2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000146          0x4 LONG 0x29a DEFINED (__AltOC3Interrupt)?ABSOLUTE (__AltOC3Interrupt):DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000148          0x4 LONG 0x29a DEFINED (__AltOC4Interrupt)?ABSOLUTE (__AltOC4Interrupt):DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00014a          0x4 LONG 0x216e DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00014a          0x4 LONG 0x1c82 DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00014c          0x4 LONG 0x29a DEFINED (__AltT5Interrupt)?ABSOLUTE (__AltT5Interrupt):DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00014e          0x4 LONG 0x29a DEFINED (__AltINT2Interrupt)?ABSOLUTE (__AltINT2Interrupt):DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000150          0x4 LONG 0x401a DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000152          0x4 LONG 0x3e6e DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000150          0x4 LONG 0x3f7e DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000152          0x4 LONG 0x3dd2 DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000154          0x4 LONG 0x29a DEFINED (__AltSPI2ErrInterrupt)?ABSOLUTE (__AltSPI2ErrInterrupt):DEFINED (__SPI2ErrInterrupt)?ABSOLUTE (__SPI2ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000156          0x4 LONG 0x29a DEFINED (__AltSPI2Interrupt)?ABSOLUTE (__AltSPI2Interrupt):DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000158          0x4 LONG 0x29a DEFINED (__AltC1RxRdyInterrupt)?ABSOLUTE (__AltC1RxRdyInterrupt):DEFINED (__C1RxRdyInterrupt)?ABSOLUTE (__C1RxRdyInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1492,7 +1533,7 @@ __FUID3
                   0x000182          0x4 LONG 0x29a DEFINED (__AltInterrupt55)?ABSOLUTE (__AltInterrupt55):DEFINED (__Interrupt55)?ABSOLUTE (__Interrupt55):ABSOLUTE (__DefaultInterrupt)
                   0x000184          0x4 LONG 0x29a DEFINED (__AltInterrupt56)?ABSOLUTE (__AltInterrupt56):DEFINED (__Interrupt56)?ABSOLUTE (__Interrupt56):ABSOLUTE (__DefaultInterrupt)
                   0x000186          0x4 LONG 0x29a DEFINED (__AltMPWM1Interrupt)?ABSOLUTE (__AltMPWM1Interrupt):DEFINED (__MPWM1Interrupt)?ABSOLUTE (__MPWM1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000188          0x4 LONG 0x21b8 DEFINED (__AltQEI1Interrupt)?ABSOLUTE (__AltQEI1Interrupt):DEFINED (__QEI1Interrupt)?ABSOLUTE (__QEI1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000188          0x4 LONG 0x211c DEFINED (__AltQEI1Interrupt)?ABSOLUTE (__AltQEI1Interrupt):DEFINED (__QEI1Interrupt)?ABSOLUTE (__QEI1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00018a          0x4 LONG 0x29a DEFINED (__AltInterrupt59)?ABSOLUTE (__AltInterrupt59):DEFINED (__Interrupt59)?ABSOLUTE (__Interrupt59):ABSOLUTE (__DefaultInterrupt)
                   0x00018c          0x4 LONG 0x29a DEFINED (__AltInterrupt60)?ABSOLUTE (__AltInterrupt60):DEFINED (__Interrupt60)?ABSOLUTE (__Interrupt60):ABSOLUTE (__DefaultInterrupt)
                   0x00018e          0x4 LONG 0x29a DEFINED (__AltDMA5Interrupt)?ABSOLUTE (__AltDMA5Interrupt):DEFINED (__DMA5Interrupt)?ABSOLUTE (__DMA5Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1509,7 +1550,7 @@ __FUID3
                   0x0001a4          0x4 LONG 0x29a DEFINED (__AltInterrupt72)?ABSOLUTE (__AltInterrupt72):DEFINED (__Interrupt72)?ABSOLUTE (__Interrupt72):ABSOLUTE (__DefaultInterrupt)
                   0x0001a6          0x4 LONG 0x29a DEFINED (__AltMPWM2Interrupt)?ABSOLUTE (__AltMPWM2Interrupt):DEFINED (__MPWM2Interrupt)?ABSOLUTE (__MPWM2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0001a8          0x4 LONG 0x29a DEFINED (__AltFLTA2Interrupt)?ABSOLUTE (__AltFLTA2Interrupt):DEFINED (__FLTA2Interrupt)?ABSOLUTE (__FLTA2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0001aa          0x4 LONG 0x2212 DEFINED (__AltQEI2Interrupt)?ABSOLUTE (__AltQEI2Interrupt):DEFINED (__QEI2Interrupt)?ABSOLUTE (__QEI2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0001aa          0x4 LONG 0x2176 DEFINED (__AltQEI2Interrupt)?ABSOLUTE (__AltQEI2Interrupt):DEFINED (__QEI2Interrupt)?ABSOLUTE (__QEI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0001ac          0x4 LONG 0x29a DEFINED (__AltInterrupt76)?ABSOLUTE (__AltInterrupt76):DEFINED (__Interrupt76)?ABSOLUTE (__Interrupt76):ABSOLUTE (__DefaultInterrupt)
                   0x0001ae          0x4 LONG 0x29a DEFINED (__AltInterrupt77)?ABSOLUTE (__AltInterrupt77):DEFINED (__Interrupt77)?ABSOLUTE (__Interrupt77):ABSOLUTE (__DefaultInterrupt)
                   0x0001b0          0x4 LONG 0x29a DEFINED (__AltDAC1RInterrupt)?ABSOLUTE (__AltDAC1RInterrupt):DEFINED (__DAC1RInterrupt)?ABSOLUTE (__DAC1RInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -2664,127 +2705,127 @@ LOAD c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.
 LOAD c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libc-elf.a
 END GROUP
-OUTPUT(dist/default/production/Coupe-IUT-2016-Robot-1A.production.elf elf32-pic30)
+OUTPUT(dist/default/debug/Coupe-IUT-2016-Robot-1A.debug.elf elf32-pic30)
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
                   0x000288        0xe7f
  .debug_pubtypes
-                  0x000288         0x55 build/default/production/TaskVidageChateau.o
+                  0x000288         0x55 build/default/debug/TaskVidageChateau.o
  .debug_pubtypes
-                  0x0002dd         0x55 build/default/production/TaskFermeturePortes.o
+                  0x0002dd         0x55 build/default/debug/TaskFermeturePortes.o
  .debug_pubtypes
-                  0x000332         0x55 build/default/production/TaskAvalageChateau.o
+                  0x000332         0x55 build/default/debug/TaskAvalageChateau.o
  .debug_pubtypes
-                  0x000387         0x55 build/default/production/TaskPechePoisson.o
+                  0x000387         0x55 build/default/debug/TaskPechePoisson.o
  .debug_pubtypes
-                  0x0003dc         0xba build/default/production/main.o
+                  0x0003dc         0xba build/default/debug/main.o
  .debug_pubtypes
-                  0x000496        0x1c1 build/default/production/IO.o
+                  0x000496        0x1c1 build/default/debug/IO.o
  .debug_pubtypes
-                  0x000657        0x14f build/default/production/timer.o
+                  0x000657        0x14f build/default/debug/timer.o
  .debug_pubtypes
-                  0x0007a6        0x10c build/default/production/PWM.o
+                  0x0007a6        0x10c build/default/debug/PWM.o
  .debug_pubtypes
-                  0x0008b2        0x123 build/default/production/UART.o
+                  0x0008b2        0x123 build/default/debug/UART.o
  .debug_pubtypes
-                  0x0009d5         0x2f build/default/production/CB_TX1.o
+                  0x0009d5         0x2f build/default/debug/CB_TX1.o
  .debug_pubtypes
-                  0x000a04         0x4e build/default/production/CB_RX1.o
+                  0x000a04         0x4e build/default/debug/CB_RX1.o
  .debug_pubtypes
-                  0x000a52         0x5f build/default/production/UART_Protocol.o
+                  0x000a52         0x5f build/default/debug/UART_Protocol.o
  .debug_pubtypes
-                  0x000ab1        0x119 build/default/production/QEI.o
+                  0x000ab1        0x119 build/default/debug/QEI.o
  .debug_pubtypes
-                  0x000bca         0x3a build/default/production/Lidar.o
+                  0x000bca         0x3a build/default/debug/Lidar.o
  .debug_pubtypes
-                  0x000c04         0x4e build/default/production/CB_RX2.o
+                  0x000c04         0x4e build/default/debug/CB_RX2.o
  .debug_pubtypes
-                  0x000c52         0x2f build/default/production/CB_TX2.o
+                  0x000c52         0x2f build/default/debug/CB_TX2.o
  .debug_pubtypes
-                  0x000c81         0x5f build/default/production/AsservissementPosition.o
+                  0x000c81         0x5f build/default/debug/AsservissementPosition.o
  .debug_pubtypes
-                  0x000ce0         0x3a build/default/production/Toolbox.o
+                  0x000ce0         0x3a build/default/debug/Toolbox.o
  .debug_pubtypes
-                  0x000d1a         0x5f build/default/production/Telemetre_UltraSons.o
+                  0x000d1a         0x5f build/default/debug/Telemetre_UltraSons.o
  .debug_pubtypes
-                  0x000d79         0xed build/default/production/ustv_i2c.o
+                  0x000d79         0xed build/default/debug/ustv_i2c.o
  .debug_pubtypes
-                  0x000e66         0x54 build/default/production/oscillator.o
+                  0x000e66         0x54 build/default/debug/oscillator.o
  .debug_pubtypes
-                  0x000eba         0x69 build/default/production/Servo.o
+                  0x000eba         0x69 build/default/debug/Servo.o
  .debug_pubtypes
-                  0x000f23         0x37 build/default/production/events.o
+                  0x000f23         0x37 build/default/debug/events.o
  .debug_pubtypes
-                  0x000f5a         0xa3 build/default/production/interrupt.o
+                  0x000f5a         0xa3 build/default/debug/interrupt.o
  .debug_pubtypes
-                  0x000ffd         0x5f build/default/production/RobotManagement.o
+                  0x000ffd         0x5f build/default/debug/RobotManagement.o
  .debug_pubtypes
-                  0x00105c         0x3a build/default/production/Robot.o
+                  0x00105c         0x3a build/default/debug/Robot.o
  .debug_pubtypes
-                  0x001096         0x12 build/default/production/AsservissementVitesse.o
+                  0x001096         0x12 build/default/debug/AsservissementVitesse.o
  .debug_pubtypes
-                  0x0010a8         0x5f build/default/production/Task.o
+                  0x0010a8         0x5f build/default/debug/Task.o
 
 __c30_signature
                   0x001107        0x150
  __c30_signature
-                  0x001107          0x6 build/default/production/TaskVidageChateau.o
+                  0x001107          0x6 build/default/debug/TaskVidageChateau.o
  __c30_signature
-                  0x00110d          0x6 build/default/production/TaskFermeturePortes.o
+                  0x00110d          0x6 build/default/debug/TaskFermeturePortes.o
  __c30_signature
-                  0x001113          0x6 build/default/production/TaskAvalageChateau.o
+                  0x001113          0x6 build/default/debug/TaskAvalageChateau.o
  __c30_signature
-                  0x001119          0x6 build/default/production/TaskPechePoisson.o
+                  0x001119          0x6 build/default/debug/TaskPechePoisson.o
  __c30_signature
-                  0x00111f          0x6 build/default/production/main.o
+                  0x00111f          0x6 build/default/debug/main.o
  __c30_signature
-                  0x001125          0x6 build/default/production/IO.o
+                  0x001125          0x6 build/default/debug/IO.o
  __c30_signature
-                  0x00112b          0x6 build/default/production/timer.o
+                  0x00112b          0x6 build/default/debug/timer.o
  __c30_signature
-                  0x001131          0x6 build/default/production/PWM.o
+                  0x001131          0x6 build/default/debug/PWM.o
  __c30_signature
-                  0x001137          0x6 build/default/production/UART.o
+                  0x001137          0x6 build/default/debug/UART.o
  __c30_signature
-                  0x00113d          0x6 build/default/production/CB_TX1.o
+                  0x00113d          0x6 build/default/debug/CB_TX1.o
  __c30_signature
-                  0x001143          0x6 build/default/production/CB_RX1.o
+                  0x001143          0x6 build/default/debug/CB_RX1.o
  __c30_signature
-                  0x001149          0x6 build/default/production/UART_Protocol.o
+                  0x001149          0x6 build/default/debug/UART_Protocol.o
  __c30_signature
-                  0x00114f          0x6 build/default/production/QEI.o
+                  0x00114f          0x6 build/default/debug/QEI.o
  __c30_signature
-                  0x001155          0x6 build/default/production/Lidar.o
+                  0x001155          0x6 build/default/debug/Lidar.o
  __c30_signature
-                  0x00115b          0x6 build/default/production/CB_RX2.o
+                  0x00115b          0x6 build/default/debug/CB_RX2.o
  __c30_signature
-                  0x001161          0x6 build/default/production/CB_TX2.o
+                  0x001161          0x6 build/default/debug/CB_TX2.o
  __c30_signature
-                  0x001167          0x6 build/default/production/AsservissementPosition.o
+                  0x001167          0x6 build/default/debug/AsservissementPosition.o
  __c30_signature
-                  0x00116d          0x6 build/default/production/Toolbox.o
+                  0x00116d          0x6 build/default/debug/Toolbox.o
  __c30_signature
-                  0x001173          0x6 build/default/production/Telemetre_UltraSons.o
+                  0x001173          0x6 build/default/debug/Telemetre_UltraSons.o
  __c30_signature
-                  0x001179          0x6 build/default/production/ustv_i2c.o
+                  0x001179          0x6 build/default/debug/ustv_i2c.o
  __c30_signature
-                  0x00117f          0x6 build/default/production/oscillator.o
+                  0x00117f          0x6 build/default/debug/oscillator.o
  __c30_signature
-                  0x001185          0x6 build/default/production/Servo.o
+                  0x001185          0x6 build/default/debug/Servo.o
  __c30_signature
-                  0x00118b          0x6 build/default/production/events.o
+                  0x00118b          0x6 build/default/debug/events.o
  __c30_signature
-                  0x001191          0x6 build/default/production/interrupt.o
+                  0x001191          0x6 build/default/debug/interrupt.o
  __c30_signature
-                  0x001197          0x6 build/default/production/RobotManagement.o
+                  0x001197          0x6 build/default/debug/RobotManagement.o
  __c30_signature
-                  0x00119d          0x6 build/default/production/Robot.o
+                  0x00119d          0x6 build/default/debug/Robot.o
  __c30_signature
-                  0x0011a3          0x6 build/default/production/AsservissementVitesse.o
+                  0x0011a3          0x6 build/default/debug/AsservissementVitesse.o
  __c30_signature
-                  0x0011a9          0x6 build/default/production/Task.o
+                  0x0011a9          0x6 build/default/debug/Task.o
  __c30_signature
                   0x0011af          0x6 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
  __c30_signature
@@ -2842,200 +2883,200 @@ __c30_signature
  __c30_signature
                   0x001251          0x6 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(fmodrem.eo)
 
-.nbss               0x0800        0x144
- .nbss              0x0800         0x72 build/default/production/AsservissementPosition.o
-                    0x0800                  _vitesseMoyenne_T1
-                    0x0804                  _vitesseMoyenne
-                    0x0808                  _deltaVitesse_T1
-                    0x080c                  _deltaVitesse
-                    0x0810                  _counter
-                    0x0812                  _consigneDeltaVitesse
-                    0x0816                  _consigneVitesseMoyenne
-                    0x081a                  _deltaAngleDegre
-                    0x081e                  _distanceColineaire
-                    0x0822                  _ea0
-                    0x0826                  _ea1
-                    0x082a                  _ea2
-                    0x082e                  _sa0
-                    0x0832                  _sa1
-                    0x0836                  _sa2
-                    0x083a                  _el0
-                    0x083e                  _el1
-                    0x0842                  _el2
-                    0x0846                  _sl0
-                    0x084a                  _sl1
-                    0x084e                  _sl2
-                    0x0852                  _alpha_a
-                    0x0856                  _beta_a
-                    0x085a                  _delta_a
-                    0x085e                  _alpha_l
-                    0x0862                  _beta_l
-                    0x0866                  _delta_l
- .nbss              0x0872         0x3c build/default/production/AsservissementVitesse.o
-                    0x0872                  _ed0
-                    0x0876                  _ed1
-                    0x087a                  _ed2
-                    0x087e                  _sd0
-                    0x0882                  _sd1
-                    0x0886                  _sd2
-                    0x088a                  _eg0
-                    0x088e                  _eg1
-                    0x0892                  _eg2
-                    0x0896                  _sg0
-                    0x089a                  _sg1
-                    0x089e                  _sg2
-                    0x08a2                  _alpha
-                    0x08a6                  _beta
-                    0x08aa                  _delta
- .nbss              0x08ae         0x24 build/default/production/QEI.o
-                    0x08ae                  _QeiDroitPosMSbytes
-                    0x08b0                  _QeiDroitPosition
-                    0x08b4                  _QeiDroitPosition_T_1
-                    0x08b8                  _QeiGauchePosMSbytes
-                    0x08ba                  _QeiGauchePosition
-                    0x08be                  _QeiGauchePosition_T_1
-                    0x08c2                  _delta_d
-                    0x08c6                  _delta_g
-                    0x08ca                  _delta_theta
-                    0x08ce                  _dx
- .nbss              0x08d2          0xe build/default/production/Lidar.o
-                    0x08d2                  _angleCourant
-                    0x08d4                  _distanceCourante
-                    0x08d6                  _qualityCourante
-                    0x08d8                  _nouveauTour
-                    0x08da                  _i
-                    0x08dc                  _cpt_angle
-                    0x08de                  _flagLidarFrameReady
- .nbss              0x08e0          0xc build/default/production/UART_Protocol.o
-                    0x08e0                  _rx1ReceptionState
-                    0x08e1                  _rx1ReceivedFunction
-                    0x08e2                  _rx1ReceivedPayloadLength
-                    0x08e4                  _rx1ReceivedPayloadIndex
-                    0x08e5                  _rx2ReceptionState
-                    0x08e6                  _rx2ReceivedFunction
-                    0x08e8                  _rx2ReceivedPayloadLength
-                    0x08ea                  _rx2ReceivedPayloadIndex
- .nbss              0x08ec          0xc build/default/production/Servo.o
-                    0x08ec                  _countServo
-                    0x08ee                  _consigneServo1
-                    0x08f0                  _consigneServo2
-                    0x08f2                  _consigneServo3
-                    0x08f4                  _consigneServo4
-                    0x08f6                  _consigneServo5
- .nbss              0x08f8          0xa build/default/production/main.o
-                    0x08f8                  _stateRobot
-                    0x08f9                  _nextStateRobot
-                    0x08fa                  _robotAutoControlActivated
-                    0x08fb                  _consigneVitesseMoteurDroit
-                    0x08fc                  _consigneVitesseMoteurGauche
-                    0x08fd                  _autoControlActivated
-                    0x08fe                  _timestampStateStart
- .nbss              0x0902          0xa build/default/production/timer.o
-                    0x0902                  _consignePWM
-                    0x0904                  _timestamp
-                    0x0908                  _countTimer2
-                    0x090a                  _countT2
- .nbss              0x090c          0x8 build/default/production/PWM.o
-                    0x090c                  _timestampSansCollisionDroit
-                    0x0910                  _timestampSansCollisionGauche
- .nbss              0x0914          0x6 build/default/production/TaskVidageChateau.o
-                    0x0914                  _taskVidageChateau
-                    0x0918                  _allerRetourCounter
- .nbss              0x091a          0x6 build/default/production/TaskAvalageChateau.o
-                    0x091a                  _taskAvalageChateau
-                    0x091e                  _nbAllerRetour
-                    0x091f                  _nbTourne
- .nbss              0x0920          0x6 build/default/production/TaskPechePoisson.o
-                    0x0920                  _taskPechePoisson
-                    0x0924                  _counterTimes
- .nbss              0x0926          0x6 build/default/production/CB_TX1.o
-                    0x0926                  _cbTx1Tail
-                    0x0928                  _cbTx1Head
-                    0x092a                  _isTransmitting
- .nbss              0x092c          0x6 build/default/production/CB_TX2.o
-                    0x092c                  _cbTx2Head
-                    0x092e                  _cbTx2Tail
-                    0x0930                  _isTransmitting2
- .nbss              0x0932          0x6 build/default/production/Telemetre_UltraSons.o
-                    0x0932                  _seuilDetectionTelemetreCentre
-                    0x0934                  _seuilDetectionTelemetreDroit
-                    0x0936                  _seuilDetectionTelemetreGauche
- .nbss              0x0938          0x4 build/default/production/TaskFermeturePortes.o
-                    0x0938                  _taskFermeturePortes
- .nbss              0x093c          0x4 build/default/production/CB_RX1.o
-                    0x093c                  _cbRx1Head
-                    0x093e                  _cbRx1Tail
- .nbss              0x0940          0x4 build/default/production/CB_RX2.o
-                    0x0940                  _cbRX2Head
-                    0x0942                  _cbRX2Tail
+.nbss               0x0850        0x144
+ .nbss              0x0850         0x72 build/default/debug/AsservissementPosition.o
+                    0x0850                  _vitesseMoyenne_T1
+                    0x0854                  _vitesseMoyenne
+                    0x0858                  _deltaVitesse_T1
+                    0x085c                  _deltaVitesse
+                    0x0860                  _counter
+                    0x0862                  _consigneDeltaVitesse
+                    0x0866                  _consigneVitesseMoyenne
+                    0x086a                  _deltaAngleDegre
+                    0x086e                  _distanceColineaire
+                    0x0872                  _ea0
+                    0x0876                  _ea1
+                    0x087a                  _ea2
+                    0x087e                  _sa0
+                    0x0882                  _sa1
+                    0x0886                  _sa2
+                    0x088a                  _el0
+                    0x088e                  _el1
+                    0x0892                  _el2
+                    0x0896                  _sl0
+                    0x089a                  _sl1
+                    0x089e                  _sl2
+                    0x08a2                  _alpha_a
+                    0x08a6                  _beta_a
+                    0x08aa                  _delta_a
+                    0x08ae                  _alpha_l
+                    0x08b2                  _beta_l
+                    0x08b6                  _delta_l
+ .nbss              0x08c2         0x3c build/default/debug/AsservissementVitesse.o
+                    0x08c2                  _ed0
+                    0x08c6                  _ed1
+                    0x08ca                  _ed2
+                    0x08ce                  _sd0
+                    0x08d2                  _sd1
+                    0x08d6                  _sd2
+                    0x08da                  _eg0
+                    0x08de                  _eg1
+                    0x08e2                  _eg2
+                    0x08e6                  _sg0
+                    0x08ea                  _sg1
+                    0x08ee                  _sg2
+                    0x08f2                  _alpha
+                    0x08f6                  _beta
+                    0x08fa                  _delta
+ .nbss              0x08fe         0x24 build/default/debug/QEI.o
+                    0x08fe                  _QeiDroitPosMSbytes
+                    0x0900                  _QeiDroitPosition
+                    0x0904                  _QeiDroitPosition_T_1
+                    0x0908                  _QeiGauchePosMSbytes
+                    0x090a                  _QeiGauchePosition
+                    0x090e                  _QeiGauchePosition_T_1
+                    0x0912                  _delta_d
+                    0x0916                  _delta_g
+                    0x091a                  _delta_theta
+                    0x091e                  _dx
+ .nbss              0x0922          0xe build/default/debug/Lidar.o
+                    0x0922                  _angleCourant
+                    0x0924                  _distanceCourante
+                    0x0926                  _qualityCourante
+                    0x0928                  _nouveauTour
+                    0x092a                  _i
+                    0x092c                  _cpt_angle
+                    0x092e                  _flagLidarFrameReady
+ .nbss              0x0930          0xc build/default/debug/UART_Protocol.o
+                    0x0930                  _rx1ReceptionState
+                    0x0931                  _rx1ReceivedFunction
+                    0x0932                  _rx1ReceivedPayloadLength
+                    0x0934                  _rx1ReceivedPayloadIndex
+                    0x0935                  _rx2ReceptionState
+                    0x0936                  _rx2ReceivedFunction
+                    0x0938                  _rx2ReceivedPayloadLength
+                    0x093a                  _rx2ReceivedPayloadIndex
+ .nbss              0x093c          0xc build/default/debug/Servo.o
+                    0x093c                  _countServo
+                    0x093e                  _consigneServo1
+                    0x0940                  _consigneServo2
+                    0x0942                  _consigneServo3
+                    0x0944                  _consigneServo4
+                    0x0946                  _consigneServo5
+ .nbss              0x0948          0xa build/default/debug/main.o
+                    0x0948                  _stateRobot
+                    0x0949                  _nextStateRobot
+                    0x094a                  _robotAutoControlActivated
+                    0x094b                  _consigneVitesseMoteurDroit
+                    0x094c                  _consigneVitesseMoteurGauche
+                    0x094d                  _autoControlActivated
+                    0x094e                  _timestampStateStart
+ .nbss              0x0952          0xa build/default/debug/timer.o
+                    0x0952                  _consignePWM
+                    0x0954                  _timestamp
+                    0x0958                  _countTimer2
+                    0x095a                  _countT2
+ .nbss              0x095c          0x8 build/default/debug/PWM.o
+                    0x095c                  _timestampSansCollisionDroit
+                    0x0960                  _timestampSansCollisionGauche
+ .nbss              0x0964          0x6 build/default/debug/TaskVidageChateau.o
+                    0x0964                  _taskVidageChateau
+                    0x0968                  _allerRetourCounter
+ .nbss              0x096a          0x6 build/default/debug/TaskAvalageChateau.o
+                    0x096a                  _taskAvalageChateau
+                    0x096e                  _nbAllerRetour
+                    0x096f                  _nbTourne
+ .nbss              0x0970          0x6 build/default/debug/TaskPechePoisson.o
+                    0x0970                  _taskPechePoisson
+                    0x0974                  _counterTimes
+ .nbss              0x0976          0x6 build/default/debug/CB_TX1.o
+                    0x0976                  _cbTx1Tail
+                    0x0978                  _cbTx1Head
+                    0x097a                  _isTransmitting
+ .nbss              0x097c          0x6 build/default/debug/CB_TX2.o
+                    0x097c                  _cbTx2Head
+                    0x097e                  _cbTx2Tail
+                    0x0980                  _isTransmitting2
+ .nbss              0x0982          0x6 build/default/debug/Telemetre_UltraSons.o
+                    0x0982                  _seuilDetectionTelemetreCentre
+                    0x0984                  _seuilDetectionTelemetreDroit
+                    0x0986                  _seuilDetectionTelemetreGauche
+ .nbss              0x0988          0x4 build/default/debug/TaskFermeturePortes.o
+                    0x0988                  _taskFermeturePortes
+ .nbss              0x098c          0x4 build/default/debug/CB_RX1.o
+                    0x098c                  _cbRx1Head
+                    0x098e                  _cbRx1Tail
+ .nbss              0x0990          0x4 build/default/debug/CB_RX2.o
+                    0x0990                  _cbRX2Head
+                    0x0992                  _cbRX2Tail
 
-.ndata              0x0944          0x4
- .ndata             0x0944          0x4 build/default/production/AsservissementPosition.o
-                    0x0944                  _KpDistance
+.ndata              0x0994          0x4
+ .ndata             0x0994          0x4 build/default/debug/AsservissementPosition.o
+                    0x0994                  _KpDistance
 
-.nbss               0x0948          0x8
- .nbss              0x0948          0x4 build/default/production/ustv_i2c.o
-                    0x0948                  _I2CAntiBlockCounter
-                    0x094a                  _I2CCrash
- .nbss              0x094c          0x4 build/default/production/events.o
-                    0x094c                  _sysEvents
+.nbss               0x0998          0x8
+ .nbss              0x0998          0x4 build/default/debug/ustv_i2c.o
+                    0x0998                  _I2CAntiBlockCounter
+                    0x099a                  _I2CCrash
+ .nbss              0x099c          0x4 build/default/debug/events.o
+                    0x099c                  _sysEvents
 
-.ndata              0x0950          0x6
- .ndata             0x0950          0x4 build/default/production/AsservissementVitesse.o
-                    0x0950                  _Te
- .ndata             0x0954          0x2 build/default/production/Lidar.o
-                    0x0954                  _DecodeState
+.ndata              0x09a0          0x6
+ .ndata             0x09a0          0x4 build/default/debug/AsservissementVitesse.o
+                    0x09a0                  _Te
+ .ndata             0x09a4          0x2 build/default/debug/Lidar.o
+                    0x09a4                  _DecodeState
 
-.nbss               0x0956          0x2
- .nbss              0x0956          0x2 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(errno.eo)
-                    0x0956                  _errno
+.nbss               0x09a6          0x2
+ .nbss              0x09a6          0x2 c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libm-elf.a(errno.eo)
+                    0x09a6                  _errno
 
-.bss                0x0958        0x75c
- .bss               0x0958        0x258 build/default/production/Lidar.o
-                    0x0958                  _DistanceTable
-                    0x09ee                  _DistanceTableToSend
-                    0x0a84                  _ListAngle
-                    0x0b1a                  _ListDistance
- .bss               0x0bb0        0x100 build/default/production/CB_TX1.o
-                    0x0bb0                  _cbTx1Buffer
- .bss               0x0cb0        0x100 build/default/production/UART_Protocol.o
-                    0x0cb0                  _rx1ReceivedPayload
-                    0x0d30                  _rx2ReceivedPayload
- .bss               0x0db0        0x100 build/default/production/CB_RX2.o
-                    0x0db0                  _cbRx2Buffer
- .bss               0x0eb0        0x100 build/default/production/CB_TX2.o
-                    0x0eb0                  _cbTx2Buffer
- .bss               0x0fb0         0x80 build/default/production/CB_RX1.o
-                    0x0fb0                  _cbRx1Buffer
- .bss               0x1030         0x7e build/default/production/Robot.o
-                    0x1030                  _robotState
- .bss               0x10ae          0x6 build/default/production/main.o
-                    0x10ae                  _valeursTelemetres
-                    0x10b1                  _valeursMoteurs
+.bss                0x09a8        0x75c
+ .bss               0x09a8        0x258 build/default/debug/Lidar.o
+                    0x09a8                  _DistanceTable
+                    0x0a3e                  _DistanceTableToSend
+                    0x0ad4                  _ListAngle
+                    0x0b6a                  _ListDistance
+ .bss               0x0c00        0x100 build/default/debug/CB_TX1.o
+                    0x0c00                  _cbTx1Buffer
+ .bss               0x0d00        0x100 build/default/debug/UART_Protocol.o
+                    0x0d00                  _rx1ReceivedPayload
+                    0x0d80                  _rx2ReceivedPayload
+ .bss               0x0e00        0x100 build/default/debug/CB_RX2.o
+                    0x0e00                  _cbRx2Buffer
+ .bss               0x0f00        0x100 build/default/debug/CB_TX2.o
+                    0x0f00                  _cbTx2Buffer
+ .bss               0x1000         0x80 build/default/debug/CB_RX1.o
+                    0x1000                  _cbRx1Buffer
+ .bss               0x1080         0x7e build/default/debug/Robot.o
+                    0x1080                  _robotState
+ .bss               0x10fe          0x6 build/default/debug/main.o
+                    0x10fe                  _valeursTelemetres
+                    0x1101                  _valeursMoteurs
 
 .config_JTAGEN    0xf8000e          0x2
  .config_JTAGEN
-                  0xf8000e          0x2 build/default/production/main.o
+                  0xf8000e          0x2 build/default/debug/main.o
 
 .config_PWMPIN    0xf8000c          0x2
  .config_PWMPIN
-                  0xf8000c          0x2 build/default/production/main.o
+                  0xf8000c          0x2 build/default/debug/main.o
 
 .config_FWDTEN    0xf8000a          0x2
  .config_FWDTEN
-                  0xf8000a          0x2 build/default/production/main.o
+                  0xf8000a          0x2 build/default/debug/main.o
 
 .config_FCKSM     0xf80008          0x2
- .config_FCKSM    0xf80008          0x2 build/default/production/main.o
+ .config_FCKSM    0xf80008          0x2 build/default/debug/main.o
 
 .config_IESO      0xf80006          0x2
- .config_IESO     0xf80006          0x2 build/default/production/main.o
+ .config_IESO     0xf80006          0x2 build/default/debug/main.o
 
 .config_GSS       0xf80004          0x2
- .config_GSS      0xf80004          0x2 build/default/production/main.o
+ .config_GSS      0xf80004          0x2 build/default/debug/main.o
 
-.text             0x000914       0x3850
- .text            0x000914        0x850 build/default/production/AsservissementPosition.o
+.text             0x000914       0x37b4
+ .text            0x000914        0x850 build/default/debug/AsservissementPosition.o
                   0x000914                  _AsservissementPosition
                   0x000bde                  _AsservissementAngle
                   0x000cb4                  _SendTelemetrieAsservissementAngulaire
@@ -3046,180 +3087,180 @@ __c30_signature
                   0x000fda                  _SetUpPAsservissementLineaire
                   0x001054                  _SetUpPiAsservissementLineaire
                   0x0010ec                  _CorrecteurLineaire
- .text            0x001164        0x6a6 build/default/production/PWM.o
+ .text            0x001164        0x6a6 build/default/debug/PWM.o
                   0x001164                  _InitPWM
                   0x0011a0                  _PWMSetSpeedConsigne
                   0x0011fa                  _PWMUpdateSpeed
                   0x0016b6                  _SendTelemetrieAsservissementVitesse
- .text            0x00180a        0x4ec build/default/production/main.o
-                  0x00180a                  _main
-                  0x0019ae                  _SystemStateMachine
-                  0x001bba                  _SetNextRobotStateInAutomaticMode
-                  0x001c56                  _SendState
-                  0x001cca                  _SetRobotAutoControlState
-                  0x001cea                  _SetRobotState
- .text            0x001cf6        0x496 build/default/production/timer.o
-                  0x001cf6                  _InitTimer1
-                  0x001d10                  __T1Interrupt
-                  0x001d84                  _SetFreqTimer1
-                  0x001e5a                  _InitTimer2
-                  0x001e74                  _SetFreqTimer2
-                  0x001f4a                  __T2Interrupt
-                  0x001f54                  _InitTimer3
-                  0x001f6e                  _SetFreqTimer3
-                  0x002044                  __T3Interrupt
-                  0x00207e                  _InitTimer4
-                  0x002098                  _SetFreqTimer4
-                  0x00216e                  __T4Interrupt
- .text            0x00218c        0x43e build/default/production/QEI.o
-                  0x00218c                  _InitQEI1
-                  0x0021b8                  __QEI1Interrupt
-                  0x0021dc                  _InitQEI2
-                  0x002212                  __QEI2Interrupt
-                  0x002236                  _QEIUpdateData
-                  0x002482                  _QEIReset
-                  0x002490                  _QEISetPosition
-                  0x0024dc                  _SendQeiData
-                  0x00255e                  _SendPositionData
- .text            0x0025ca        0x424 build/default/production/UART_Protocol.o
-                  0x0025ca                  _Uart1EncodeAndSendMessage
-                  0x002680                  _Uart1DecodeMessage
-                  0x002760                  _Uart2DecodeMessage
-                  0x002840                  _UartCalculateChecksum
-                  0x002894                  _UartProcessMessage
- .text            0x0029ee        0x28a build/default/production/ustv_i2c.o
-                  0x0029ee                  _InitI2C1
-                  0x002a28                  _I2C1ReadN
-                  0x002ae0                  _I2C1Write1
-                  0x002b42                  _putI2C1
-                  0x002b8c                  _getI2C1
-                  0x002bfc                  _IncrementI2CAntiBlockCounter
-                  0x002c08                  _ResetI2CAntiBlockCounter
-                  0x002c10                  _SetI2CCrash
-                  0x002c1a                  _ResetI2CCrash
-                  0x002c22                  _IsI2CCrashed
-                  0x002c2a                  _IdleI2C1Antiblock
- .text            0x002c78        0x240 build/default/production/Toolbox.o
-                  0x002c78                  _ModuloAngleDegre
-                  0x002cc6                  _Abs
-                  0x002cec                  _Max
-                  0x002d18                  _Min
-                  0x002d44                  _Recule
-                  0x002d8e                  _Modulo2PIAngleRadian
-                  0x002ddc                  _ModuloPIAngleRadian
-                  0x002e2a                  _Limiteur
-                  0x002e76                  _RadianToDegree
-                  0x002e8c                  _DegreeToRadian
-                  0x002ea2                  _RadianToMmInRotation
- .text            0x002eb8        0x23c build/default/production/TaskPechePoisson.o
-                  0x002eb8                  _TaskPechePoissonInit
-                  0x002ec6                  _TaskPechePoissonIsFinished
-                  0x002edc                  _TaskPechePoissonStart
-                  0x002eee                  _TaskPechePoisson
-                  0x0030e0                  _BaisseBras
-                  0x0030ea                  _MonteBras
- .text            0x0030f4        0x23a build/default/production/AsservissementVitesse.o
-                  0x0030f4                  _SetUpPidAsservissementVitesseMoteur
-                  0x0031a0                  _SetUpPAsservissementVitesseMoteur
-                  0x00321a                  _CorrecteurVitesseDroit
-                  0x003292                  _CorrecteurVitesseGauche
-                  0x00330a                  _ResetCorrecteurVitesseGauche
-                  0x00331c                  _ResetCorrecteurVitesseDroit
- .text            0x00332e        0x1cc build/default/production/Telemetre_UltraSons.o
-                  0x00332e                  _InitTelemetres
-                  0x003364                  _SetUpAddressTelemetre
-                  0x00338c                  _StartNewUltrasonicMeasure
-                  0x003442                  _SendUltrasonicMeasure
-                  0x0034e8                  _InitSeuilDetectionSRF08
- .text            0x0034fa        0x184 build/default/production/TaskAvalageChateau.o
-                  0x0034fa                  _TaskAvalageChateauInit
-                  0x003508                  _TaskAvalageChateauIsFinished
-                  0x00351c                  _TaskAvalageChateauStart
-                  0x003536                  _TaskAvalageChateau
- .text            0x00367e        0x178 build/default/production/Servo.o
-                  0x00367e                  _ManageServos
-                  0x0036cc                  _SetConsigneServoCreveBallon
-                  0x0036e4                  _SetConsigneServoBrasGauche
-                  0x003710                  _SetConsigneServoBrasDroit
-                  0x00373c                  _SetConsigneServoBras
-                  0x003748                  _SetConsigneServoBrasInactif
-                  0x003754                  _SetConsigneServoPinceGauche
-                  0x003780                  _SetConsigneServoPinceDroit
-                  0x0037ac                  _SetConsigneServoPince
-                  0x0037b8                  _SetConsigneServoPinceInactif
-                  0x0037c4                  _SetConsigneServo5
- .text            0x0037f6        0x16e build/default/production/TaskVidageChateau.o
-                  0x0037f6                  _TaskVidageChateauInit
-                  0x003804                  _TaskVidageChateauStart
-                  0x003818                  _TaskVidageChateauIsFinished
-                  0x00382c                  _TaskVidageChateau
- .text            0x003964        0x148 build/default/production/TaskFermeturePortes.o
-                  0x003964                  _TaskFermeturePortesInit
-                  0x003972                  _TaskFermeturePortesStart
-                  0x003984                  _TaskFermeturePortesIsFinished
-                  0x00399a                  _TaskFermeturePortes
- .text            0x003aac        0x126 build/default/production/Lidar.o
-                  0x003aac                  _DecodeIrRangeFinder
- .text            0x003bd2        0x11e build/default/production/CB_RX1.o
-                  0x003bd2                  _CB_RX1_Add
-                  0x003bfa                  _CB_RX1_Get
-                  0x003c22                  _CB_RX1_IsDataAvailable
-                  0x003c36                  __U1RXInterrupt
-                  0x003c82                  _CB_RX1_GetRemainingSize
-                  0x003cb8                  _CB_RX1_GetDataSize
- .text            0x003cf0        0x104 build/default/production/CB_TX1.o
-                  0x003cf0                  _SendMessage
-                  0x003d28                  _CB_TX1_Add
-                  0x003d50                  _CB_TX1_Get
-                  0x003d7a                  __U1TXInterrupt
-                  0x003dac                  _SendOne
-                  0x003dbe                  _CB_TX1_IsTransmitting
-                  0x003dc6                  _CB_TX1_RemainingSize
- .text            0x003df4         0xea build/default/production/CB_TX2.o
-                  0x003df4                  _SendMessage2
-                  0x003e2c                  _CB_TX2_Add
-                  0x003e4e                  _CB_TX2_Get
-                  0x003e6e                  __U2TXInterrupt
-                  0x003ea0                  _SendOne2
-                  0x003eb2                  _CB_TX2_IsTranmitting
-                  0x003eba                  _CB_TX2_RemainingSize
- .text            0x003ede         0xe0 build/default/production/IO.o
-                  0x003ede                  _InitIO
-                  0x003f9a                  _LockIO
-                  0x003fac                  _UnlockIO
- .text            0x003fbe         0xd8 build/default/production/CB_RX2.o
-                  0x003fbe                  _CB_RX2_Add
-                  0x003fe6                  _CB_RX2_Get
-                  0x004006                  _CB_RX2_IsDataAvailable
-                  0x00401a                  __U2RXInterrupt
-                  0x004068                  _CB_RX2_GetRemainingSize
-                  0x00408a                  _CB_RX2_GetDataSize
- .text            0x004096         0xce build/default/production/UART.o
-                  0x004096                  _InitUART1
-                  0x0040dc                  _SendMessageDirect
-                  0x004114                  _InitUART2
+ .text            0x00180a        0x496 build/default/debug/timer.o
+                  0x00180a                  _InitTimer1
+                  0x001824                  __T1Interrupt
+                  0x001898                  _SetFreqTimer1
+                  0x00196e                  _InitTimer2
+                  0x001988                  _SetFreqTimer2
+                  0x001a5e                  __T2Interrupt
+                  0x001a68                  _InitTimer3
+                  0x001a82                  _SetFreqTimer3
+                  0x001b58                  __T3Interrupt
+                  0x001b92                  _InitTimer4
+                  0x001bac                  _SetFreqTimer4
+                  0x001c82                  __T4Interrupt
+ .text            0x001ca0        0x450 build/default/debug/main.o
+                  0x001ca0                  _main
+                  0x001da8                  _SystemStateMachine
+                  0x001fb4                  _SetNextRobotStateInAutomaticMode
+                  0x002050                  _SendState
+                  0x0020c4                  _SetRobotAutoControlState
+                  0x0020e4                  _SetRobotState
+ .text            0x0020f0        0x43e build/default/debug/QEI.o
+                  0x0020f0                  _InitQEI1
+                  0x00211c                  __QEI1Interrupt
+                  0x002140                  _InitQEI2
+                  0x002176                  __QEI2Interrupt
+                  0x00219a                  _QEIUpdateData
+                  0x0023e6                  _QEIReset
+                  0x0023f4                  _QEISetPosition
+                  0x002440                  _SendQeiData
+                  0x0024c2                  _SendPositionData
+ .text            0x00252e        0x424 build/default/debug/UART_Protocol.o
+                  0x00252e                  _Uart1EncodeAndSendMessage
+                  0x0025e4                  _Uart1DecodeMessage
+                  0x0026c4                  _Uart2DecodeMessage
+                  0x0027a4                  _UartCalculateChecksum
+                  0x0027f8                  _UartProcessMessage
+ .text            0x002952        0x28a build/default/debug/ustv_i2c.o
+                  0x002952                  _InitI2C1
+                  0x00298c                  _I2C1ReadN
+                  0x002a44                  _I2C1Write1
+                  0x002aa6                  _putI2C1
+                  0x002af0                  _getI2C1
+                  0x002b60                  _IncrementI2CAntiBlockCounter
+                  0x002b6c                  _ResetI2CAntiBlockCounter
+                  0x002b74                  _SetI2CCrash
+                  0x002b7e                  _ResetI2CCrash
+                  0x002b86                  _IsI2CCrashed
+                  0x002b8e                  _IdleI2C1Antiblock
+ .text            0x002bdc        0x240 build/default/debug/Toolbox.o
+                  0x002bdc                  _ModuloAngleDegre
+                  0x002c2a                  _Abs
+                  0x002c50                  _Max
+                  0x002c7c                  _Min
+                  0x002ca8                  _Recule
+                  0x002cf2                  _Modulo2PIAngleRadian
+                  0x002d40                  _ModuloPIAngleRadian
+                  0x002d8e                  _Limiteur
+                  0x002dda                  _RadianToDegree
+                  0x002df0                  _DegreeToRadian
+                  0x002e06                  _RadianToMmInRotation
+ .text            0x002e1c        0x23c build/default/debug/TaskPechePoisson.o
+                  0x002e1c                  _TaskPechePoissonInit
+                  0x002e2a                  _TaskPechePoissonIsFinished
+                  0x002e40                  _TaskPechePoissonStart
+                  0x002e52                  _TaskPechePoisson
+                  0x003044                  _BaisseBras
+                  0x00304e                  _MonteBras
+ .text            0x003058        0x23a build/default/debug/AsservissementVitesse.o
+                  0x003058                  _SetUpPidAsservissementVitesseMoteur
+                  0x003104                  _SetUpPAsservissementVitesseMoteur
+                  0x00317e                  _CorrecteurVitesseDroit
+                  0x0031f6                  _CorrecteurVitesseGauche
+                  0x00326e                  _ResetCorrecteurVitesseGauche
+                  0x003280                  _ResetCorrecteurVitesseDroit
+ .text            0x003292        0x1cc build/default/debug/Telemetre_UltraSons.o
+                  0x003292                  _InitTelemetres
+                  0x0032c8                  _SetUpAddressTelemetre
+                  0x0032f0                  _StartNewUltrasonicMeasure
+                  0x0033a6                  _SendUltrasonicMeasure
+                  0x00344c                  _InitSeuilDetectionSRF08
+ .text            0x00345e        0x184 build/default/debug/TaskAvalageChateau.o
+                  0x00345e                  _TaskAvalageChateauInit
+                  0x00346c                  _TaskAvalageChateauIsFinished
+                  0x003480                  _TaskAvalageChateauStart
+                  0x00349a                  _TaskAvalageChateau
+ .text            0x0035e2        0x178 build/default/debug/Servo.o
+                  0x0035e2                  _ManageServos
+                  0x003630                  _SetConsigneServoCreveBallon
+                  0x003648                  _SetConsigneServoBrasGauche
+                  0x003674                  _SetConsigneServoBrasDroit
+                  0x0036a0                  _SetConsigneServoBras
+                  0x0036ac                  _SetConsigneServoBrasInactif
+                  0x0036b8                  _SetConsigneServoPinceGauche
+                  0x0036e4                  _SetConsigneServoPinceDroit
+                  0x003710                  _SetConsigneServoPince
+                  0x00371c                  _SetConsigneServoPinceInactif
+                  0x003728                  _SetConsigneServo5
+ .text            0x00375a        0x16e build/default/debug/TaskVidageChateau.o
+                  0x00375a                  _TaskVidageChateauInit
+                  0x003768                  _TaskVidageChateauStart
+                  0x00377c                  _TaskVidageChateauIsFinished
+                  0x003790                  _TaskVidageChateau
+ .text            0x0038c8        0x148 build/default/debug/TaskFermeturePortes.o
+                  0x0038c8                  _TaskFermeturePortesInit
+                  0x0038d6                  _TaskFermeturePortesStart
+                  0x0038e8                  _TaskFermeturePortesIsFinished
+                  0x0038fe                  _TaskFermeturePortes
+ .text            0x003a10        0x126 build/default/debug/Lidar.o
+                  0x003a10                  _DecodeIrRangeFinder
+ .text            0x003b36        0x11e build/default/debug/CB_RX1.o
+                  0x003b36                  _CB_RX1_Add
+                  0x003b5e                  _CB_RX1_Get
+                  0x003b86                  _CB_RX1_IsDataAvailable
+                  0x003b9a                  __U1RXInterrupt
+                  0x003be6                  _CB_RX1_GetRemainingSize
+                  0x003c1c                  _CB_RX1_GetDataSize
+ .text            0x003c54        0x104 build/default/debug/CB_TX1.o
+                  0x003c54                  _SendMessage
+                  0x003c8c                  _CB_TX1_Add
+                  0x003cb4                  _CB_TX1_Get
+                  0x003cde                  __U1TXInterrupt
+                  0x003d10                  _SendOne
+                  0x003d22                  _CB_TX1_IsTransmitting
+                  0x003d2a                  _CB_TX1_RemainingSize
+ .text            0x003d58         0xea build/default/debug/CB_TX2.o
+                  0x003d58                  _SendMessage2
+                  0x003d90                  _CB_TX2_Add
+                  0x003db2                  _CB_TX2_Get
+                  0x003dd2                  __U2TXInterrupt
+                  0x003e04                  _SendOne2
+                  0x003e16                  _CB_TX2_IsTranmitting
+                  0x003e1e                  _CB_TX2_RemainingSize
+ .text            0x003e42         0xe0 build/default/debug/IO.o
+                  0x003e42                  _InitIO
+                  0x003efe                  _LockIO
+                  0x003f10                  _UnlockIO
+ .text            0x003f22         0xd8 build/default/debug/CB_RX2.o
+                  0x003f22                  _CB_RX2_Add
+                  0x003f4a                  _CB_RX2_Get
+                  0x003f6a                  _CB_RX2_IsDataAvailable
+                  0x003f7e                  __U2RXInterrupt
+                  0x003fcc                  _CB_RX2_GetRemainingSize
+                  0x003fee                  _CB_RX2_GetDataSize
+ .text            0x003ffa         0xce build/default/debug/UART.o
+                  0x003ffa                  _InitUART1
+                  0x004040                  _SendMessageDirect
+                  0x004078                  _InitUART2
 
-.dinit            0x004164         0xcc
- .dinit           0x004164         0xcc data_init
+.dinit            0x0040c8         0xcc
+ .dinit           0x0040c8         0xcc data_init
 
-.text             0x004230        0x234
- .text            0x004230         0xac build/default/production/Task.o
-                  0x004230                  _StartMove
-                  0x004266                  _StartTempo
-                  0x00427e                  _IsCurrentMoveFinishedGoToState
-                  0x0042b2                  _IsCurrentTempoFinished
- .text            0x0042dc         0x8a build/default/production/RobotManagement.o
-                  0x0042dc                  _SetRobotTargetPosition
-                  0x0042fa                  _SetRobotTargetAngle
-                  0x004316                  _SetRobotVitesseAsservie
-                  0x00433e                  _SetRobotVitesseLibre
- .text            0x004366         0x6a build/default/production/Robot.o
-                  0x004366                  _EnvoiAngleInterface
- .text            0x0043d0         0x52 build/default/production/oscillator.o
-                  0x0043d0                  _InitOscillator
- .text            0x004422         0x42 build/default/production/interrupt.o
-                  0x004422                  _SetInterruptPriority
+.text             0x004194        0x234
+ .text            0x004194         0xac build/default/debug/Task.o
+                  0x004194                  _StartMove
+                  0x0041ca                  _StartTempo
+                  0x0041e2                  _IsCurrentMoveFinishedGoToState
+                  0x004216                  _IsCurrentTempoFinished
+ .text            0x004240         0x8a build/default/debug/RobotManagement.o
+                  0x004240                  _SetRobotTargetPosition
+                  0x00425e                  _SetRobotTargetAngle
+                  0x00427a                  _SetRobotVitesseAsservie
+                  0x0042a2                  _SetRobotVitesseLibre
+ .text            0x0042ca         0x6a build/default/debug/Robot.o
+                  0x0042ca                  _EnvoiAngleInterface
+ .text            0x004334         0x52 build/default/debug/oscillator.o
+                  0x004334                  _InitOscillator
+ .text            0x004386         0x42 build/default/debug/interrupt.o
+                  0x004386                  _SetInterruptPriority
 
-.init.delay32     0x004464         0x1c
- .init.delay32    0x004464         0x1c c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
-                  0x004464                  ___delay32
+.init.delay32     0x0043c8         0x1c
+ .init.delay32    0x0043c8         0x1c c:/program files (x86)/microchip/xc16/v1.25/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
+                  0x0043c8                  ___delay32

@@ -3,17 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/main.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/Telemetre_UltraSons.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/UART_Protocol.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/Servo.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/main.h</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/Robot.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/CB_RX1.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/ustv_i2c.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/robot.h</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/PWM.c</file>
-            <file>file:/C:/GitHub/Coupe-IUT-2016-Robot-1A/CB_RX2.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/main.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/IO.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/main.h</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/IO.h</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/TaskPechePoisson.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/events.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/events.h</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/UART_Protocol.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/oscillator.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/PWM.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/Servo.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/Robot.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/Servo.h</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/RobotManagement.c</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/UART_Protocol.h</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/robot.h</file>
+            <file>file:/C:/Users/findlay/MPLABXProjects/Coupe-IUT-2016-Robot-1A/CB_TX2.c</file>
         </group>
     </open-files>
 </project-private>

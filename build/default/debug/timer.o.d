@@ -1,0 +1,20 @@
+build/default/debug/timer.o:  \
+timer.c  \
+main.h  \
+timer.h  \
+oscillator.h  \
+IO.h  \
+ ADC.h  \
+PWM.h  \
+QEI.h  \
+AsservissementPolaire.h  \
+ustv_i2c.h  \
+Servo.h  \
+events.h  \
+ robot.h  \
+TaskVidageChateau.h  \
+Task.h  \
+TaskFermeturePortes.h  \
+ TaskAvalageChateau.h  \
+TaskPechePoisson.h  \
+RobotManagement.h 

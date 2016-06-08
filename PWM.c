@@ -110,29 +110,29 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                 P1DC2 = (unsigned int) ((100 - Abs(robotState.vitesseGaucheSortieCorrecteur))*20);
 
                 break;
-            case MOTEUR_3:
-                robotState.vitesseMoteur3SortieCorrecteur = robotState.vitesseMoteur3Consigne;
-                //Mise à jour des consignes du moteur 3
-                if (robotState.vitesseMoteur3SortieCorrecteur > 0)
-                {
-                    PWM1CON1bits.PEN3H = 0;
-                    MOTOR_3_IN1 = 1;
-                    PWM1CON1bits.PEN3L = 1;
-                }
-                else
-                {
-                    PWM1CON1bits.PEN3L = 0;
-                    MOTOR_3_IN2 = 1;
-                    PWM1CON1bits.PEN3H = 1;
-                }
-                P1DC3 = (unsigned int) ((100 - Abs(robotState.vitesseMoteur3SortieCorrecteur))*20);
-
-                break;
-            case MOTEUR_4:
-                robotState.vitesseMoteur4SortieCorrecteur = robotState.vitesseMoteur4Consigne;
-
-                //TODO : Mise à jour des consignes des hacheurs du moteur 4                
-                break;
+//            case MOTEUR_3:
+//                robotState.vitesseMoteur3SortieCorrecteur = robotState.vitesseMoteur3Consigne;
+//                //Mise à jour des consignes du moteur 3
+//                if (robotState.vitesseMoteur3SortieCorrecteur > 0)
+//                {
+//                    PWM1CON1bits.PEN3H = 0;
+//                    MOTOR_3_IN1 = 1;
+//                    PWM1CON1bits.PEN3L = 1;
+//                }
+//                else
+//                {
+//                    PWM1CON1bits.PEN3L = 0;
+//                    MOTOR_3_IN2 = 1;
+//                    PWM1CON1bits.PEN3H = 1;
+//                }
+//                P1DC3 = (unsigned int) ((100 - Abs(robotState.vitesseMoteur3SortieCorrecteur))*20);
+//
+//                break;
+//            case MOTEUR_4:
+//                robotState.vitesseMoteur4SortieCorrecteur = robotState.vitesseMoteur4Consigne;
+//
+//                //TODO : Mise à jour des consignes des hacheurs du moteur 4                
+//                break;
         }
     }
     else
@@ -282,40 +282,40 @@ void PWMUpdateSpeed(unsigned char pwmNumber)
                 P1DC2 = (unsigned int) ((100 - Abs(robotState.vitesseGaucheSortieCorrecteur))*20);
 
                 break;
-            case MOTEUR_3:
-                //Pas de QEI sur le moteur 3
-                robotState.vitesseMoteur3SortieCorrecteur = robotState.vitesseMoteur3Consigne;
-
-                //Limitation du range de consignes à + ou - 100 %
-                robotState.vitesseMoteur3SortieCorrecteur = Min(robotState.vitesseMoteur3SortieCorrecteur, 100);
-                robotState.vitesseMoteur3SortieCorrecteur = Max(robotState.vitesseMoteur3SortieCorrecteur, -100);
-
-                //Mise à jour des consignes du moteur 3
-                if (robotState.vitesseMoteur3SortieCorrecteur > 0)
-                {
-                    PWM1CON1bits.PEN3H = 0;
-                    MOTOR_3_IN1 = 1;
-                    PWM1CON1bits.PEN3L = 1;
-                }
-                else
-                {
-                    PWM1CON1bits.PEN3L = 0;
-                    MOTOR_3_IN2 = 1;
-                    PWM1CON1bits.PEN3H = 1;
-                }
-                P1DC3 = (unsigned int) ((100 - Abs(robotState.vitesseMoteur3SortieCorrecteur))*20);
-
-                break;
-            case MOTEUR_4:
-                //Pas de QEI sur le moteur 4
-                robotState.vitesseMoteur4SortieCorrecteur = robotState.vitesseMoteur4Consigne;
-
-                //Limitation du range de consignes à + ou - 100 %
-                robotState.vitesseMoteur4SortieCorrecteur = Min(robotState.vitesseMoteur4SortieCorrecteur, 100);
-                robotState.vitesseMoteur4SortieCorrecteur = Max(robotState.vitesseMoteur4SortieCorrecteur, -100);
-
-                //TODO : Mise à jour des consignes des hacheurs du moteur 4                
-                break;
+////            case MOTEUR_3:
+////                //Pas de QEI sur le moteur 3
+////                robotState.vitesseMoteur3SortieCorrecteur = robotState.vitesseMoteur3Consigne;
+////
+////                //Limitation du range de consignes à + ou - 100 %
+////                robotState.vitesseMoteur3SortieCorrecteur = Min(robotState.vitesseMoteur3SortieCorrecteur, 100);
+////                robotState.vitesseMoteur3SortieCorrecteur = Max(robotState.vitesseMoteur3SortieCorrecteur, -100);
+////
+////                //Mise à jour des consignes du moteur 3
+////                if (robotState.vitesseMoteur3SortieCorrecteur > 0)
+////                {
+////                    PWM1CON1bits.PEN3H = 0;
+////                    MOTOR_3_IN1 = 1;
+////                    PWM1CON1bits.PEN3L = 1;
+////                }
+////                else
+////                {
+////                    PWM1CON1bits.PEN3L = 0;
+////                    MOTOR_3_IN2 = 1;
+////                    PWM1CON1bits.PEN3H = 1;
+////                }
+////                P1DC3 = (unsigned int) ((100 - Abs(robotState.vitesseMoteur3SortieCorrecteur))*20);
+////
+////                break;
+////            case MOTEUR_4:
+////                //Pas de QEI sur le moteur 4
+////                robotState.vitesseMoteur4SortieCorrecteur = robotState.vitesseMoteur4Consigne;
+////
+////                //Limitation du range de consignes à + ou - 100 %
+////                robotState.vitesseMoteur4SortieCorrecteur = Min(robotState.vitesseMoteur4SortieCorrecteur, 100);
+////                robotState.vitesseMoteur4SortieCorrecteur = Max(robotState.vitesseMoteur4SortieCorrecteur, -100);
+////
+////                //TODO : Mise à jour des consignes des hacheurs du moteur 4                
+////                break;
         }
     }
 

@@ -13,7 +13,7 @@ void InitUART1(void)
     U1MODEbits.PDSEL = 0; //No Parity, 8-data bits
     U1MODEbits.ABAUD = 0; //Auto-Baud Disabled
     U1MODEbits.BRGH = 1;//low speed mode
-    U1BRG = BRGVAL_38400;//baud rate setting
+    U1BRG = BRGVAL_115200;//baud rate setting
    
     U1STAbits.UTXISEL0=0;//Interrupt after one Tx character is transmitted
     U1STAbits.UTXISEL1=0;

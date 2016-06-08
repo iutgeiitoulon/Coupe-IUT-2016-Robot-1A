@@ -23,6 +23,7 @@ __extension__ typedef struct tagSystemEvents {
             unsigned DisableDetectionObstacle:1;
             unsigned ColorCapture:1;
             unsigned BumpersDetection:1;
+            unsigned BaliseEvent:1;
             
         };
 

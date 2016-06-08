@@ -11,5 +11,6 @@ void SetConsigneServoBrasInactif(unsigned int angle);
 void SetConsigneServoPince(unsigned int angle);
 void SetConsigneServoPinceInactif(unsigned int angle);
 void SetConsigneServo5(unsigned int angle);
+void SetConsigneServoCreveBallon(unsigned char ouvert);
 
 #endif	/* SERVO_H */
