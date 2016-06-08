@@ -238,13 +238,13 @@ void UartProcessMessage(unsigned char function,
             {
                 //int X = (((int)payload[0])<<8) + ((int)payload[1]);
                 //int Y = (((int)payload[2])<<8) + ((int)payload[3]);
-                int Xfiltered = (((int)payload[4])<<8) + ((int)payload[5]);
-                int Yfiltered = (((int)payload[6])<<8) + ((int)payload[7]);
-                int angle = (((int)payload[8])<<8) + ((int)payload[9]);
-                
-                robotState.xPosFromBalise = Xfiltered;
-                robotState.yPosFromBalise = Yfiltered;
-                robotState.angleRadianFromBalise = angle;
+//                int Xfiltered = (((int)payload[4])<<8) + ((int)payload[5]);
+//                int Yfiltered = (((int)payload[6])<<8) + ((int)payload[7]);
+                int angle = (((int)payload[13])<<8) + ((int)payload[14]);
+//                
+//                robotState.xPosFromBalise = Xfiltered;
+//                robotState.yPosFromBalise = Yfiltered;
+                robotState.angleDegreeFromBalise = angle;
             }
             break;
             

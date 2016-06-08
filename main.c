@@ -109,9 +109,9 @@ int main(void) {
 
     //Boucle principale
     while (1) {
-        
+
         LED_BLEUE = 0;
-       
+
         //        if (ENTREE_SELECTEUR_COULEUR == VIOLET)
         //     LED_ORANGE = 1;
         //  else
@@ -135,9 +135,15 @@ int main(void) {
             sysEvents.BumpersDetection = 1;
         }
 
+        if (sysEvents.ColorCapture) {
+            LED_ORANGE = 1;
+            sysEvents.ColorCapture = 0;
+        } else
+            LED_ORANGE = 0;
+
         if (ENTREE_JACK == 0) {
             //Dès lors que le jack est mis on revient à l'étape d'attente initiale
-            SetRobotVitesseLibre(0, 0);
+            stateRobot = STATE_ATTENTE;
         }
 
         SystemStateMachine();
@@ -184,17 +190,11 @@ int main(void) {
             stateRobot = RECULE_OBSTACLE;
             LED_BLANCHE = 1;
             sysEvents.BumpersDetection = 0;
-        }
-        else
-             LED_BLANCHE = 0;
+        } else
+            LED_BLANCHE = 0;
 
 
-        if (sysEvents.ColorCapture) {
-            LED_ORANGE = 1;
-            sysEvents.ColorCapture = 0;
-        }
-        else
-            LED_ORANGE = 0;
+
         //        if (sysEvents.UltrasonicObjectDetectionEvent)
         //        {
         //            sysEvents.UltrasonicObjectDetectionEvent = 0;
@@ -247,10 +247,13 @@ long timestampStateStart;
 void SystemStateMachine(void) {
     switch (stateRobot) {
         case STATE_ATTENTE:
-            SetRobotVitesseAsservie(0, 0); //Gauche puis droite
+            SetRobotVitesseLibre(0, 0); //Gauche puis droite
             stateRobot = STATE_ATTENTE_EN_COURS;
+            sysEvents.BumpersDetection = 0;
+            sysEvents.ColorCapture = 0;
+            sysEvents.UltrasonicRangeFinderEvent = 0;
         case STATE_ATTENTE_EN_COURS:
-            if (timestamp > 1000)
+            if (ENTREE_JACK == 1)
                 stateRobot = STATE_AVANCE;
             break;
         case STATE_AVANCE:
@@ -261,26 +264,26 @@ void SystemStateMachine(void) {
             //Exceptionnellement on recharge à chaque passage les vitesses moteurs pour les modifier en fonction des distances mesurées
             int angleOptimal = ModuloAngleDegre(robotState.angleDegreeFromBalise);
             signed char vitesseAvance = Max(10, Min(70, robotState.distanceTelemetreCentre * 3 - 10));
-            SetRobotVitesseAsservie(vitesseAvance - (angleOptimal * 0.5), vitesseAvance + (angleOptimal * 0.5)); //Gauche puis droite coefficient à déterminer
+            SetRobotVitesseLibre(vitesseAvance - (angleOptimal * 0.5), vitesseAvance + (angleOptimal * 0.5)); //Gauche puis droite coefficient à déterminer
             SetNextRobotStateInAutomaticMode();
             break;
         }
         case STATE_TOURNE_GAUCHE:
-            SetRobotVitesseAsservie(0, 30); //Gauche puis droite
+            SetRobotVitesseLibre(0, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
         case STATE_TOURNE_GAUCHE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            SetRobotVitesseAsservie(30, 0); //Gauche puis droite
+            SetRobotVitesseLibre(30, 0); //Gauche puis droite
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
         case STATE_TOURNE_DROITE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            SetRobotVitesseAsservie(-30, 30); //Gauche puis droite
+            SetRobotVitesseLibre(-30, 30); //Gauche puis droite
             stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             break;
 
@@ -288,7 +291,7 @@ void SystemStateMachine(void) {
             SetNextRobotStateInAutomaticMode();
             break;
         case RECULE_OBSTACLE:
-            SetRobotVitesseAsservie(-30, -30);
+            SetRobotVitesseLibre(-30, -30);
             stateRobot = RECULE_OBSTACLE_EN_COURS;
             timestampStateStart = timestamp;
             break;

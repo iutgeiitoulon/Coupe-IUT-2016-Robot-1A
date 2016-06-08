@@ -21,6 +21,9 @@ __extension__ typedef struct tagSystemEvents {
             unsigned TargetProcheEvent:1;
             unsigned TargetAtteinteEvent:1;   
             unsigned DisableDetectionObstacle:1;
+            unsigned ColorCapture:1;
+            unsigned BumpersDetection:1;
+            
         };
 
         struct {

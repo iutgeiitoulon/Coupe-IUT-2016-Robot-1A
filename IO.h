@@ -21,10 +21,13 @@
 #define COMMAND_SERVO_2 _LATB4
 #define COMMAND_SERVO_3 _LATA8
 #define COMMAND_SERVO_4 _LATC8
-#define COMMAND_SERVO_5 _LATC6
 
-#define  ENTREE_SELECTEUR_COULEUR PORTCbits.RC1
-#define ENTREE_JACK PORTCbits.RC9
+#define ENTREE_SELECTEUR_COULEUR 42
+#define  ENTREE_Color_Capture_2 PORTBbits.RB6
+#define  ENTREE_Color_Capture_1 PORTBbits.RB5
+#define COMMAND_SERVO_5 _LATC6
+#define ENTREE_JACK PORTAbits.RA4
+#define  BUMPERS PORTBbits.RB4
 
 // Prototypes fonctions
 void InitIO();

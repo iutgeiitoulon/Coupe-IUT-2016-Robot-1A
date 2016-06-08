@@ -58,7 +58,7 @@ typedef struct robotStateBITS {
 
             signed xPosFromBalise : 16;
             signed yPosFromBalise : 16;
-            signed angleRadianFromBalise : 16;
+            signed angleDegreeFromBalise : 16;
 
             unsigned AligneAvantVersDirectionMouvement : 1;
 
