@@ -33,8 +33,8 @@ void InitIO() {
     //Configuration des entrées
     _TRISB4 = 1;//capteur contacte NF 
     _TRISA4 = 1;  //Entrée Jack NF
-    _TRISB6= 1;//detecteur de couleur
-    _TRISB5= 1;//detecteur de couleur
+    _TRISB3= 1;//detecteur de couleur
+    _TRISC0= 1;//detecteur de couleur
     
     CNEN1bits.CN0IE = 0; //Disable interrupt jack
     CNPU1bits.CN0PUE = 1; //Enable Pull-up for jack
