@@ -21,9 +21,9 @@ void InitTelemetres(void)
     //I2C1Write1(0xE0, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
     
     //Distances maximales de détection
-    I2C1Write1(0xE2, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
-    I2C1Write1(0xE4, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
-    I2C1Write1(0xFE, RANGE_REG, 0x20); //Configuration du range maximal = value*43mm + 43mm
+    I2C1Write1(0xE2, RANGE_REG, 0xFF); //Configuration du range maximal = value*43mm + 43mm
+    I2C1Write1(0xE4, RANGE_REG, 0xFF); //Configuration du range maximal = value*43mm + 43mm
+    I2C1Write1(0xFE, RANGE_REG, 0xFF); //Configuration du range maximal = value*43mm + 43mm
     
     //Gain analogique
     I2C1Write1(0xE2, ANALOG_GAIN_REG, 0x00); //
@@ -42,17 +42,33 @@ void SetUpAddressTelemetre(unsigned char address) //attention reprogramme tout l
 void StartNewUltrasonicMeasure()
 {
     unsigned char data[10];
-
+    unsigned int distanceGaucheRecu = 0;
+    unsigned int distanceDroitRecu = 0;
+    unsigned int distanceCentreRecu = 0;
     //Cas Lecture et écriture synchrone
     I2C1ReadN(TELEMETRE_GAUCHE, CMD_REG, data, 10);
-    robotState.distanceTelemetreGauche = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
+    distanceGaucheRecu = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
     I2C1ReadN(TELEMETRE_DROIT, CMD_REG, data, 10);
-    robotState.distanceTelemetreDroit = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
+    distanceDroitRecu = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
     I2C1ReadN(TELEMETRE_CENTRE, CMD_REG, data, 10);
-    robotState.distanceTelemetreCentre = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
-    robotState.distanceTelemetreGauche=Limiteur(robotState.distanceTelemetreGauche,3,40);
-    robotState.distanceTelemetreDroit=Limiteur(robotState.distanceTelemetreDroit,3,40);
-    robotState.distanceTelemetreCentre=Limiteur(robotState.distanceTelemetreCentre,2,40);
+    distanceCentreRecu = ((unsigned int) data[2])*256 + ((unsigned int) data[3]);
+    
+    if(distanceGaucheRecu <=1 )
+    {
+        distanceGaucheRecu = 60 ;
+    }
+    if(distanceCentreRecu <=1 )
+    {
+        distanceCentreRecu = 60 ;
+    }
+    if(distanceDroitRecu <=1 )
+    {
+        distanceDroitRecu = 60 ;
+    }
+    
+    robotState.distanceTelemetreGauche=Limiteur(distanceGaucheRecu,3,60);
+    robotState.distanceTelemetreDroit=Limiteur(distanceDroitRecu,3,60);
+    robotState.distanceTelemetreCentre=Limiteur(distanceCentreRecu,3,60);
     I2C1Write1(ALL_I2C, CMD_REG, 0x51); // Lecture en broadcast avec retour 
     // distance en cm - cf datasheet page 4
 
@@ -74,10 +90,10 @@ void SendUltrasonicMeasure()
 {
     unsigned char payload[10];
     int pos = 0;
-    payload[pos++] = (unsigned char) ((timestamp) >> 24);
-    payload[pos++] = (unsigned char) ((timestamp) >> 16);
-    payload[pos++] = (unsigned char) ((timestamp) >> 8);
-    payload[pos++] = (unsigned char) ((timestamp) >> 0);
+//    payload[pos++] = (unsigned char) ((timestamp) >> 24);
+//    payload[pos++] = (unsigned char) ((timestamp) >> 16);
+//    payload[pos++] = (unsigned char) ((timestamp) >> 8);
+//    payload[pos++] = (unsigned char) ((timestamp) >> 0);
     payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreGauche) >> 8);
     payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreGauche) >> 0);
     payload[pos++] = (unsigned char) (((int) robotState.distanceTelemetreDroit) >> 8);
