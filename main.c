@@ -61,6 +61,7 @@ unsigned char consigneVitesseMoteurDroit, consigneVitesseMoteurGauche;
 unsigned char valeursTelemetres[3];
 unsigned char valeursMoteurs[2];
 char autoControlActivated = 0;
+int timestampState = 0;
 
 int main(void)
 {
@@ -96,13 +97,13 @@ int main(void)
     SetUpPAsservissementAngulaire(0.008); // 0.012
     //SetUpPiAsservissementLineaire(0.1, 0.4);
     SetUpPAsservissementLineaire(0.010); // 0.016
-    robotState.distanceCentreFinMatch = 45;
+    robotState.distanceCentreFinMatch = 20;
     robotState.DistanceDetectionFace = 50;
-    robotState.DistanceDetectionCote = 30;
-    robotState.acceleration = 0.4;
+    robotState.DistanceDetectionCote = 45;
+//    robotState.acceleration = 0.4;
 
 
-    robotState.rampeAccelerationActive = 1; // a voir si à remettre ! peut etre utile pour les virage!
+    robotState.rampeAccelerationActive = 0; // a voir si à remettre ! peut etre utile pour les virage!
 
     LED_BLANCHE = 0;
     LED_BLEUE = 0;
@@ -140,35 +141,15 @@ int main(void)
             sysEvents.BumpersDetection = 1;
         }
 
-        if (sysEvents.ColorCapture == 1)
-        {
-            //LED_BLANCHE = 1;
-            stateRobot = COLOR_CONFIRM;
-            sysEvents.ColorCapture = 0;
-        }
-        else
-        {
-            //LED_BLANCHE = 0;
-        }
 
-        if (ENTREE_JACK == 0)
-        {
-            //Dès lors que le jack est mis on revient à l'étape d'attente initiale
-            LED_BLEUE = 1;
-            stateRobot = STATE_ATTENTE;
-            timestamp = 0;
-            SetConsigneServoCreveBallon(0);
-        }
-        else
-        {
-            LED_BLEUE = 0;
-        }
 
-        if (timestamp > 9000 && robotState.distanceModifie == 0) // reduit la distance max du capteur central afin de rentrer dans la zone blanche
+
+
+        if (timestamp > 6000 && robotState.distanceModifie == 0) // reduit la distance max du capteur central afin de rentrer dans la zone blanche
         {
             robotState.distanceModifie = 1;
             robotState.distanceTelemetreCentre = robotState.distanceCentreFinMatch;
-            robotState.DistanceDetectionCote = 25;
+            robotState.DistanceDetectionCote = 35;
         }
         //
         //        //        if (sysEvents.QeiDataEvent)
@@ -223,6 +204,19 @@ int main(void)
             stateRobot = RECULE_OBSTACLE;
             sysEvents.BumpersDetection = 0;
         }
+        
+        if (ENTREE_JACK == 0)
+        {
+            //Dès lors que le jack est mis on revient à l'étape d'attente initiale
+            LED_BLEUE = 1;
+            stateRobot = STATE_ATTENTE;
+            timestamp = 0;
+            SetConsigneServoCreveBallon(0);
+        }
+        else
+        {
+            LED_BLEUE = 0;
+        }
 
         //
         //
@@ -264,6 +258,16 @@ int main(void)
         //        //        }
         //
         //
+        if (sysEvents.ColorCapture == 1)
+        {
+            //LED_BLANCHE = 1;
+            stateRobot = STATE_FIN_MATCH;
+            sysEvents.ColorCapture = 0;
+        }
+        else
+        {
+            //LED_BLANCHE = 0;
+        }
         SystemStateMachine();
         //
         ////        while (CB_RX1_IsDataAvailable())
@@ -295,37 +299,31 @@ void SystemStateMachine(void)
         {
             //Exceptionnellement on recharge à chaque passage les vitesses moteurs pour les modifier en fonction des distances mesurées
             int angleOptimal = ModuloAngleDegre(robotState.AngleDegreFromBalise);
-
-            if (robotState.distanceTelemetreCentre < robotState.distanceTelemetreCentrePrecedent)
-            {
-                robotState.distanceTelemetreCentre *= Min((0.02 * robotState.distanceTelemetreCentre), 1); // rapproche les objets afin de tourner avant 
-            }
-            signed char vitesseAvantConsigne = Max(10, Min(70, robotState.distanceTelemetreCentre)); // minimum 10 de vitesse et 
-            //            if (timestamp < 2000)
-            //                Min(50, vitesseAvantConsigne);
-
-            robotState.vitesseGaucheConsigne = vitesseAvantConsigne - (angleOptimal * 0.20);
-            robotState.vitesseDroitConsigne = vitesseAvantConsigne + (angleOptimal * 0.20);
+            signed char vitesseAvance = Max(10, Min(80, robotState.distanceTelemetreCentre + 10));
+            robotState.vitesseGaucheConsigne = vitesseAvance - (angleOptimal * 0.16);
+            robotState.vitesseDroitConsigne = vitesseAvance + (angleOptimal * 0.16);
             SetRobotVitesseLibre(robotState.vitesseGaucheConsigne, robotState.vitesseDroitConsigne); //Gauche puis droite coefficient à déterminer
-            robotState.distanceTelemetreCentrePrecedent = robotState.distanceTelemetreCentre;
             SetNextRobotStateInAutomaticMode();
             break;
         }
         case STATE_TOURNE_GAUCHE:
-            SetRobotVitesseLibre(0, 20); //Gauche puis droite
+            timestampState = timestamp ;
+            SetRobotVitesseLibre(0, 40); //Gauche puis droite
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
         case STATE_TOURNE_GAUCHE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            SetRobotVitesseLibre(20, 0); //Gauche puis droite
+            timestampState = timestamp ;
+            SetRobotVitesseLibre(40, 0); //Gauche puis droite
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
         case STATE_TOURNE_DROITE_EN_COURS:
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
+            timestampState = timestamp ;
             SetRobotVitesseLibre(-40, 40); //Gauche puis droite
             stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             break;
@@ -359,11 +357,11 @@ void SystemStateMachine(void)
             stateRobot = COLOR_CONFIRM_EN_COURS;
             break;
         case COLOR_CONFIRM_EN_COURS:
-            if ((timestamp - timestampColor) > 5) // sur du blanc pendant 5 ms
+            if ((timestamp - timestampColor) > 1) // sur du blanc pendant 5 ms
                 stateRobot = STATE_FIN_MATCH;
             break;
         case STATE_FIN_MATCH:
-            timestampStateStart = timestamp;
+            //timestampStateStart = timestamp;
             SetRobotVitesseLibre(0, 0); //Gauche puis droite
             SetConsigneServoCreveBallon(1);
             stateRobot = STATE_FIN_MATCH_EN_COURS;
